@@ -48,8 +48,9 @@ php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServicePr
 ### Cache busting
 
 #### Image name versioning
-When `config('medialibrary.image_name_versioning')` is set to true, the image URL will be suffixed by the last media (re)generation timestamp, in order to bust the browser cache.  
-Example : `/storage/1/test.jpg` will be called as `/storage/1/test.jpg?id=1567178489`.
+Active the image cache busting by setting a boolean value to `MEDIALIBRARY_IMAGE_NAME_VERSIONING` in your`.env` file, or directly to `config('medialibrary.image_name_versioning')` if you published the package config file.
+When activated, the image URL will be suffixed by the last media (re)generation timestamp in order to bust the browser cache.  
+Example : `/storage/1/test.jpg` URL will be called as `/storage/1/test.jpg?id=1567178489`.
 
 ### Constraints
 
@@ -90,7 +91,7 @@ Easily add legends under your media inputs with `constraintsLegend(string $colle
 ```
 
 ### Global conversions queued status
-Manage the global conversions queued status by setting the `config('medialibrary.queued_conversions')` value.  
+Manage the global conversions queued status by setting a boolean value to `MEDIALIBRARY_QUEUED_CONVERSIONS` in your`.env` file, or directly to `config('medialibrary.queued_conversions')` if you published the package config file.  
 This will set the default queued status for all your defined conversions.  
 You still will be able to manually define a [specific queued status for a conversion](https://docs.spatie.be/laravel-medialibrary/v7/converting-images/defining-conversions/#queuing-conversions). 
 
