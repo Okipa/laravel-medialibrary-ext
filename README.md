@@ -37,11 +37,19 @@ php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServicePr
 
 ## Extra features
 
+- [Cache busting](#cache-busting)
+  - [Image name versioning](#image-name-versioning)
 - [Constraints](#constraints)
   - [Collection mime types constraint setup](#collection-mime-types-constraint-setup)
   - [Collection validation constraints rules generation](#collection-validation-constraints-rules-generation)
   - [Collection validation constraints legend generation](#collection-validation-constraints-legend-generation)
 - [Global conversions queued status](#global-conversions-queued-status)
+
+### Cache busting
+
+#### Image name versioning
+When `config('medialibrary.image_name_versioning')` is set to true, the image URL will be suffixed by the last media (re)generation timestamp, in order to bust the browser cache.  
+Example : `/storage/1/test.jpg` will be called as `/storage/1/test.jpg?id=1567178489`.
 
 ### Constraints
 
