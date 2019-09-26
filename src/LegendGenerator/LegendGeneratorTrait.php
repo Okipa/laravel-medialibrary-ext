@@ -72,10 +72,10 @@ trait LegendGeneratorTrait
 
         if (! empty($mediaCollection->acceptsMimeTypes)) {
             $extensions = $this->extensionsFromMimeTypes($mediaCollection->acceptsMimeTypes);
-            $extensions = implode(',', $extensions);
-            $extensions = str_replace(',', ', ', $extensions);
-            $legendString .= __('medialibrary::medialibrary.constraint.types', [
-                'types' => $extensions,
+            $extensionsString = implode(',', $extensions);
+            $extensionsString = str_replace(',', ', ', $extensionsString);
+            $legendString .= trans_choice('medialibrary::medialibrary.constraint.types', count($extensions), [
+                'types' => $extensionsString,
             ]);
         }
 

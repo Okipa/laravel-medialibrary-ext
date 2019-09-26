@@ -13,7 +13,7 @@ class MimeTypesLegendTest extends TestCase
     /**
      * @test
      */
-    public function it_throws_exception_when_it_is_called_with_non_existing_collection()
+    public function it_returns_none_when_it_is_called_with_non_existing_collection()
     {
         $testModel = new class extends TestModel
         {
@@ -23,7 +23,7 @@ class MimeTypesLegendTest extends TestCase
             }
         };
         $dimensionsLegendString = $testModel->mimeTypesLegend('logo');
-        dd($dimensionsLegendString);
+        $this->assertEquals('', $dimensionsLegendString);
     }
 
     /**
@@ -44,7 +44,7 @@ class MimeTypesLegendTest extends TestCase
             }
         };
         $dimensionsLegendString = $testModel->mimeTypesLegend('logo');
-        dd($dimensionsLegendString);
+        $this->assertEquals('', $dimensionsLegendString);
     }
 
     /**
@@ -73,8 +73,8 @@ class MimeTypesLegendTest extends TestCase
             }
         };
         $dimensionsLegendString = $testModel->mimeTypesLegend('logo');
-        $this->assertEquals(__('medialibrary::medialibrary.constraint.mimeTypes', [
-            'mimetypes' => 'image/jpeg, image/png',
+        $this->assertEquals(trans_choice('medialibrary::medialibrary.constraint.types', 3, [
+            'types' => 'jpeg, jpg, png',
         ]), $dimensionsLegendString);
     }
 }

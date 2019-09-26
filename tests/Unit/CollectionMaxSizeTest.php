@@ -13,7 +13,7 @@ class CollectionMaxSizeTest extends TestCase
     /**
      * @test
      */
-    public function it_throws_exception_when_it_is_called_with_non_existing_collection()
+    public function it_returns_none_when_it_is_called_with_non_existing_collection()
     {
         $testModel = new class extends TestModel
         {
@@ -23,13 +23,13 @@ class CollectionMaxSizeTest extends TestCase
             }
         };
         $maxSizes = $testModel->collectionMaxSizes('logo');
-        dd($maxSizes);
+        $this->assertEquals([], $maxSizes);
     }
 
     /**
      * @test
      */
-    public function it_throws_exception_when_it_is_called_with_non_existing_conversions()
+    public function it_returns_none_when_it_is_called_with_non_existing_conversions()
     {
         $testModel = new class extends TestModel
         {
@@ -39,7 +39,7 @@ class CollectionMaxSizeTest extends TestCase
             }
         };
         $maxSizes = $testModel->collectionMaxSizes('logo');
-        dd($maxSizes);
+        $this->assertEquals([], $maxSizes);
     }
 
     /**

@@ -2,9 +2,7 @@
 
 namespace Spatie\MediaLibrary\HasMedia;
 
-use Illuminate\Support\Str;
 use Spatie\MediaLibrary\Conversion\Conversion;
-use Spatie\MediaLibrary\MediaCollection\MediaCollection;
 use Spatie\MediaLibrary\Models\Media;
 
 interface HasMedia

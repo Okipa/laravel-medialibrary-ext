@@ -104,7 +104,7 @@ class ConstraintsLegendTest extends TestCase
             }
         };
         $legendString = $testModel->constraintsLegend('logo');
-        $this->assertEquals(__('medialibrary::medialibrary.constraint.types', [
+        $this->assertEquals(trans_choice('medialibrary::medialibrary.constraint.types', 3, [
             'types' => 'jpeg, jpg, png',
         ]), $legendString);
     }
@@ -127,7 +127,7 @@ class ConstraintsLegendTest extends TestCase
             }
         };
         $legendString = $testModel->constraintsLegend('logo');
-        $this->assertEquals(__('medialibrary::medialibrary.constraint.types', [
+        $this->assertEquals(trans_choice('medialibrary::medialibrary.constraint.types', 1, [
             'types' => 'pdf',
         ]), $legendString);
     }
@@ -150,7 +150,7 @@ class ConstraintsLegendTest extends TestCase
             }
         };
         $legendString = $testModel->constraintsLegend('logo');
-        $this->assertEquals(__('medialibrary::medialibrary.constraint.types', [
+        $this->assertEquals(trans_choice('medialibrary::medialibrary.constraint.types', 4, [
             'types' => 'jpeg, jpg, png, pdf',
         ]), $legendString);
     }

@@ -7,6 +7,6 @@ return [
             'width'  => 'Largeur minimale : :width pixels.',
             'height' => 'Hauteur minimale : :height pixels.',
         ],
-        'types'      => 'Type(s) accepté(s) : :types.',
+        'types'      => '{1}Type accepté : :types.|[2,*]Types acceptés : :types.',
     ],
 ];
