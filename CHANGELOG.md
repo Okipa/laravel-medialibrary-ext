@@ -6,7 +6,7 @@
 - :warning: The `->validationConstraints()` method does now return an array, rather than a string before.
 - :warning: Removed the `CollectionNotFound` exception in order to follow the base package behaviour.
 - :warning: Removed the `ConversionsNotFound` exception in order to follow the base package behaviour.
-- :warning: Replaced the `__(medialibrary.constraint.mimeTypes)` translation by trans_choice(`medialibrary.constraint.types`) translation, in order to provide clearer legends.
+- :warning: Replaced the `__('medialibrary.constraint.mimeTypes')` translation by `trans_choice('medialibrary.constraint.types')` translation, in order to provide clearer legends.
 
 ## [7.13.4](https://github.com/Okipa/laravel-medialibrary-ext/releases/tag/7.13.4)
 - Implemented https://github.com/spatie/laravel-medialibrary/releases/tag/7.14.0 release.
