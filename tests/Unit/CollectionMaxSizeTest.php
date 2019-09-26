@@ -2,8 +2,6 @@
 
 namespace Spatie\MediaLibrary\Tests\Unit\Extension\UrlGenerator;
 
-use Spatie\MediaLibrary\Exceptions\CollectionNotFound;
-use Spatie\MediaLibrary\Exceptions\ConversionsNotFound;
 use Spatie\MediaLibrary\File;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\Models\Media;
@@ -24,8 +22,8 @@ class CollectionMaxSizeTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
             }
         };
-        $this->expectException(CollectionNotFound::class);
-        $testModel->collectionMaxSizes('logo');
+        $maxSizes = $testModel->collectionMaxSizes('logo');
+        dd($maxSizes);
     }
 
     /**
@@ -40,8 +38,8 @@ class CollectionMaxSizeTest extends TestCase
                 $this->addMediaCollection('logo')->acceptsMimeTypes(['image/jpeg', 'image/png']);
             }
         };
-        $this->expectException(ConversionsNotFound::class);
-        $testModel->collectionMaxSizes('logo');
+        $maxSizes = $testModel->collectionMaxSizes('logo');
+        dd($maxSizes);
     }
 
     /**

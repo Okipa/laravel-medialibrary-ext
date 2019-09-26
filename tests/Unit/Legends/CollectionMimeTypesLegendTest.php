@@ -2,7 +2,6 @@
 
 namespace Spatie\MediaLibrary\Tests\Unit\Extension\UrlGenerator;
 
-use Spatie\MediaLibrary\Exceptions\CollectionNotFound;
 use Spatie\MediaLibrary\File;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\Models\Media;
@@ -23,8 +22,8 @@ class MimeTypesLegendTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
             }
         };
-        $this->expectException(CollectionNotFound::class);
-        $testModel->mimeTypesLegend('logo');
+        $dimensionsLegendString = $testModel->mimeTypesLegend('logo');
+        dd($dimensionsLegendString);
     }
 
     /**
@@ -45,7 +44,7 @@ class MimeTypesLegendTest extends TestCase
             }
         };
         $dimensionsLegendString = $testModel->mimeTypesLegend('logo');
-        $this->assertEquals('', $dimensionsLegendString);
+        dd($dimensionsLegendString);
     }
 
     /**

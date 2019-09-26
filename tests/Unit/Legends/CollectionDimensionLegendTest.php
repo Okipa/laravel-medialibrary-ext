@@ -3,8 +3,6 @@
 namespace Spatie\MediaLibrary\Tests\Unit\Extension\UrlGenerator;
 
 use Spatie\Image\Manipulations;
-use Spatie\MediaLibrary\Exceptions\CollectionNotFound;
-use Spatie\MediaLibrary\Exceptions\ConversionsNotFound;
 use Spatie\MediaLibrary\File;
 use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\Tests\Support\TestModels\TestModel;
@@ -24,8 +22,8 @@ class CollectionDimensionLegendTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
             }
         };
-        $this->expectException(CollectionNotFound::class);
-        $testModel->dimensionsLegend('logo');
+        $dimensionsLegendString = $testModel->dimensionsLegend('logo');
+        dd($dimensionsLegendString);
     }
 
     /**
@@ -40,8 +38,8 @@ class CollectionDimensionLegendTest extends TestCase
                 $this->addMediaCollection('logo')->acceptsMimeTypes(['image/jpeg', 'image/png']);
             }
         };
-        $this->expectException(ConversionsNotFound::class);
-        $testModel->dimensionsLegend('logo');
+        $dimensionsLegendString = $testModel->dimensionsLegend('logo');
+        dd($dimensionsLegendString);
     }
 
     /**
