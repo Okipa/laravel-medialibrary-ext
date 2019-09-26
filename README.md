@@ -60,7 +60,7 @@ public function rules()
         // your other validation rules
     ];
 }
-// rendering example : `[mimetypes:image/jpeg,image/png, mimes:jpeg,jpg,png, dimensions:min_width=60,min_height=20|]`
+// rendering example : `['mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,png', 'dimensions:min_width=60,min_height=20']`
 ```
 
 #### Collection validation constraints legend generation
