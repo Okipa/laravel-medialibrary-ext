@@ -4,7 +4,7 @@
 
 2019-11-27
 
-- The extensions detection from mime types from the `Spatie\MediaLibrary\HasMedia\HasMediaTrait::extensionsFromMimeTypes()` method is now executed by `Symfony\Component\Mime\MimeTypes::getExtensions()` (which is a lot more reliable).
+- The extensions detection from mime types from the `Spatie\MediaLibrary\HasMedia\HasMediaTrait::extensionsFromMimeTypes()` method is now executed by `Symfony\Component\Mime\MimeTypes::getExtensions()` (which is far more reliable).
 
 ## [7.14.4](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.14.3...Okipa:7.14.4)
 
