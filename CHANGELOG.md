@@ -1,6 +1,12 @@
 # Changelog
 
-## [7.14.5](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.14.5...Okipa:7.15.0)
+## [7.15.1](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.15.0...Okipa:7.15.1)
+
+2019-12-11
+
+- Implemented https://github.com/spatie/laravel-medialibrary/releases/tag/7.16.1 release.
+
+## [7.15.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.14.5...Okipa:7.15.0)
 
 2019-12-04
 
