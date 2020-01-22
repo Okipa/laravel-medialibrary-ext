@@ -92,14 +92,14 @@ class Conversion
         return $this->manipulations;
     }
 
-    public function removeManipulation(string $manipulationName) : self
+    public function removeManipulation(string $manipulationName): self
     {
         $this->manipulations->removeManipulation($manipulationName);
 
         return $this;
     }
 
-    public function withoutManipulations() : self
+    public function withoutManipulations(): self
     {
         $this->manipulations = new Manipulations();
 
@@ -124,7 +124,7 @@ class Conversion
      *
      * @return $this
      */
-    public function setManipulations($manipulations) : self
+    public function setManipulations($manipulations): self
     {
         if ($manipulations instanceof Manipulations) {
             $this->manipulations = $this->manipulations->mergeManipulations($manipulations);
@@ -144,7 +144,7 @@ class Conversion
      *
      * @return $this
      */
-    public function addAsFirstManipulations(Manipulations $manipulations) : self
+    public function addAsFirstManipulations(Manipulations $manipulations): self
     {
         $manipulationSequence = $manipulations->getManipulationSequence()->toArray();
 
@@ -162,7 +162,7 @@ class Conversion
      *
      * @return $this
      */
-    public function performOnCollections(...$collectionNames) : self
+    public function performOnCollections(...$collectionNames): self
     {
         $this->performOnCollections = $collectionNames;
 
@@ -192,7 +192,7 @@ class Conversion
      *
      * @return $this
      */
-    public function queued() : self
+    public function queued(): self
     {
         $this->performOnQueue = true;
 
@@ -204,7 +204,7 @@ class Conversion
      *
      * @return $this
      */
-    public function nonQueued() : self
+    public function nonQueued(): self
     {
         $this->performOnQueue = false;
 
@@ -216,7 +216,7 @@ class Conversion
      *
      * @return $this
      */
-    public function nonOptimized() : self
+    public function nonOptimized(): self
     {
         $this->removeManipulation('optimize');
 
@@ -226,7 +226,7 @@ class Conversion
     /**
      * When creating the converted image, responsive images will be created as well.
      */
-    public function withResponsiveImages() : self
+    public function withResponsiveImages(): self
     {
         $this->generateResponsiveImages = true;
 
