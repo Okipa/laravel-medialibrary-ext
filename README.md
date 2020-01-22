@@ -92,8 +92,8 @@ You still will be able to manually define a [specific queued status for a conver
 
 ## Testing
 
-``` bash
-composer test
+```bash
+vendor/bin/phpunit
 ```
 
 ## Changelog

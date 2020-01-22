@@ -29,15 +29,16 @@
     ],
     "require": {
         "php": "^7.2",
-        "illuminate/bus": "~5.5.0||~5.6.0||~5.7.0||~5.8.0||^6.0",
-        "illuminate/console": "~5.5.0||~5.6.0||~5.7.0||~5.8.0||^6.0",
-        "illuminate/database": "~5.5.0||~5.6.0||~5.7.0||~5.8.0||^6.0",
-        "illuminate/pipeline": "~5.5.0||~5.6.0||~5.7.0||~5.8.0||^6.0",
-        "illuminate/support": "~5.5.0||~5.6.0||~5.7.0||~5.8.0||^6.0",
+        "illuminate/bus": "~5.8.35|^6.0",
+        "illuminate/console": "~5.8.35|^6.0",
+        "illuminate/database": "~5.8.35|^6.0",
+        "illuminate/pipeline": "~5.8.35|^6.0",
+        "illuminate/support": "~5.8.35|^6.0",
         "league/flysystem": "^1.0.8",
+        "symfony/console": "^4.4",
         "maennchen/zipstream-php": "^1.0",
         "spatie/image": "^1.4.0",
-        "spatie/pdf-to-image": "^1.2",
+        "spatie/pdf-to-image": "^2.0",
         "spatie/temporary-directory": "^1.1",
         "ext-fileinfo": "*",
         "symfony/mime": "^4.0||^5.0"
@@ -68,11 +69,6 @@
         "psr-4": {
             "Spatie\\MediaLibrary\\Tests\\": "tests"
         }
-    },
-    "scripts": {
-        "test": [
-            "vendor/bin/phpunit"
-        ]
     },
     "extra": {
         "laravel": {
