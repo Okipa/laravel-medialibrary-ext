@@ -3,6 +3,7 @@
 namespace Spatie\MediaLibrary;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Application;
 use Spatie\MediaLibrary\Filesystem\Filesystem;
 use Spatie\MediaLibrary\Models\Media;
 
@@ -28,7 +29,13 @@ class MediaObserver
             return;
         }
 
-        if ($media->manipulations !== json_decode($media->getOriginal('manipulations'), true)) {
+        $original = $media->getOriginal('manipulations');
+
+        if (! $this->isLaravel7OrHigher()) {
+            $original = json_decode($original, true);
+        }
+
+        if ($media->manipulations !== $original) {
             $eventDispatcher = Media::getEventDispatcher();
             Media::unsetEventDispatcher();
 
@@ -47,5 +54,18 @@ class MediaObserver
         }
 
         app(Filesystem::class)->removeAllFiles($media);
+    }
+
+    private function isLaravel7OrHigher(): bool
+    {
+        if (Application::VERSION === '7.x-dev') {
+            return true;
+        }
+
+        if (version_compare(Application::VERSION, '7.0', '>=')) {
+            return true;
+        }
+
+        return false;
     }
 }
