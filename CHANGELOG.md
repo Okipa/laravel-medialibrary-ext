@@ -1,6 +1,6 @@
 # Changelog
 
-## [7.17.3](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.17.1...Okipa:7.17.3)
+## [7.17.3](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.17.2...Okipa:7.17.3)
 
 2020-02-19
 
