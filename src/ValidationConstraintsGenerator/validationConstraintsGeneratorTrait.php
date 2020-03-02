@@ -2,55 +2,25 @@
 
 namespace Spatie\MediaLibrary\ValidationConstraintsGenerator;
 
-use Spatie\MediaLibrary\Exceptions\CollectionNotFound;
-
 trait validationConstraintsGeneratorTrait
 {
-    /**
-     * Get the constraints validation string for a media collection.
-     *
-     * @param string $collectionName
-     *
-     * @return array
-     */
+    /** @inheritDoc */
     public function validationConstraints(string $collectionName): array
     {
         $mimesConstraints = $this->mimesValidationConstraints($collectionName);
         $mimeTypeConstraints = $this->mimeTypesValidationConstraints($collectionName);
         $dimensionConstraints = $this->dimensionValidationConstraints($collectionName);
+        $sizeConstraint = $this->sizeValidationConstraint();
 
-        return array_values(array_filter([$mimesConstraints, $mimeTypeConstraints, $dimensionConstraints]));
+        return array_values(array_filter([
+            $mimesConstraints,
+            $mimeTypeConstraints,
+            $dimensionConstraints,
+            $sizeConstraint,
+        ]));
     }
 
-    /**
-     * Get a collection mime types constraints validation string from its name.
-     *
-     * @param string $collectionName
-     *
-     * @return string
-     */
-    public function mimeTypesValidationConstraints(string $collectionName): string
-    {
-        $mediaConversions = $this->getMediaConversions($collectionName);
-        if (empty($mediaConversions)) {
-            return '';
-        }
-        $mediaCollection = $this->getMediaCollection($collectionName);
-        $validationString = '';
-        if (! empty($mediaCollection->acceptsMimeTypes)) {
-            $validationString .= 'mimetypes:' . implode(',', $mediaCollection->acceptsMimeTypes);
-        }
-
-        return $validationString;
-    }
-
-    /**
-     * Get a collection mime types constraints validation string from its name.
-     *
-     * @param string $collectionName
-     *
-     * @return string
-     */
+    /** @inheritDoc */
     public function mimesValidationConstraints(string $collectionName): string
     {
         $mediaConversions = $this->getMediaConversions($collectionName);
@@ -69,13 +39,23 @@ trait validationConstraintsGeneratorTrait
         return $validationString;
     }
 
-    /**
-     * Get a collection dimension validation constraints string from its name.
-     *
-     * @param string $collectionName
-     *
-     * @return string
-     */
+    /** @inheritDoc */
+    public function mimeTypesValidationConstraints(string $collectionName): string
+    {
+        $mediaConversions = $this->getMediaConversions($collectionName);
+        if (empty($mediaConversions)) {
+            return '';
+        }
+        $mediaCollection = $this->getMediaCollection($collectionName);
+        $validationString = '';
+        if (! empty($mediaCollection->acceptsMimeTypes)) {
+            $validationString .= 'mimetypes:' . implode(',', $mediaCollection->acceptsMimeTypes);
+        }
+
+        return $validationString;
+    }
+
+    /** @inheritDoc */
     public function dimensionValidationConstraints(string $collectionName): string
     {
         /** @var \Spatie\MediaLibrary\HasMedia\HasMediaTrait $this */
@@ -88,5 +68,13 @@ trait validationConstraintsGeneratorTrait
         $separator = $width && $height ? ',' : '';
 
         return $width || $height ? 'dimensions:' . $width . $separator . $height : '';
+    }
+
+    /** @inheritDoc */
+    public function sizeValidationConstraint(): string
+    {
+        $configMaxFileSize = config('medialibrary.max_file_size');
+
+        return $configMaxFileSize ? 'max:' . $configMaxFileSize : '';
     }
 }

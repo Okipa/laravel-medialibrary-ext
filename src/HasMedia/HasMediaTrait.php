@@ -9,6 +9,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\CaptionGenerator\CaptionGeneratorTrait;
 use Spatie\MediaLibrary\Conversion\Conversion;
 use Spatie\MediaLibrary\Events\CollectionHasBeenCleared;
 use Spatie\MediaLibrary\Exceptions\FileCannotBeAdded\InvalidBase64Data;
@@ -21,13 +22,12 @@ use Spatie\MediaLibrary\FileAdder\FileAdderFactory;
 use Spatie\MediaLibrary\MediaCollection\MediaCollection;
 use Spatie\MediaLibrary\MediaRepository;
 use Spatie\MediaLibrary\Models\Media;
-use Spatie\MediaLibrary\LegendGenerator\LegendGeneratorTrait;
 use Spatie\MediaLibrary\ValidationConstraintsGenerator\validationConstraintsGeneratorTrait;
 use Symfony\Component\Mime\MimeTypes;
 
 trait HasMediaTrait
 {
-    use LegendGeneratorTrait;
+    use CaptionGeneratorTrait;
     use validationConstraintsGeneratorTrait;
 
     /** @var Conversion[] */

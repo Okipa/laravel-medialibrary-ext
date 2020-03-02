@@ -2,7 +2,6 @@
 
 namespace Spatie\MediaLibrary\Tests\Unit\Extension\UrlGenerator;
 
-use Spatie\MediaLibrary\Exceptions\CollectionNotFound;
 use Spatie\MediaLibrary\File;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\Models\Media;
@@ -30,7 +29,7 @@ class CollectionMimeTypesValidationConstraintsTest extends TestCase
     /**
      * @test
      */
-    public function it_returns_mime_types_validation_constraints_when_declared_in_collection()
+    public function it_returns_mime_types_constraints_when_declared_in_collection()
     {
         $testModel = new class extends TestModel
         {
@@ -59,7 +58,7 @@ class CollectionMimeTypesValidationConstraintsTest extends TestCase
     /**
      * @test
      */
-    public function it_returns_no_collection_mime_types_validation_constraints_when_none_declared()
+    public function it_returns_no_collection_mime_types_constraints_when_none_declared()
     {
         $testModel = new class extends TestModel
         {

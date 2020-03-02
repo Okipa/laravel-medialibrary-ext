@@ -1,12 +1,20 @@
 <?php
 
 return [
-    'constraint' => [
+
+    'constraints' => [
         'dimensions' => [
-            'both'   => 'Largeur minimale : :width pixels / Hauteur minimale : :height pixels.',
-            'width'  => 'Largeur minimale : :width pixels.',
-            'height' => 'Hauteur minimale : :height pixels.',
+            'width' => [
+                'min' => 'Largeur min. : :width pixels.',
+            ],
+            'height' => [
+                'min' => 'Hauteur min. : :height pixels.',
+            ],
         ],
-        'types'      => '{1}Type accepté : :types.|[2,*]Types acceptés : :types.',
+        'size' => [
+            'max' => 'Taille fichier max. : :size Mo.',
+        ],
+        'types' => '{1}Type accepté : :types.|[2,*]Types acceptés : :types.',
     ],
+
 ];

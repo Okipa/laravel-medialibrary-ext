@@ -8,7 +8,7 @@ use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\Tests\Support\TestModels\TestModel;
 use Spatie\MediaLibrary\Tests\TestCase;
 
-class CollectionDimensionLegendTest extends TestCase
+class CollectionDimensionsCaptionTest extends TestCase
 {
     /**
      * @test
@@ -22,8 +22,8 @@ class CollectionDimensionLegendTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
             }
         };
-        $dimensionsLegendString = $testModel->dimensionsLegend('logo');
-        $this->assertEquals('', $dimensionsLegendString);
+        $dimensionsCaptionString = $testModel->dimensionsCaption('logo');
+        $this->assertEquals('', $dimensionsCaptionString);
     }
 
     /**
@@ -38,8 +38,8 @@ class CollectionDimensionLegendTest extends TestCase
                 $this->addMediaCollection('logo')->acceptsMimeTypes(['image/jpeg', 'image/png']);
             }
         };
-        $dimensionsLegendString = $testModel->dimensionsLegend('logo');
-        $this->assertEquals('', $dimensionsLegendString);
+        $dimensionsCaptionString = $testModel->dimensionsCaption('logo');
+        $this->assertEquals('', $dimensionsCaptionString);
     }
 
     /**
@@ -59,10 +59,10 @@ class CollectionDimensionLegendTest extends TestCase
                 $this->addMediaConversion('thumb')->width(120);
             }
         };
-        $dimensionsLegendString = $testModel->dimensionsLegend('logo');
-        $this->assertEquals(__('medialibrary::medialibrary.constraint.dimensions.width', [
+        $dimensionsCaptionString = $testModel->dimensionsCaption('logo');
+        $this->assertEquals(__('medialibrary::medialibrary.constraints.dimensions.width.min', [
             'width' => 120,
-        ]), $dimensionsLegendString);
+        ]), $dimensionsCaptionString);
     }
 
     /**
@@ -82,10 +82,10 @@ class CollectionDimensionLegendTest extends TestCase
                 $this->addMediaConversion('thumb')->height(30);
             }
         };
-        $dimensionsLegendString = $testModel->dimensionsLegend('logo');
-        $this->assertEquals(__('medialibrary::medialibrary.constraint.dimensions.height', [
+        $dimensionsCaptionString = $testModel->dimensionsCaption('logo');
+        $this->assertEquals(__('medialibrary::medialibrary.constraints.dimensions.height.min', [
             'height' => 30,
-        ]), $dimensionsLegendString);
+        ]), $dimensionsCaptionString);
     }
 
     /**
@@ -105,8 +105,8 @@ class CollectionDimensionLegendTest extends TestCase
                 $this->addMediaConversion('thumb');
             }
         };
-        $dimensionsLegendString = $testModel->dimensionsLegend('logo');
-        $this->assertEquals('', $dimensionsLegendString);
+        $dimensionsCaptionString = $testModel->dimensionsCaption('logo');
+        $this->assertEquals('', $dimensionsCaptionString);
     }
 
     /**
@@ -134,11 +134,12 @@ class CollectionDimensionLegendTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 100, 70);
             }
         };
-        $dimensionsLegendString = $testModel->dimensionsLegend('logo');
-        $this->assertEquals(__('medialibrary::medialibrary.constraint.dimensions.both', [
-            'width'  => 100,
-            'height' => 80,
-        ]), $dimensionsLegendString);
+        $dimensionsCaptionString = $testModel->dimensionsCaption('logo');
+        $this->assertEquals(__('medialibrary::medialibrary.constraints.dimensions.width.min', [
+                'width' => 100,
+            ]) . ' ' . __('medialibrary::medialibrary.constraints.dimensions.height.min', [
+                'height' => 80,
+            ]), $dimensionsCaptionString);
     }
 
     /**
@@ -166,7 +167,7 @@ class CollectionDimensionLegendTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 100, 70);
             }
         };
-        $dimensionsLegendString = $testModel->dimensionsLegend('logo');
-        $this->assertEquals('', $dimensionsLegendString);
+        $dimensionsCaptionString = $testModel->dimensionsCaption('logo');
+        $this->assertEquals('', $dimensionsCaptionString);
     }
 }

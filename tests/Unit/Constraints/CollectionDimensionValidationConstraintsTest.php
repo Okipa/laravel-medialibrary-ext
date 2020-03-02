@@ -45,7 +45,7 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
     /**
      * @test
      */
-    public function it_returns_global_conversion_dimension_validation_constraints_when_no_collection_conversions_declared()
+    public function it_returns_global_conversion_dimension_constraints_when_no_collection_conversions_declared()
     {
         $testModel = new class extends TestModel
         {
@@ -66,7 +66,7 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
     /**
      * @test
      */
-    public function it_returns_only_width_dimension_validation_constraint_when_only_width_is_declared()
+    public function it_returns_only_width_dimension_constraint_when_only_width_is_declared()
     {
         $testModel = new class extends TestModel
         {
@@ -87,7 +87,7 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
     /**
      * @test
      */
-    public function it_returns_only_height_dimension_validation_constraint_when_only_height_is_declared()
+    public function it_returns_only_height_dimension_constraint_when_only_height_is_declared()
     {
         $testModel = new class extends TestModel
         {
@@ -108,7 +108,7 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
     /**
      * @test
      */
-    public function it_returns_no_dimension_validation_constraint_when_no_size_is_declared()
+    public function it_returns_no_dimension_constraint_when_no_size_is_declared()
     {
         $testModel = new class extends TestModel
         {
@@ -129,7 +129,7 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
     /**
      * @test
      */
-    public function it_returns_collection_dimension_validation_constraints_when_no_global_conversions_declared()
+    public function it_returns_collection_dimension_constraints_when_no_global_conversions_declared()
     {
         $testModel = new class extends TestModel
         {
@@ -157,7 +157,7 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
     /**
      * @test
      */
-    public function it_returns_global_and_collection_dimension_validation_constraints_when_both_are_declared()
+    public function it_returns_global_and_collection_dimension_constraints_when_both_are_declared()
     {
         $testModel = new class extends TestModel
         {
@@ -186,7 +186,7 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
     /**
      * @test
      */
-    public function it_does_not_returns_dimension_validation_constraints_when_no_image_declared()
+    public function it_does_not_returns_dimension_constraints_when_no_image_declared()
     {
         $testModel = new class extends TestModel
         {

@@ -72,13 +72,13 @@ public function rules()
 
 #### Collection validation constraints legend generation
 
-Easily add legends under your media inputs with `constraintsLegend(string $collectionName): string`.
+Easily add legends under your media inputs with `constraintsCaption(string $collectionName): string`.
 
 ```html
 <!-- in your HTML form -->
 <label for="avatar">Choose a profile picture :</label>
 <input type=" id="avatar" name="avatar" value="{{ $avatarFileName }}">
-<small>{{ (new User)->constraintsLegend('avatar') }}</small>
+<small>{{ (new User)->constraintsCaption('avatar') }}</small>
 <!-- Rendering example : `Min. width : 150 px / Min. height : 70 px. Accepted types : jpeg, jpg, jpe, png.` -->
 ```
 

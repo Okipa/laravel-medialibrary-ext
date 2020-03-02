@@ -123,6 +123,13 @@ interface HasMedia
     public function dimensionValidationConstraints(string $collectionName): string;
 
     /**
+     * Get a the config max file size validation constraint.
+     *
+     * @return string
+     */
+    public function sizeValidationConstraint(): string;
+
+    /**
      * Get registered collection max width and max height from its name.
      *
      * @param string $collectionName
@@ -140,6 +147,12 @@ interface HasMedia
      */
     public function validationConstraints(string $collectionName): array;
 
+    /** @param string $collectionName
+     * @return string
+     * @deprecated use the constraintsCaption($collectionName) method instead.
+     */
+    public function constraintsLegend(string $collectionName): string;
+
     /**
      * Get the constraints legend string for a media collection.
      *
@@ -147,7 +160,13 @@ interface HasMedia
      *
      * @return string
      */
-    public function constraintsLegend(string $collectionName): string;
+    public function constraintsCaption(string $collectionName): string;
+
+    /** @param string $collectionName
+     * @return string
+     * @deprecated Use the dimensionsCaption($collectionName) method instead.
+     */
+    public function dimensionsLegend(string $collectionName): string;
 
     /**
      * Get a collection dimensions constraints legend string from its name.
@@ -156,16 +175,29 @@ interface HasMedia
      *
      * @return string
      */
-    public function dimensionsLegend(string $collectionName): string;
+    public function dimensionsCaption(string $collectionName): string;
+
+    /** @param string $collectionName
+     * @return string
+     * @deprecated Use the mimeTypesCaption($collectionName) method instead.
+     */
+    public function mimeTypesLegend(string $collectionName): string;
 
     /**
-     * Get a collection mime types constraints legend string from its name.
+     * Get a collection mime types constraints caption string from its name.
      *
      * @param string $collectionName
      *
      * @return string
      */
-    public function mimeTypesLegend(string $collectionName): string;
+    public function mimeTypesCaption(string $collectionName): string;
+
+    /**
+     * Get the config max file size constraint caption.
+     *
+     * @return string
+     */
+    public function sizeCaption(): string;
 
     /**
      * Get declared conversions from a media collection name.
