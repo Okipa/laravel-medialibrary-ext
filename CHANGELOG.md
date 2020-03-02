@@ -5,7 +5,6 @@
 2020-03-02
 
 * Refactored the translations, you should update them if you use custom translations.
-
 * Deprecated the `constraintsLegend` method. Use `constraintsCaption` instead.
 * Deprecated the `dimensionsLegend` method. Use `dimensionsCaption` instead.
 * Deprecated the `mimeTypesLegend`method . Use `mimeTypesCaption` instead.
