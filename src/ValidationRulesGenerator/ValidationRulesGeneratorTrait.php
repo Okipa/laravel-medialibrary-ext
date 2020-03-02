@@ -98,6 +98,6 @@ trait ValidationRulesGeneratorTrait
     {
         $configMaxFileSize = config('medialibrary.max_file_size');
 
-        return $configMaxFileSize ? 'max:' . $configMaxFileSize : '';
+        return $configMaxFileSize ? 'max:' . ($configMaxFileSize / 1000) : '';
     }
 }
