@@ -79,7 +79,7 @@ trait CaptionGeneratorTrait
 
         return $configMaxFileSize
             ? (string) __('medialibrary::medialibrary.constraints.size.max', [
-                'size' => round($configMaxFileSize / 1000000, 1, PHP_ROUND_HALF_DOWN),
+                'size' => round($configMaxFileSize / 1000000, 1),
             ])
             : '';
     }
