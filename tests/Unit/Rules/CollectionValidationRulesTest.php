@@ -7,7 +7,7 @@ use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\Tests\Support\TestModels\TestModel;
 use Spatie\MediaLibrary\Tests\TestCase;
 
-class CollectionValidationConstraintsTest extends TestCase
+class CollectionValidationRulesTest extends TestCase
 {
     /** @test */
     public function it_returns_no_rule_when_non_existing_collection()

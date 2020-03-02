@@ -8,7 +8,7 @@ use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\Tests\Support\TestModels\TestModel;
 use Spatie\MediaLibrary\Tests\TestCase;
 
-class CollectionDimensionValidationConstraintsTest extends TestCase
+class CollectionDimensionValidationRulesTest extends TestCase
 {
     /** @test */
     public function it_returns_none_when_it_is_called_with_non_existing_collection()
