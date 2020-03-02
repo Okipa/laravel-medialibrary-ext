@@ -21,7 +21,7 @@ class SizeCaptionTest extends TestCase
         config()->set('medialibrary.max_file_size', 1000);
         $sizeCaptionString = (new TestModel)->sizeCaption();
         $this->assertEquals(__('medialibrary::medialibrary.constraints.size.max', [
-            'size' => 1000 / 1000,
+            'size' => 1,
         ]), $sizeCaptionString);
     }
 }

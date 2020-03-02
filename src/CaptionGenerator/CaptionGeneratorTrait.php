@@ -78,7 +78,7 @@ trait CaptionGeneratorTrait
         $configMaxFileSize = config('medialibrary.max_file_size');
 
         return $configMaxFileSize
-            ? (string) __('medialibrary::medialibrary.constraints.size.max', ['size' => $configMaxFileSize / 1000])
+            ? (string) __('medialibrary::medialibrary.constraints.size.max', ['size' => round($configMaxFileSize / 1000, 1)])
             : '';
     }
 
