@@ -23,7 +23,7 @@ class CollectionCaptionsTest extends TestCase
         config()->set('medialibrary.max_file_size', 1000);
         $captionString = (new TestModel)->constraintsCaption('avatar');
         $this->assertEquals(__('medialibrary::medialibrary.constraints.size.max', [
-            'size' => 1000 / 1000000,
+            'size' => 1,
         ]), $captionString);
     }
 
@@ -74,7 +74,7 @@ class CollectionCaptionsTest extends TestCase
             ]) . ' ' . __('medialibrary::medialibrary.constraints.dimensions.height.min', [
                 'height' => 70,
             ]) . ' ' . __('medialibrary::medialibrary.constraints.size.max', [
-                'size' => 1000 / 1000000,
+                'size' => 1,
             ]), $captionString);
     }
 
@@ -92,7 +92,7 @@ class CollectionCaptionsTest extends TestCase
         $this->assertEquals(trans_choice('medialibrary::medialibrary.constraints.types', 2, [
                 'types' => 'jpeg, jpg, jpe, png',
             ]) . ' ' . __('medialibrary::medialibrary.constraints.size.max', [
-                'size' => 1000 / 1000000,
+                'size' => 1,
             ]), $captionString);
     }
 
@@ -119,7 +119,7 @@ class CollectionCaptionsTest extends TestCase
             ]) . ' ' . trans_choice('medialibrary::medialibrary.constraints.types', 2, [
                 'types' => 'jpeg, jpg, jpe, png',
             ]) . ' ' . __('medialibrary::medialibrary.constraints.size.max', [
-                'size' => 1000 / 1000000,
+                'size' => 1,
             ]), $captionString);
     }
 }
