@@ -10,9 +10,7 @@ use Spatie\MediaLibrary\Tests\TestCase;
 
 class CollectionTypesCaptionTest extends TestCase
 {
-    /**
-     * @test
-     */
+    /** @test */
     public function it_returns_none_when_it_is_called_with_non_existing_collection()
     {
         $testModel = new class extends TestModel
@@ -26,9 +24,7 @@ class CollectionTypesCaptionTest extends TestCase
         $this->assertEquals('', $dimensionsCaptionString);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_returns_no_types_legend_when_none_declared()
     {
         $testModel = new class extends TestModel
@@ -47,9 +43,7 @@ class CollectionTypesCaptionTest extends TestCase
         $this->assertEquals('', $dimensionsCaptionString);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_returns_types_legend_when_are_declared()
     {
         $testModel = new class extends TestModel
@@ -78,9 +72,7 @@ class CollectionTypesCaptionTest extends TestCase
         ]), $dimensionsCaptionString);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_removes_duplicated_types()
     {
         $testModel = new class extends TestModel

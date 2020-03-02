@@ -7,9 +7,7 @@ use Spatie\MediaLibrary\Tests\TestCase;
 
 class SizeCaptionTest extends TestCase
 {
-    /**
-     * @test
-     */
+    /** @test */
     public function it_returns_none_when_max_file_size_is_not_defined()
     {
         config()->set('medialibrary.max_file_size', null);
@@ -17,9 +15,7 @@ class SizeCaptionTest extends TestCase
         $this->assertEquals('', $sizeCaptionString);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_returns_max_weight_caption()
     {
         config()->set('medialibrary.max_file_size', 1000);

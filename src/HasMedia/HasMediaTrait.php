@@ -22,13 +22,13 @@ use Spatie\MediaLibrary\FileAdder\FileAdderFactory;
 use Spatie\MediaLibrary\MediaCollection\MediaCollection;
 use Spatie\MediaLibrary\MediaRepository;
 use Spatie\MediaLibrary\Models\Media;
-use Spatie\MediaLibrary\ValidationConstraintsGenerator\validationConstraintsGeneratorTrait;
+use Spatie\MediaLibrary\ValidationRulesGenerator\ValidationRulesGeneratorTrait;
 use Symfony\Component\Mime\MimeTypes;
 
 trait HasMediaTrait
 {
     use CaptionGeneratorTrait;
-    use validationConstraintsGeneratorTrait;
+    use ValidationRulesGeneratorTrait;
 
     /** @var Conversion[] */
     public $mediaConversions = [];

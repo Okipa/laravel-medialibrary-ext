@@ -1,19 +1,25 @@
 <?php
 
-namespace Spatie\MediaLibrary\ValidationConstraintsGenerator;
+namespace Spatie\MediaLibrary\ValidationRulesGenerator;
 
-trait validationConstraintsGeneratorTrait
+trait ValidationRulesGeneratorTrait
 {
     /** @inheritDoc */
     public function validationConstraints(string $collectionName): array
     {
+        return $this->validationRules($collectionName);
+    }
+
+    /** @inheritDoc */
+    public function validationRules(string $collectionName): array
+    {
         if (! $this->getMediaCollection($collectionName)) {
             return [];
         }
-        $mimesConstraints = $this->mimesValidationConstraints($collectionName);
-        $mimeTypeConstraints = $this->mimeTypesValidationConstraints($collectionName);
-        $dimensionConstraints = $this->dimensionValidationConstraints($collectionName);
-        $sizeConstraint = $this->sizeValidationConstraint();
+        $mimesConstraints = $this->mimesValidationRules($collectionName);
+        $mimeTypeConstraints = $this->mimeTypesValidationRules($collectionName);
+        $dimensionConstraints = $this->dimensionValidationRules($collectionName);
+        $sizeConstraint = $this->sizeValidationRule();
 
         return array_values(array_filter([
             $mimesConstraints,
@@ -25,6 +31,12 @@ trait validationConstraintsGeneratorTrait
 
     /** @inheritDoc */
     public function mimesValidationConstraints(string $collectionName): string
+    {
+        return $this->mimesValidationRules($collectionName);
+    }
+
+    /** @inheritDoc */
+    public function mimesValidationRules(string $collectionName): string
     {
         $mediaCollection = $this->getMediaCollection($collectionName);
         $validationString = '';
@@ -40,6 +52,12 @@ trait validationConstraintsGeneratorTrait
 
     /** @inheritDoc */
     public function mimeTypesValidationConstraints(string $collectionName): string
+    {
+        return $this->mimeTypesValidationRules($collectionName);
+    }
+
+    /** @inheritDoc */
+    public function mimeTypesValidationRules(string $collectionName): string
     {
         $mediaConversions = $this->getMediaConversions($collectionName);
         if (empty($mediaConversions)) {
@@ -57,6 +75,12 @@ trait validationConstraintsGeneratorTrait
     /** @inheritDoc */
     public function dimensionValidationConstraints(string $collectionName): string
     {
+        return $this->dimensionValidationRules($collectionName);
+    }
+
+    /** @inheritDoc */
+    public function dimensionValidationRules(string $collectionName): string
+    {
         /** @var \Spatie\MediaLibrary\HasMedia\HasMediaTrait $this */
         $maxSizes = $this->collectionMaxSizes($collectionName);
         if (empty($maxSizes)) {
@@ -70,7 +94,7 @@ trait validationConstraintsGeneratorTrait
     }
 
     /** @inheritDoc */
-    public function sizeValidationConstraint(): string
+    public function sizeValidationRule(): string
     {
         $configMaxFileSize = config('medialibrary.max_file_size');
 

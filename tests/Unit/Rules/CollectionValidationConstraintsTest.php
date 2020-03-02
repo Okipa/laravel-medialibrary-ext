@@ -9,10 +9,8 @@ use Spatie\MediaLibrary\Tests\TestCase;
 
 class CollectionValidationConstraintsTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function it_returns_no_constraint_when_non_existing_collection()
+    /** @test */
+    public function it_returns_no_rule_when_non_existing_collection()
     {
         $testModel = new class extends TestModel
         {
@@ -21,34 +19,28 @@ class CollectionValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
             }
         };
-        $validationConstraints = $testModel->validationConstraints('logo');
-        $this->assertEquals([], $validationConstraints);
+        $rules = $testModel->validationRules('logo');
+        $this->assertEquals([], $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_returns_only_size_constraint_with_non_existent_conversions()
+    /** @test */
+    public function it_returns_only_size_rule_with_non_existent_conversions()
     {
         config()->set('medialibrary.max_file_size', 1000);
-        $validationConstraints = (new TestModel)->validationConstraints('avatar');
-        $this->assertEquals(['max:1000'], $validationConstraints);
+        $rules = (new TestModel)->validationRules('avatar');
+        $this->assertEquals(['max:1000'], $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_can_return_no_constraint()
+    /** @test */
+    public function it_can_return_no_rules()
     {
         config()->set('medialibrary.max_file_size', null);
-        $validationConstraints = (new TestModel)->validationConstraints('avatar');
-        $this->assertEquals([], $validationConstraints);
+        $rules = (new TestModel)->validationRules('avatar');
+        $this->assertEquals([], $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_can_return_only_dimension_constraints()
+    /** @test */
+    public function it_can_return_only_dimension_rules()
     {
         config()->set('medialibrary.max_file_size', null);
         $testModel = new class extends TestModel
@@ -63,14 +55,12 @@ class CollectionValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
             }
         };
-        $validationConstraints = $testModel->validationConstraints('logo');
-        $this->assertEquals(['dimensions:min_width=60,min_height=20'], $validationConstraints);
+        $rules = $testModel->validationRules('logo');
+        $this->assertEquals(['dimensions:min_width=60,min_height=20'], $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_can_return_only_mime_types_and_mimes_constraints()
+    /** @test */
+    public function it_can_return_only_mime_types_and_mimes_rules()
     {
         config()->set('medialibrary.max_file_size', null);
         $testModel = new class extends TestModel
@@ -85,24 +75,20 @@ class CollectionValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb');
             }
         };
-        $validationConstraints = $testModel->validationConstraints('logo');
-        $this->assertEquals(['mimes:jpeg,jpg,jpe,png', 'mimetypes:image/jpeg,image/png'], $validationConstraints);
+        $rules = $testModel->validationRules('logo');
+        $this->assertEquals(['mimes:jpeg,jpg,jpe,png', 'mimetypes:image/jpeg,image/png'], $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_can_return_only_size_constraint()
+    /** @test */
+    public function it_can_return_only_size_rule()
     {
         config()->set('medialibrary.max_file_size', 1000);
-        $validationConstraints = (new TestModel)->validationConstraints('avatar');
-        $this->assertEquals(['max:1000'], $validationConstraints);
+        $rules = (new TestModel)->validationRules('avatar');
+        $this->assertEquals(['max:1000'], $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_can_return_all_constraints()
+    /** @test */
+    public function it_can_return_all_rules()
     {
         config()->set('medialibrary.max_file_size', 1000);
         $testModel = new class extends TestModel
@@ -117,10 +103,10 @@ class CollectionValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
             }
         };
-        $validationConstraints = $testModel->validationConstraints('logo');
+        $rules = $testModel->validationRules('logo');
         $this->assertEquals(
             ['mimes:jpeg,jpg,jpe,png', 'mimetypes:image/jpeg,image/png', 'dimensions:min_width=60,min_height=20', 'max:1000'],
-            $validationConstraints
+            $rules
         );
     }
 }

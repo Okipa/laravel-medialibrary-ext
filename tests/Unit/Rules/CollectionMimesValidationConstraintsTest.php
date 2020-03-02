@@ -10,9 +10,7 @@ use Spatie\MediaLibrary\Tests\TestCase;
 
 class CollectionMimesValidationConstraintsTest extends TestCase
 {
-    /**
-     * @test
-     */
+    /** @test */
     public function it_return_none_when_it_is_called_with_non_existing_collection()
     {
         $testModel = new class extends TestModel
@@ -22,14 +20,12 @@ class CollectionMimesValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
             }
         };
-        $mimesValidationConstraintsString = $testModel->mimesValidationConstraints('logo');
-        $this->assertEquals('', $mimesValidationConstraintsString);
+        $rules = $testModel->mimesValidationRules('logo');
+        $this->assertEquals('', $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_returns_mimes_constraints_when_declared_in_collection()
+    /** @test */
+    public function it_returns_mimes_rules_when_declared_in_collection()
     {
         $testModel = new class extends TestModel
         {
@@ -51,14 +47,12 @@ class CollectionMimesValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 100, 70);
             }
         };
-        $mimesValidationConstraintsString = $testModel->mimesValidationConstraints('logo');
-        $this->assertEquals('mimes:jpeg,jpg,jpe,png,pdf', $mimesValidationConstraintsString);
+        $rules = $testModel->mimesValidationRules('logo');
+        $this->assertEquals('mimes:jpeg,jpg,jpe,png,pdf', $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_returns_no_collection_mimes_constraints_when_none_declared()
+    /** @test */
+    public function it_returns_no_collection_mimes_rules_when_none_declared()
     {
         $testModel = new class extends TestModel
         {
@@ -72,13 +66,11 @@ class CollectionMimesValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
             }
         };
-        $mimesValidationConstraintsString = $testModel->mimesValidationConstraints('logo');
-        $this->assertEquals('', $mimesValidationConstraintsString);
+        $rules = $testModel->mimesValidationRules('logo');
+        $this->assertEquals('', $rules);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_removes_duplicated_mimes()
     {
         $testModel = new class extends TestModel
@@ -101,7 +93,7 @@ class CollectionMimesValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 100, 70);
             }
         };
-        $mimesValidationConstraintsString = $testModel->mimesValidationConstraints('logo');
-        $this->assertEquals('mimes:wav', $mimesValidationConstraintsString);
+        $rules = $testModel->mimesValidationRules('logo');
+        $this->assertEquals('mimes:wav', $rules);
     }
 }

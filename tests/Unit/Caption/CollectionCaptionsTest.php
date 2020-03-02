@@ -96,7 +96,8 @@ class CollectionCaptionsTest extends TestCase
             ]), $captionString);
     }
 
-    public function it_can_return_dimensions_types_and_size_captions()
+    /** @test */
+    public function it_can_return_all_captions()
     {
         config()->set('medialibrary.max_file_size', 1000);
         $testModel = new class extends TestModel {

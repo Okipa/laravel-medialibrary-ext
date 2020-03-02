@@ -48,38 +48,48 @@ php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServicePr
 ## Extra features
 
 * [Constraints](#constraints)
-  * [Collection validation constraints rules generation](#collection-validation-constraints-rules-generation)
-  * [Collection validation constraints legend generation](#collection-validation-constraints-legend-generation)
+  * [Collection validation rules generation](#collection-validation-rules-generation)
+  * [Collection constraints caption generation](#collection-constraints-caption-generation)
 * [Global conversions queued status](#global-conversions-queued-status)
 
 ### Constraints
 
-#### Collection validation constraints rules generation
+#### Collection validation rules generation
 
-Declare your media validation constraints in a breeze with `validationConstraints(string $collectionName): string`.
+Declaring your media validation rules :
 
 ```php
 // in your user storing form request for example
 public function rules()
 {
     return [
-        'avatar' => (new User)->validationConstraints('avatar'),
+        'avatar' => (new User)->validationRules('avatar'),
         // your other validation rules
     ];
 }
-// rendering example : `['mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,jpe,png', 'dimensions:min_width=60,min_height=20']`
 ```
 
-#### Collection validation constraints legend generation
+Will generate :
 
-Easily add legends under your media inputs with `constraintsCaption(string $collectionName): string`.
+```php
+    ['mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,jpe,png', 'dimensions:min_width=60,min_height=20', 'max:500000'];
+```
+
+#### Collection constraints caption generation
+
+Adding constraint captions under your media inputs :
 
 ```html
 <!-- in your HTML form -->
 <label for="avatar">Choose a profile picture :</label>
 <input type=" id="avatar" name="avatar" value="{{ $avatarFileName }}">
 <small>{{ (new User)->constraintsCaption('avatar') }}</small>
-<!-- Rendering example : `Min. width : 150 px / Min. height : 70 px. Accepted types : jpeg, jpg, jpe, png.` -->
+```
+
+Will generate :
+
+```html
+    Min. width: 150 px. Min. height: 70 px. Accepted types: jpeg, jpg, jpe, png. Max file size: 5Mb.
 ```
 
 ### Global conversions queued status

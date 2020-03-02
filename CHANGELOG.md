@@ -5,12 +5,16 @@
 2020-03-02
 
 * Refactored the translations, you should update them if you use custom translations.
-* Deprecated the `constraintsLegend` method. Use the `constraintsCaption` method instead.
-* Deprecated the `dimensionsLegend` method. Use the `dimensionsCaption` method instead.
-* Deprecated the `mimeTypesLegend`method . Use the `mimeTypesCaption` method instead.
+
+* Deprecated the `constraintsLegend` method. Use `constraintsCaption` instead.
+* Deprecated the `dimensionsLegend` method. Use `dimensionsCaption` instead.
+* Deprecated the `mimeTypesLegend`method . Use `mimeTypesCaption` instead.
+* Deprecated the `mimeTypesValidationConstraints`method. Use `mimeTypesValidationRules` instead.
+* Deprecated the `mimesValidationConstraints`method. Use `mimesValidationRules` instead.
+* Deprecated the `dimensionValidationConstraints`method. Use `dimensionValidationRules` instead.
 * Added a `->sizeCaption()` method to generate the config max file size constraint caption.
 * The max file size caption is now returned by the `->constraintsCaption()` method with the other constraint captions.
-* Added a `->sizeValidationConstraint()` method to generate the the config max file size validation constraint.
+* Added a `->sizeValidationRule()` method to generate the the config max file size validation constraint.
 * The max file size validation constraint is now returned by the `->validationConstraints()` method with the other validation constraints.
 
 ## [7.17.3](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.17.2...Okipa:7.17.3)

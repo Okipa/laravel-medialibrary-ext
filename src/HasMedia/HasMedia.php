@@ -105,29 +105,68 @@ interface HasMedia
     public function registerAllMediaConversions();
 
     /**
-     * Get a collection mime types constraints validation string from its name.
+     * Get a collection mime types validation rules.
      *
      * @param string $collectionName
      *
      * @return string
+     * @deprecated Use the mimeTypesValidationRules($collectionName) method instead.
      */
     public function mimeTypesValidationConstraints(string $collectionName): string;
 
     /**
-     * Get a collection dimension validation constraints string from its name.
+     * Get a collection mime types validation rules.
      *
      * @param string $collectionName
      *
      * @return string
      */
-    public function dimensionValidationConstraints(string $collectionName): string;
+    public function mimeTypesValidationRules(string $collectionName): string;
 
     /**
-     * Get a the config max file size validation constraint.
+     * Get a collection mimes validation rules.
+     *
+     * @param string $collectionName
+     *
+     * @return string
+     * @deprecated Use the mimesValidationRules($collectionName) method instead.
+     */
+    public function mimesValidationConstraints(string $collectionName): string;
+
+    /**
+     * Get a collection mimes rules validation.
+     *
+     * @param string $collectionName
      *
      * @return string
      */
-    public function sizeValidationConstraint(): string;
+    public function mimesValidationRules(string $collectionName): string;
+
+    /**
+     * Get a collection dimension validation rules.
+     *
+     * @param string $collectionName
+     *
+     * @return string
+     * @deprecated Use the dimensionValidationRules($collectionName) method instead.
+     */
+    public function dimensionValidationConstraints(string $collectionName): string;
+
+    /**
+     * Get a collection dimension validation rules.
+     *
+     * @param string $collectionName
+     *
+     * @return string
+     */
+    public function dimensionValidationRules(string $collectionName): string;
+
+    /**
+     * Get the config max file size validation rule.
+     *
+     * @return string
+     */
+    public function sizeValidationRule(): string;
 
     /**
      * Get registered collection max width and max height from its name.
@@ -144,12 +183,22 @@ interface HasMedia
      * @param string $collectionName
      *
      * @return array
+     * @deprecated Use the validationRules($collectionName) method instead.
      */
     public function validationConstraints(string $collectionName): array;
 
+    /**
+     * Get the validation rules for a media collection.
+     *
+     * @param string $collectionName
+     *
+     * @return array
+     */
+    public function validationRules(string $collectionName): array;
+
     /** @param string $collectionName
      * @return string
-     * @deprecated use the constraintsCaption($collectionName) method instead.
+     * @deprecated Use the constraintsCaption($collectionName) method instead.
      */
     public function constraintsLegend(string $collectionName): string;
 
