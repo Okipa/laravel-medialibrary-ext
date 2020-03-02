@@ -7,6 +7,9 @@ trait validationConstraintsGeneratorTrait
     /** @inheritDoc */
     public function validationConstraints(string $collectionName): array
     {
+        if (! $this->getMediaCollection($collectionName)) {
+            return [];
+        }
         $mimesConstraints = $this->mimesValidationConstraints($collectionName);
         $mimeTypeConstraints = $this->mimeTypesValidationConstraints($collectionName);
         $dimensionConstraints = $this->dimensionValidationConstraints($collectionName);
@@ -23,10 +26,6 @@ trait validationConstraintsGeneratorTrait
     /** @inheritDoc */
     public function mimesValidationConstraints(string $collectionName): string
     {
-        $mediaConversions = $this->getMediaConversions($collectionName);
-        if (empty($mediaConversions)) {
-            return '';
-        }
         $mediaCollection = $this->getMediaCollection($collectionName);
         $validationString = '';
         if (! empty($mediaCollection->acceptsMimeTypes)) {

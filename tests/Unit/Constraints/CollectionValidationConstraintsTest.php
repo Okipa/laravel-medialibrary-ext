@@ -31,7 +31,7 @@ class CollectionValidationConstraintsTest extends TestCase
     public function it_returns_only_size_constraint_with_non_existent_conversions()
     {
         config()->set('medialibrary.max_file_size', 1000);
-        $validationConstraints = (new TestModel)->validationConstraints('logo');
+        $validationConstraints = (new TestModel)->validationConstraints('avatar');
         $this->assertEquals(['max:1000'], $validationConstraints);
     }
 
