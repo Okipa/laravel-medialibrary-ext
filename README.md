@@ -73,7 +73,7 @@ Will generate:
 
 ```php
     // example
-    ['mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,jpe,png', 'dimensions:min_width=60,min_height=20', 'max:500000'];
+    ['mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,jpe,png', 'dimensions:min_width=60,min_height=20', 'max:5000'];
 ```
 
 ### Constraints caption
