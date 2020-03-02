@@ -8,11 +8,9 @@ use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\Tests\Support\TestModels\TestModel;
 use Spatie\MediaLibrary\Tests\TestCase;
 
-class CollectionDimensionValidationConstraintsTest extends TestCase
+class CollectionDimensionValidationRulesTest extends TestCase
 {
-    /**
-     * @test
-     */
+    /** @test */
     public function it_returns_none_when_it_is_called_with_non_existing_collection()
     {
         $testModel = new class extends TestModel
@@ -22,13 +20,11 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
             }
         };
-        $dimensionsValidationConstraintsString = $testModel->dimensionValidationConstraints('logo');
-        $this->assertEquals('', $dimensionsValidationConstraintsString);
+        $rules = $testModel->dimensionValidationRules('logo');
+        $this->assertEquals('', $rules);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_returns_none_when_it_is_called_with_non_existent_conversions()
     {
         $testModel = new class extends TestModel
@@ -38,14 +34,12 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
                 $this->addMediaCollection('logo')->acceptsMimeTypes(['image/jpeg', 'image/png']);
             }
         };
-        $dimensionsValidationConstraintsString = $testModel->dimensionValidationConstraints('logo');
-        $this->assertEquals('', $dimensionsValidationConstraintsString);
+        $rules = $testModel->dimensionValidationRules('logo');
+        $this->assertEquals('', $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_returns_global_conversion_dimension_validation_constraints_when_no_collection_conversions_declared()
+    /** @test */
+    public function it_returns_global_conversion_dimension_rules_when_no_collection_conversions_declared()
     {
         $testModel = new class extends TestModel
         {
@@ -59,14 +53,12 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
             }
         };
-        $dimensionsValidationConstraintsString = $testModel->dimensionValidationConstraints('logo');
-        $this->assertEquals('dimensions:min_width=60,min_height=20', $dimensionsValidationConstraintsString);
+        $rules = $testModel->dimensionValidationRules('logo');
+        $this->assertEquals('dimensions:min_width=60,min_height=20', $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_returns_only_width_dimension_validation_constraint_when_only_width_is_declared()
+    /** @test */
+    public function it_returns_only_width_dimension_rule_when_only_width_is_declared()
     {
         $testModel = new class extends TestModel
         {
@@ -80,14 +72,12 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb')->width(120);
             }
         };
-        $dimensionsValidationConstraintsString = $testModel->dimensionValidationConstraints('logo');
-        $this->assertEquals('dimensions:min_width=120', $dimensionsValidationConstraintsString);
+        $rules = $testModel->dimensionValidationRules('logo');
+        $this->assertEquals('dimensions:min_width=120', $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_returns_only_height_dimension_validation_constraint_when_only_height_is_declared()
+    /** @test */
+    public function it_returns_only_height_dimension_rule_when_only_height_is_declared()
     {
         $testModel = new class extends TestModel
         {
@@ -101,14 +91,12 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb')->height(30);
             }
         };
-        $dimensionsValidationConstraintsString = $testModel->dimensionValidationConstraints('logo');
-        $this->assertEquals('dimensions:min_height=30', $dimensionsValidationConstraintsString);
+        $rules = $testModel->dimensionValidationRules('logo');
+        $this->assertEquals('dimensions:min_height=30', $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_returns_no_dimension_validation_constraint_when_no_size_is_declared()
+    /** @test */
+    public function it_returns_no_dimension_rule_when_no_size_is_declared()
     {
         $testModel = new class extends TestModel
         {
@@ -122,14 +110,12 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb');
             }
         };
-        $dimensionsValidationConstraintsString = $testModel->dimensionValidationConstraints('logo');
-        $this->assertEquals('', $dimensionsValidationConstraintsString);
+        $rules = $testModel->dimensionValidationRules('logo');
+        $this->assertEquals('', $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_returns_collection_dimension_validation_constraints_when_no_global_conversions_declared()
+    /** @test */
+    public function it_returns_collection_dimension_rules_when_no_global_conversions_declared()
     {
         $testModel = new class extends TestModel
         {
@@ -150,14 +136,12 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 40, 40);
             }
         };
-        $dimensionsValidationConstraintsString = $testModel->dimensionValidationConstraints('logo');
-        $this->assertEquals('dimensions:min_width=120,min_height=140', $dimensionsValidationConstraintsString);
+        $rules = $testModel->dimensionValidationRules('logo');
+        $this->assertEquals('dimensions:min_width=120,min_height=140', $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_returns_global_and_collection_dimension_validation_constraints_when_both_are_declared()
+    /** @test */
+    public function it_returns_global_and_collection_dimension_rules_when_both_are_declared()
     {
         $testModel = new class extends TestModel
         {
@@ -179,14 +163,12 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 100, 70);
             }
         };
-        $dimensionsValidationConstraintsString = $testModel->dimensionValidationConstraints('logo');
-        $this->assertEquals('dimensions:min_width=100,min_height=80', $dimensionsValidationConstraintsString);
+        $rules = $testModel->dimensionValidationRules('logo');
+        $this->assertEquals('dimensions:min_width=100,min_height=80', $rules);
     }
 
-    /**
-     * @test
-     */
-    public function it_does_not_returns_dimension_validation_constraints_when_no_image_declared()
+    /** @test */
+    public function it_does_not_returns_dimension_rules_when_no_image_declared()
     {
         $testModel = new class extends TestModel
         {
@@ -208,7 +190,7 @@ class CollectionDimensionValidationConstraintsTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 100, 70);
             }
         };
-        $dimensionsValidationConstraintsString = $testModel->dimensionValidationConstraints('logo');
-        $this->assertEquals('', $dimensionsValidationConstraintsString);
+        $rules = $testModel->dimensionValidationRules('logo');
+        $this->assertEquals('', $rules);
     }
 }

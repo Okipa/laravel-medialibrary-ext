@@ -1,12 +1,20 @@
 <?php
 
 return [
-    'constraint' => [
+
+    'constraints' => [
         'dimensions' => [
-            'both'   => 'Min. width : :width px / Min. height : :height px.',
-            'width'  => 'Min. width : :width px.',
-            'height' => 'Min. height : :height px.',
+            'width' => [
+                'min' => 'Min. width: :width px.',
+            ],
+            'height' => [
+                'min' => 'Min. height: :height px.',
+            ],
         ],
-        'types'      => '{1}Accepted type : :types.|[2,*]Accepted types : :types.',
+        'size' => [
+            'max' => 'Max. file size: :size Mb.',
+        ],
+        'types' => '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
     ],
+
 ];

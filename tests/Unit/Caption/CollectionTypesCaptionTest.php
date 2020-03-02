@@ -8,11 +8,9 @@ use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\Tests\Support\TestModels\TestModel;
 use Spatie\MediaLibrary\Tests\TestCase;
 
-class CollectionTypesLegendTest extends TestCase
+class CollectionTypesCaptionTest extends TestCase
 {
-    /**
-     * @test
-     */
+    /** @test */
     public function it_returns_none_when_it_is_called_with_non_existing_collection()
     {
         $testModel = new class extends TestModel
@@ -22,13 +20,11 @@ class CollectionTypesLegendTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
             }
         };
-        $dimensionsLegendString = $testModel->mimeTypesLegend('logo');
-        $this->assertEquals('', $dimensionsLegendString);
+        $dimensionsCaptionString = $testModel->mimeTypesCaption('logo');
+        $this->assertEquals('', $dimensionsCaptionString);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_returns_no_types_legend_when_none_declared()
     {
         $testModel = new class extends TestModel
@@ -43,13 +39,11 @@ class CollectionTypesLegendTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
             }
         };
-        $dimensionsLegendString = $testModel->mimeTypesLegend('logo');
-        $this->assertEquals('', $dimensionsLegendString);
+        $dimensionsCaptionString = $testModel->mimeTypesCaption('logo');
+        $this->assertEquals('', $dimensionsCaptionString);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_returns_types_legend_when_are_declared()
     {
         $testModel = new class extends TestModel
@@ -72,15 +66,13 @@ class CollectionTypesLegendTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 100, 70);
             }
         };
-        $dimensionsLegendString = $testModel->mimeTypesLegend('logo');
-        $this->assertEquals(trans_choice('medialibrary::medialibrary.constraint.types', 3, [
+        $dimensionsCaptionString = $testModel->mimeTypesCaption('logo');
+        $this->assertEquals(trans_choice('medialibrary::medialibrary.constraints.types', 3, [
             'types' => 'jpeg, jpg, jpe, png',
-        ]), $dimensionsLegendString);
+        ]), $dimensionsCaptionString);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_removes_duplicated_types()
     {
         $testModel = new class extends TestModel
@@ -103,9 +95,9 @@ class CollectionTypesLegendTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 100, 70);
             }
         };
-        $dimensionsLegendString = $testModel->mimeTypesLegend('logo');
-        $this->assertEquals(trans_choice('medialibrary::medialibrary.constraint.types', 1, [
+        $dimensionsCaptionString = $testModel->mimeTypesCaption('logo');
+        $this->assertEquals(trans_choice('medialibrary::medialibrary.constraints.types', 1, [
             'types' => 'wav',
-        ]), $dimensionsLegendString);
+        ]), $dimensionsCaptionString);
     }
 }
