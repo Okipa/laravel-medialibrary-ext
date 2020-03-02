@@ -47,14 +47,13 @@ php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServicePr
 
 ## Extra features
 
-* [Constraints](#constraints)
-  * [Collection validation rules generation](#collection-validation-rules-generation)
-  * [Collection constraints caption generation](#collection-constraints-caption-generation)
+* [Validation rules](#validation-rules)
+* [Constraints caption](#constraints-caption)
 * [Global conversions queued status](#global-conversions-queued-status)
 
-### Constraints
 
-#### Collection validation rules generation
+
+### Validation rules
 
 Declaring your media validation rules :
 
@@ -75,7 +74,7 @@ Will generate :
     ['mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,jpe,png', 'dimensions:min_width=60,min_height=20', 'max:500000'];
 ```
 
-#### Collection constraints caption generation
+### Constraints caption
 
 Adding constraint captions under your media inputs :
 
