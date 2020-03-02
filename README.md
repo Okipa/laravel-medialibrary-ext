@@ -56,7 +56,7 @@ php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServicePr
 
 ### Validation rules
 
-Declaring your media validation rules:
+Declaring your media validation rules like this:
 
 ```php
 // in your user storing form request for example
@@ -77,12 +77,12 @@ Will generate:
 
 ### Constraints caption
 
-Adding constraint captions under your media inputs:
+Adding a constraint caption under a file input:
 
 ```html
 <!-- in your HTML form -->
 <label for="avatar">Choose a profile picture:</label>
-<input type=" id="avatar" name="avatar" value="{{ $avatarFileName }}">
+<input type="file" id="avatar" name="avatar" value="{{ $avatarFileName }}">
 <small>{{ (new User)->constraintsCaption('avatar') }}</small>
 ```
 
