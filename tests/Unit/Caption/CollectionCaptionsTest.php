@@ -12,7 +12,7 @@ class CollectionCaptionsTest extends TestCase
     /** @test */
     public function it_returns_none_with_non_existing_collection()
     {
-        config()->set('medialibrary.max_file_size', 1000);
+        config()->set('medialibrary.max_file_size', 1000000);
         $captionString = (new TestModel)->constraintsCaption('logo');
         $this->assertEquals('', $captionString);
     }
@@ -20,7 +20,7 @@ class CollectionCaptionsTest extends TestCase
     /** @test */
     public function it_returns_only_size_when_with_no_conversions()
     {
-        config()->set('medialibrary.max_file_size', 1000);
+        config()->set('medialibrary.max_file_size', 1000000);
         $captionString = (new TestModel)->constraintsCaption('avatar');
         $this->assertEquals(__('medialibrary::medialibrary.constraints.size.max', [
             'size' => 1,
@@ -60,7 +60,7 @@ class CollectionCaptionsTest extends TestCase
     /** @test */
     public function it_can_returns_dimensions_and_size_captions()
     {
-        config()->set('medialibrary.max_file_size', 1000);
+        config()->set('medialibrary.max_file_size', 1000000);
         $testModel = new class extends TestModel {
             public function registerMediaConversions(Media $media = null)
             {
@@ -81,7 +81,7 @@ class CollectionCaptionsTest extends TestCase
     /** @test */
     public function it_can_returns_types_and_size_captions()
     {
-        config()->set('medialibrary.max_file_size', 1000);
+        config()->set('medialibrary.max_file_size', 1000000);
         $testModel = new class extends TestModel {
             public function registerMediaCollections()
             {
@@ -99,7 +99,7 @@ class CollectionCaptionsTest extends TestCase
     /** @test */
     public function it_can_return_all_captions()
     {
-        config()->set('medialibrary.max_file_size', 1000);
+        config()->set('medialibrary.max_file_size', 1000000);
         $testModel = new class extends TestModel {
             public function registerMediaCollections()
             {

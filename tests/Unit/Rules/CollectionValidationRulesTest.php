@@ -26,7 +26,7 @@ class CollectionValidationRulesTest extends TestCase
     /** @test */
     public function it_returns_only_size_rule_with_non_existent_conversions()
     {
-        config()->set('medialibrary.max_file_size', 1000);
+        config()->set('medialibrary.max_file_size', 1000000);
         $rules = (new TestModel)->validationRules('avatar');
         $this->assertEquals(['max:1000'], $rules);
     }
@@ -82,7 +82,7 @@ class CollectionValidationRulesTest extends TestCase
     /** @test */
     public function it_can_return_only_size_rule()
     {
-        config()->set('medialibrary.max_file_size', 1000);
+        config()->set('medialibrary.max_file_size', 1000000);
         $rules = (new TestModel)->validationRules('avatar');
         $this->assertEquals(['max:1000'], $rules);
     }
@@ -90,7 +90,7 @@ class CollectionValidationRulesTest extends TestCase
     /** @test */
     public function it_can_return_all_rules()
     {
-        config()->set('medialibrary.max_file_size', 1000);
+        config()->set('medialibrary.max_file_size', 1000000);
         $testModel = new class extends TestModel
         {
             public function registerMediaCollections()

@@ -18,7 +18,7 @@ class SizeCaptionTest extends TestCase
     /** @test */
     public function it_returns_max_weight_caption()
     {
-        config()->set('medialibrary.max_file_size', 1000);
+        config()->set('medialibrary.max_file_size', 1000000);
         $sizeCaptionString = (new TestModel)->sizeCaption();
         $this->assertEquals(__('medialibrary::medialibrary.constraints.size.max', [
             'size' => 1,
