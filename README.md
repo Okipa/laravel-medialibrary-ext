@@ -72,6 +72,7 @@ public function rules()
 Will generate:
 
 ```php
+    // example
     ['mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,jpe,png', 'dimensions:min_width=60,min_height=20', 'max:500000'];
 ```
 
@@ -89,6 +90,7 @@ Adding a constraint caption under a file input:
 Will generate:
 
 ```html
+    <!-- example -->
     Min. width: 150 px. Min. height: 70 px. Accepted types: jpeg, jpg, jpe, png. Max file size: 5Mb.
 ```
 
