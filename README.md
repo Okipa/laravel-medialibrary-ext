@@ -17,29 +17,30 @@ However, the minor and patch version numbers may differ, according to the featur
 
 ## Documentation
 
-Find the complete package documentation here : https://docs.spatie.be/laravel-medialibrary/v7.
+Find the complete package documentation here: https://docs.spatie.be/laravel-medialibrary/v7.
 
 ## Installation
 
 This extension package is a fork from the original [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary) one.
 
-As so, you should uninstall the original package if you installed it to avoid conflicts :
+As so, you should uninstall the original package if you installed it to avoid conflicts:
 
 ```bash
 composer remove spatie/laravel-medialibrary
 ```
 
-Then, install the extension package via composer :
+Then, install the extension package via composer:
 
 ```bash
 composer require "okipa/laravel-medialibrary-ext:^7.0"
 ```
 
-Follow the original package installation instructions :
+Follow the original package installation instructions:
+
 * https://github.com/spatie/laravel-medialibrary#installation
 * https://docs.spatie.be/laravel-medialibrary/v7/installation-setup
 
-Finally, you can publish the extension translation files if needed with :
+Finally, you can publish the extension translation files if needed with:
 
 ```bash
 php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="translations"
@@ -55,7 +56,7 @@ php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServicePr
 
 ### Validation rules
 
-Declaring your media validation rules :
+Declaring your media validation rules:
 
 ```php
 // in your user storing form request for example
@@ -68,7 +69,7 @@ public function rules()
 }
 ```
 
-Will generate :
+Will generate:
 
 ```php
     ['mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,jpe,png', 'dimensions:min_width=60,min_height=20', 'max:500000'];
@@ -76,16 +77,16 @@ Will generate :
 
 ### Constraints caption
 
-Adding constraint captions under your media inputs :
+Adding constraint captions under your media inputs:
 
 ```html
 <!-- in your HTML form -->
-<label for="avatar">Choose a profile picture :</label>
+<label for="avatar">Choose a profile picture:</label>
 <input type=" id="avatar" name="avatar" value="{{ $avatarFileName }}">
 <small>{{ (new User)->constraintsCaption('avatar') }}</small>
 ```
 
-Will generate :
+Will generate:
 
 ```html
     Min. width: 150 px. Min. height: 70 px. Accepted types: jpeg, jpg, jpe, png. Max file size: 5Mb.
