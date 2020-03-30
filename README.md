@@ -8,13 +8,11 @@
 [![Coverage Status](https://coveralls.io/repos/github/Okipa/laravel-medialibrary-ext/badge.svg?branch=master)](https://coveralls.io/github/Okipa/laravel-medialibrary-ext?branch=master)
 [![Quality Score](https://img.shields.io/scrutinizer/g/Okipa/laravel-medialibrary-ext.svg?style=flat-square)](https://scrutinizer-ci.com/g/Okipa/laravel-medialibrary-ext/?branch=master)
 
-This package provides extra features for the [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary) package.
-
-This package may welcome features that Spatie would not accept on the base package.
+This package extension provides extra features for the [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary) package.
 
 ## Compatibility
 
-The extension package will follow the [base package](https://github.com/spatie/laravel-medialibrary) major versions and compatibility constraints.
+This package extension will follow the [base package](https://github.com/spatie/laravel-medialibrary) major versions and compatibility constraints.
 
 ## Table of contents
 
