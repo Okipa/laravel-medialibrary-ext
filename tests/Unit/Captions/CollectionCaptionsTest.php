@@ -12,7 +12,7 @@ class CollectionCaptionsTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_returns_none_with_non_existing_collection()
     {
-        config()->set('medialibrary.max_file_size', 1000000);
+        config()->set('media-library.max_file_size', 1000000);
         $captionString = (new InteractsWithMediaModel)->getMediaCaption('test');
         $this->assertEquals('', $captionString);
     }
@@ -20,7 +20,7 @@ class CollectionCaptionsTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_returns_only_size_when_with_no_conversions()
     {
-        config()->set('medialibrary.max_file_size', 1000000);
+        config()->set('media-library.max_file_size', 1000000);
         $captionString = (new InteractsWithMediaModel)->getMediaCaption('avatar');
         $this->assertEquals(__('Max. file size: :size Mb.', [
             'size' => 1,
@@ -30,7 +30,7 @@ class CollectionCaptionsTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_can_returns_dimensions_and_types_captions()
     {
-        config()->set('medialibrary.max_file_size', null);
+        config()->set('media-library.max_file_size', null);
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
             {
@@ -52,7 +52,7 @@ class CollectionCaptionsTest extends MediaLibraryExtTestCase
             __('Min. width: :width px.', ['width' => 150]) . ' '
             . __('Min. height: :height px.', ['height' => 120]) . ' '
             . trans_choice(
-                'medialibrary::medialibrary.{1}Accepted type: :types.|[2,*]Accepted types: :types.',
+                '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
                 2,
                 ['types' => 'jpeg, jpg, jpe, png']
             ),
@@ -63,7 +63,7 @@ class CollectionCaptionsTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_can_returns_dimensions_and_size_captions()
     {
-        config()->set('medialibrary.max_file_size', 1000000);
+        config()->set('media-library.max_file_size', 1000000);
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaConversions(Media $media = null): void
             {
@@ -84,7 +84,7 @@ class CollectionCaptionsTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_can_returns_types_and_size_captions()
     {
-        config()->set('medialibrary.max_file_size', 1000000);
+        config()->set('media-library.max_file_size', 1000000);
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
             {
@@ -93,7 +93,7 @@ class CollectionCaptionsTest extends MediaLibraryExtTestCase
         };
         $captionString = $testModel->getMediaCaption('avatar');
         $this->assertEquals(trans_choice(
-            'medialibrary::medialibrary.{1}Accepted type: :types.|[2,*]Accepted types: :types.',
+            '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
             2,
             [
                     'types' => 'jpeg, jpg, jpe, png',
@@ -106,7 +106,7 @@ class CollectionCaptionsTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_can_return_all_captions()
     {
-        config()->set('medialibrary.max_file_size', 1000000);
+        config()->set('media-library.max_file_size', 1000000);
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
             {
@@ -124,7 +124,7 @@ class CollectionCaptionsTest extends MediaLibraryExtTestCase
             ]) . ' ' . __('Min. height: :height px.', [
                 'height' => 70,
             ]) . ' ' . trans_choice(
-                'medialibrary::medialibrary.{1}Accepted type: :types.|[2,*]Accepted types: :types.',
+                '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
                 2,
                 [
                     'types' => 'jpeg, jpg, jpe, png',

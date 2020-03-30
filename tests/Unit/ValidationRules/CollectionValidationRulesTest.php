@@ -25,7 +25,7 @@ class CollectionValidationRulesTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_returns_only_size_rule_with_non_existent_conversions()
     {
-        config()->set('medialibrary.max_file_size', 1000000);
+        config()->set('media-library.max_file_size', 1000000);
         $rules = (new InteractsWithMediaModel)->getMediaValidationRules('avatar');
         $this->assertEquals(['max:1000'], $rules);
     }
@@ -33,7 +33,7 @@ class CollectionValidationRulesTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_can_return_no_rules()
     {
-        config()->set('medialibrary.max_file_size', null);
+        config()->set('media-library.max_file_size', null);
         $rules = (new InteractsWithMediaModel)->getMediaValidationRules('avatar');
         $this->assertEquals([], $rules);
     }
@@ -41,7 +41,7 @@ class CollectionValidationRulesTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_can_return_only_dimension_rules()
     {
-        config()->set('medialibrary.max_file_size', null);
+        config()->set('media-library.max_file_size', null);
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
             {
@@ -60,7 +60,7 @@ class CollectionValidationRulesTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_can_return_only_mime_types_and_mimes_rules()
     {
-        config()->set('medialibrary.max_file_size', null);
+        config()->set('media-library.max_file_size', null);
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
             {
@@ -79,7 +79,7 @@ class CollectionValidationRulesTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_can_return_only_size_rule()
     {
-        config()->set('medialibrary.max_file_size', 1000000);
+        config()->set('media-library.max_file_size', 1000000);
         $rules = (new InteractsWithMediaModel)->getMediaValidationRules('avatar');
         $this->assertEquals(['max:1000'], $rules);
     }
@@ -87,7 +87,7 @@ class CollectionValidationRulesTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_can_return_all_rules()
     {
-        config()->set('medialibrary.max_file_size', 1000000);
+        config()->set('media-library.max_file_size', 1000000);
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
             {

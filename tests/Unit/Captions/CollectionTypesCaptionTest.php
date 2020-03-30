@@ -66,7 +66,7 @@ class CollectionTypesCaptionTest extends MediaLibraryExtTestCase
         $dimensionsCaptionString = $testModel->getMediaMimeTypesCaption('avatar');
         $this->assertEquals(
             trans_choice(
-                'medialibrary::medialibrary.{1}Accepted type: :types.|[2,*]Accepted types: :types.',
+                '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
                 3,
                 ['types' => 'jpeg, jpg, jpe, png']
             ),
