@@ -7,11 +7,11 @@
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Okipa/laravel-medialibrary-ext/run-tests?label=tests)
 [![Quality Score](https://img.shields.io/scrutinizer/g/Okipa/laravel-medialibrary-ext.svg?style=flat-square)](https://scrutinizer-ci.com/g/Okipa/laravel-medialibrary-ext)
 
-This package provides extra features built on top of the [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary) package.
+This package provides extra features for the [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary) package.
 
 ## Compatibility
 
-The extension package will follow the original package compatibilities and upgrades.
+The extension package will follow the base package major version numbers and will respect.
 
 However, the minor and patch version numbers may differ, according to the feature additions or bug fixes required by this package.  
 
@@ -43,7 +43,7 @@ Follow the original package installation instructions:
 Finally, you can publish the extension translation files if needed with:
 
 ```bash
-php artisan vendor:publish --provider="Spatie\MediaLibrary\MediaLibraryServiceProvider" --tag="translations"
+php artisan vendor:publish --provider="Okipa\MediaLibraryExt\MediaLibraryServiceProvider" --tag="translations"
 ```
 
 ## Extra features
@@ -63,7 +63,7 @@ Declaring your media validation rules like this:
 public function rules()
 {
     return [
-        'avatar' => (new User)->validationRules('avatar'),
+        'avatar' => (new User)->getMediaValidationRules('avatar'),
         // your other validation rules
     ];
 }
@@ -84,7 +84,7 @@ Adding a constraint caption under a file input:
 <!-- in your HTML form -->
 <label for="avatar">Choose a profile picture:</label>
 <input type="file" id="avatar" name="avatar" value="{{ $avatarFileName }}">
-<small>{{ (new User)->constraintsCaption('avatar') }}</small>
+<small>{{ (new User)->getMediaCaption('avatar') }}</small>
 ```
 
 Will generate:

@@ -1,5 +1,19 @@
 # Changelog
 
+## [8.0.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.19.2...Okipa:8.0.0)
+
+2020-03-30
+
+* Removed fork link from spatie/laravel-medialibrary repository.
+* Pulled out the extension from the original package. The extension does now live separately..github
+* Removed the `config('medialibrary.queued_conversions')` extension config.
+* Removed the deprecated `constraintsLegend` method.
+* Removed the deprecated `dimensionsLegend` method.
+* Removed the deprecated `mimeTypesLegend`method 
+* Removed the deprecated `mimeTypesValidationConstraints`method.
+* Removed the deprecated `mimesValidationConstraints`method.
+* Removed the deprecated `dimensionValidationConstraints`method.
+
 ## [7.19.2](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.19.1...Okipa:7.19.2)
 
 2020-03-30
@@ -25,14 +39,14 @@
 * Refactored the translations, you should update them if you use custom translations.
 * Deprecated the `constraintsLegend` method. Use `constraintsCaption` instead.
 * Deprecated the `dimensionsLegend` method. Use `dimensionsCaption` instead.
-* Deprecated the `mimeTypesLegend`method . Use `mimeTypesCaption` instead.
-* Deprecated the `mimeTypesValidationConstraints`method. Use `mimeTypesValidationRules` instead.
-* Deprecated the `mimesValidationConstraints`method. Use `mimesValidationRules` instead.
-* Deprecated the `dimensionValidationConstraints`method. Use `dimensionValidationRules` instead.
-* Added a `->sizeCaption()` method to generate the config max file size constraint caption.
+* Deprecated the `mimeTypesLegend`method . Use `getMediaMimeTypesCaption` instead.
+* Deprecated the `mimeTypesValidationConstraints`method. Use `getMediaMimeTypesValidationRules` instead.
+* Deprecated the `mimesValidationConstraints`method. Use `getMediaMimesValidationRules` instead.
+* Deprecated the `dimensionValidationConstraints`method. Use `getMediaDimensionValidationRules` instead.
+* Added a `->getMediaSizeCaption()` method to generate the config max file size constraint caption.
 * The max file size caption is now returned by the `->constraintsCaption()` method with the other constraint captions.
-* Added a `->sizeValidationRule()` method to generate the the config max file size validation rule.
-* The max file size validation rule is now returned by the `->validationRules()` method with the other validation rules.
+* Added a `->getMediaSizeValidationRule()` method to generate the the config max file size validation rule.
+* The max file size validation rule is now returned by the `->getMediaValidationRules()` method with the other validation rules.
 
 ## [7.17.3](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.17.2...Okipa:7.17.3)
 
@@ -82,7 +96,7 @@
 
 2019-11-27
 
-* The extensions detection from mime types from the `Spatie\MediaLibrary\HasMedia\HasMediaTrait::extensionsFromMimeTypes()` method is now executed by `Symfony\Component\Mime\MimeTypes::getExtensions()` (which is far more reliable).
+* The extensions detection from mime types from the `Okipa\MediaLibraryExt\HasMedia\HasMediaTrait::getExtensionsFromMimeTypes()` method is now executed by `Symfony\Component\Mime\MimeTypes::getExtensions()` (which is far more reliable).
 * The `mimes` validation is now executed before the `mimetypes` validation, in order to return a more comprehensible error for end user in case of wrong uploaded file type.
 
 ## [7.14.4](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.14.3...Okipa:7.14.4)

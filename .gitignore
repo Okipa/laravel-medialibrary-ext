@@ -1,8 +1,6 @@
 build
-vendor
-tests/Support/temp
-tests/temp
 composer.lock
-phpunit.xml
-.env
+vendor
+coverage
 .phpunit.result.cache
+.idea
