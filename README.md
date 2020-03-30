@@ -17,24 +17,11 @@ This package extension will follow the [base package](https://github.com/spatie/
 ## Table of contents
 
 * [Installation](#installation)
+* [Documentation](#documentation)
 * [Translations](#translations)
-* [Implementation](#implementation)
-  * [Models](#models)
-  * [Routes](#routes)
-* [How to](#how-to)
-  * [Define brickable contraints](#define-brickables-constraints)
-  * [Add content bricks](#add-content-bricks)
-  * [Update a content brick](#update-a-content-brick)
-  * [Remove content bricks](#remove-content-bricks)
-  * [Set content bricks order](#set-content-bricks-order)
-  * [Retrieve content bricks](#retrieve-content-bricks)
-  * [Query content bricks](#query-content-bricks)
-  * [Display content bricks](#display-content-bricks)
-  * [Retrieve brickables](#retrieve-brickables)
-  * [Manage model content bricks](#manage-model-content-bricks)
-  * [Create your own brickable](#create-your-own-brickable)
-  * [Empower bricks with extra abilities](#empower-brickables-with-extra-abilities)
-  * [Get Eloquent model from Request](#get-eloquent-model-from-request)
+* [Extra features](#extra-features)
+  * [Validation rules](#media-validation-rules)
+  * [Media caption](#media-caption)
 * [Testing](#testing)
 * [Changelog](#changelog)
 * [Contributing](#contributing)
@@ -85,9 +72,6 @@ See how to translate them on the Laravel official documentation : https://larave
 
 ## Extra features
 
-* [Validation rules](#media-validation-rules)
-* [Media caption](#media-caption)
-
 ### Media validation rules
 
 Declaring your media validation rules like this:
@@ -117,8 +101,8 @@ Adding a constraint caption under a file input:
 ```html
 <!-- in your HTML form -->
 <label for="avatar">Choose a profile picture:</label>
-<input type="file" id="avatar" name="avatar" value="{{ $avatarFileName }}">
-<small>{{ (new User)->getMediaCaption('avatar') }}</small>
+<input type="file" id="avatar" name="avatar" value="{{ $user->getFirstMedia('avatar')->name }}">
+<small>{{ $user->getMediaCaption('avatar') }}</small>
 ```
 
 Will generate:
