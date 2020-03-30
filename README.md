@@ -1,60 +1,96 @@
-# Extra features for [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary) package
+# Extra features for spatie/laravel-medialibrary package
 
 [![Source Code](https://img.shields.io/badge/source-okipa/laravel--medialibrary--ext-blue.svg)](https://github.com/Okipa/laravel-medialibrary-ext)
-[![Latest Version](https://img.shields.io/packagist/v/okipa/laravel-medialibrary-ext.svg?style=flat-square)](https://packagist.org/packages/okipa/laravel-medialibrary-ext)
+[![Latest Version](https://img.shields.io/github/release/okipa/laravel-medialibrary-ext.svg?style=flat-square)](https://github.com/Okipa/laravel-medialibrary-ext/releases)
 [![Total Downloads](https://img.shields.io/packagist/dt/okipa/laravel-medialibrary-ext.svg?style=flat-square)](https://packagist.org/packages/okipa/laravel-medialibrary-ext)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Okipa/laravel-medialibrary-ext/run-tests?label=tests)
-[![Quality Score](https://img.shields.io/scrutinizer/g/Okipa/laravel-medialibrary-ext.svg?style=flat-square)](https://scrutinizer-ci.com/g/Okipa/laravel-medialibrary-ext)
+[![Build status](https://github.com/Okipa/laravel-medialibrary-ext/workflows/CI/badge.svg)](https://github.com/Okipa/laravel-medialibrary-ext/actions)
+[![Coverage Status](https://coveralls.io/repos/github/Okipa/laravel-medialibrary-ext/badge.svg?branch=master)](https://coveralls.io/github/Okipa/laravel-medialibrary-ext?branch=master)
+[![Quality Score](https://img.shields.io/scrutinizer/g/Okipa/laravel-medialibrary-ext.svg?style=flat-square)](https://scrutinizer-ci.com/g/Okipa/laravel-medialibrary-ext/?branch=master)
 
 This package provides extra features for the [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary) package.
 
+This package may welcome features that Spatie would not accept on the base package.
+
 ## Compatibility
 
-The extension package will follow the base package major version numbers and will respect.
+The extension package will follow the [base package](https://github.com/spatie/laravel-medialibrary) major versions and compatibility constraints.
 
-However, the minor and patch version numbers may differ, according to the feature additions or bug fixes required by this package.  
+## Table of contents
 
-## Documentation
-
-Find the complete package documentation here: https://docs.spatie.be/laravel-medialibrary/v7.
+* [Installation](#installation)
+* [Translations](#translations)
+* [Implementation](#implementation)
+  * [Models](#models)
+  * [Routes](#routes)
+* [How to](#how-to)
+  * [Define brickable contraints](#define-brickables-constraints)
+  * [Add content bricks](#add-content-bricks)
+  * [Update a content brick](#update-a-content-brick)
+  * [Remove content bricks](#remove-content-bricks)
+  * [Set content bricks order](#set-content-bricks-order)
+  * [Retrieve content bricks](#retrieve-content-bricks)
+  * [Query content bricks](#query-content-bricks)
+  * [Display content bricks](#display-content-bricks)
+  * [Retrieve brickables](#retrieve-brickables)
+  * [Manage model content bricks](#manage-model-content-bricks)
+  * [Create your own brickable](#create-your-own-brickable)
+  * [Empower bricks with extra abilities](#empower-brickables-with-extra-abilities)
+  * [Get Eloquent model from Request](#get-eloquent-model-from-request)
+* [Testing](#testing)
+* [Changelog](#changelog)
+* [Contributing](#contributing)
+* [Security](#security)
+* [Credits](#credits)
+* [Licence](#license)
 
 ## Installation
 
-This extension package is a fork from the original [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary) one.
-
-As so, you should uninstall the original package if you installed it to avoid conflicts:
-
-```bash
-composer remove spatie/laravel-medialibrary
-```
-
-Then, install the extension package via composer:
-
-```bash
-composer require "okipa/laravel-medialibrary-ext:^7.0"
-```
-
-Follow the original package installation instructions:
+First, be sure to follow the base package installation instructions:
 
 * https://github.com/spatie/laravel-medialibrary#installation
-* https://docs.spatie.be/laravel-medialibrary/v7/installation-setup
+* https://docs.spatie.be/laravel-medialibrary/v8/installation-setup
 
-Finally, you can publish the extension translation files if needed with:
+Install the extension via composer:
 
 ```bash
-php artisan vendor:publish --provider="Okipa\MediaLibraryExt\MediaLibraryServiceProvider" --tag="translations"
+composer require okipa/laravel-medialibrary-ext
 ```
+
+Implement the `ExtendsMediaAbilities` with the base package trait to be able to use the extension features.
+
+```php
+
+use Illuminate\Database\Eloquent\Model;
+use Okipa\MediaLibraryExt\ExtendsMediaAbilities;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
+class Page extends Model implements HasMedia
+{
+    use InteractsWithMedia;
+	use ExtendsMediaAbilities;
+
+	// ...
+}
+```
+
+## Documentation
+
+Find the complete documentation of the base package here: https://docs.spatie.be/laravel-medialibrary/v8/introduction.
+
+## Translations
+
+All captions are translatable.
+
+See how to translate them on the Laravel official documentation : https://laravel.com/docs/localization#using-translation-strings-as-keys.
 
 ## Extra features
 
-* [Validation rules](#validation-rules)
-* [Constraints caption](#constraints-caption)
-* [Global conversions queued status](#global-conversions-queued-status)
+* [Validation rules](#media-validation-rules)
+* [Media caption](#media-caption)
 
-
-
-### Validation rules
+### Media validation rules
 
 Declaring your media validation rules like this:
 
@@ -76,7 +112,7 @@ Will generate:
     ['mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,jpe,png', 'dimensions:min_width=60,min_height=20', 'max:5000'];
 ```
 
-### Constraints caption
+### Media caption
 
 Adding a constraint caption under a file input:
 
@@ -92,20 +128,12 @@ Will generate:
 ```html
     <!-- example -->
     Min. width: 150 px. Min. height: 70 px. Accepted types: jpeg, jpg, jpe, png. Max file size: 5Mb.
-```
-
-### Global conversions queued status
-
-Manage the global conversions queued status by setting a boolean value to `MEDIALIBRARY_QUEUED_CONVERSIONS` in your`.env` file, or directly to `config('medialibrary.queued_conversions')` if you published the package config file.
-  
-This will set the default queued status for all your defined conversions.
-
-You still will be able to manually define a [specific queued status for a conversion](https://docs.spatie.be/laravel-medialibrary/v7/converting-images/defining-conversions/#queuing-conversions). 
+``` 
 
 ## Testing
 
-```bash
-vendor/bin/phpunit
+``` bash
+composer test
 ```
 
 ## Changelog
@@ -116,11 +144,14 @@ Please see [CHANGELOG](CHANGELOG.md) for more information about what has changed
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
+## Security
+
+If you discover any security related issues, please email arthur.lorent@gmail.com instead of using the issue tracker.
+
 ## Credits
 
-* [Arthur LORENT](https://github.com/okipa) (Extension maintainer)
-* [Freek Van der Herten](https://github.com/freekmurze) (Package creator and maintainer)
-* [All Contributors](../../contributors)
+- [Arthur LORENT](https://github.com/okipa)
+- [All Contributors](../../contributors)
 
 ## License
 

@@ -5,14 +5,14 @@
 2020-03-30
 
 * Removed fork link from spatie/laravel-medialibrary repository.
-* Pulled out the extension from the original package. The extension does now live separately..github
+* Pulled out the extension from the original package. The extension does now live separately.
 * Removed the `config('medialibrary.queued_conversions')` extension config.
-* Removed the deprecated `constraintsLegend` method.
-* Removed the deprecated `dimensionsLegend` method.
-* Removed the deprecated `mimeTypesLegend`method 
-* Removed the deprecated `mimeTypesValidationConstraints`method.
-* Removed the deprecated `mimesValidationConstraints`method.
-* Removed the deprecated `dimensionValidationConstraints`method.
+* Removed the `constraintsLegend` method. Use `constraintsCaption` instead.
+* Removed the `dimensionsLegend` method. Use `dimensionsCaption` instead.
+* Removed the `mimeTypesLegend`method . Use `getMediaMimeTypesCaption` instead.
+* Removed the `mimeTypesValidationConstraints`method. Use `getMediaMimeTypesValidationRules` instead.
+* Removed the `mimesValidationConstraints`method. Use `getMediaMimesValidationRules` instead.
+* Removed the `dimensionValidationConstraints`method. Use `getMediaDimensionValidationRules` instead.
 
 ## [7.19.2](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.19.1...Okipa:7.19.2)
 
