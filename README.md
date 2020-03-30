@@ -94,6 +94,14 @@ Will generate:
     ['mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,jpe,png', 'dimensions:min_width=60,min_height=20', 'max:5000'];
 ```
 
+#### Available methods :
+
+* `->getMediaValidationRules(string $collectionName): array`
+* `->getMediaMimesValidationRules(string $collectionName): string`
+* `->getMediaMimeTypesValidationRules(string $collectionName): string`
+* `->getMediaDimensionValidationRules(string $collectionName): string`
+* `->getMediaSizeValidationRule(): string`
+
 ### Media caption
 
 Adding a constraint caption under a file input:
@@ -110,7 +118,14 @@ Will generate:
 ```html
     <!-- example -->
     Min. width: 150 px. Min. height: 70 px. Accepted types: jpeg, jpg, jpe, png. Max file size: 5Mb.
-``` 
+```
+
+#### Available methods :
+
+* `getMediaCaption(string $collectionName): string`
+* `getMediaDimensionsCaption(string $collectionName): string`
+* `getMediaMimeTypesCaption(string $collectionName): string`
+* `getMediaSizeCaption(): string`
 
 ## Testing
 

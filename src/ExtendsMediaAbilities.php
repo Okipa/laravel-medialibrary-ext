@@ -42,7 +42,7 @@ trait ExtendsMediaAbilities
         return '';
     }
 
-    public function getMediaMaxDimensions(string $collectionName): array
+    protected function getMediaMaxDimensions(string $collectionName): array
     {
         if (! $this->mediaHasDimensions($collectionName)) {
             return [];
@@ -86,13 +86,6 @@ trait ExtendsMediaAbilities
         }));
     }
 
-    /**
-     * Calculate max width and max height from sizes array.
-     *
-     * @param array $sizes
-     *
-     * @return array
-     */
     protected function getMaxWidthAndMaxHeight(array $sizes): array
     {
         $width = ! empty($sizes) ? max(Arr::pluck($sizes, 'width')) : null;
