@@ -6,7 +6,7 @@
 
 * Removed fork link from spatie/laravel-medialibrary repository.
 * Pulled out the extension from the original package. The extension does now live separately.
-* Removed the `config('medialibrary.queued_conversions')` extension config.
+* Removed the `config('media-library.queued_conversions')` extension config.
 * Removed the `constraintsLegend` method. Use `constraintsCaption` instead.
 * Removed the `dimensionsLegend` method. Use `dimensionsCaption` instead.
 * Removed the `mimeTypesLegend`method . Use `getMediaMimeTypesCaption` instead.

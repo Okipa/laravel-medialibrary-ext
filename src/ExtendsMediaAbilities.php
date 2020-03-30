@@ -6,6 +6,8 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\Conversions\Conversion;
+use Spatie\MediaLibrary\MediaCollections\MediaCollection;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Symfony\Component\Mime\MimeTypes;
 
 trait ExtendsMediaAbilities
@@ -23,6 +25,8 @@ trait ExtendsMediaAbilities
             . $mimeTypesCaption . ($mimeTypesCaption && $sizeCaption ? ' ' : '') . $sizeCaption;
     }
 
+    abstract public function getMediaCollection(string $collectionName = 'default'): ?MediaCollection;
+
     public function getMediaDimensionsCaption(string $collectionName): string
     {
         $maxDimensions = $this->getMediaMaxDimensions($collectionName);
@@ -30,7 +34,7 @@ trait ExtendsMediaAbilities
         $height = Arr::get($maxDimensions, 'height');
         if ($width && $height) {
             return (string) __('Min. width: :width px.', ['width' => $width]) . ' '
-                . __('Min. height: :height px.', ['height' => $height]);
+                . (string) __('Min. height: :height px.', ['height' => $height]);
         }
         if ($width && ! $height) {
             return (string) __('Min. width: :width px.', ['width' => $width]);
@@ -86,6 +90,8 @@ trait ExtendsMediaAbilities
         }));
     }
 
+    abstract public function registerAllMediaConversions(Media $media = null): void;
+
     protected function getMaxWidthAndMaxHeight(array $sizes): array
     {
         $width = ! empty($sizes) ? max(Arr::pluck($sizes, 'width')) : null;
@@ -124,7 +130,7 @@ trait ExtendsMediaAbilities
 
     public function getMediaSizeCaption(): string
     {
-        $configMaxFileSize = config('medialibrary.max_file_size');
+        $configMaxFileSize = config('media-library.max_file_size');
 
         return $configMaxFileSize
             ? (string) __('Max. file size: :size Mb.', [
@@ -195,7 +201,7 @@ trait ExtendsMediaAbilities
 
     public function getMediaSizeValidationRule(): string
     {
-        $configMaxFileSize = config('medialibrary.max_file_size');
+        $configMaxFileSize = config('media-library.max_file_size');
 
         return $configMaxFileSize ? 'max:' . round($configMaxFileSize / 1000) : '';
     }
