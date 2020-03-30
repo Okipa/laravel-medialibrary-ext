@@ -49,13 +49,13 @@ First, be sure to follow the base package installation instructions:
 * https://github.com/spatie/laravel-medialibrary#installation
 * https://docs.spatie.be/laravel-medialibrary/v8/installation-setup
 
-Install the extension via composer:
+Then, install the extension via composer:
 
 ```bash
 composer require okipa/laravel-medialibrary-ext
 ```
 
-Implement the `ExtendsMediaAbilities` with the base package trait to be able to use the extension features.
+Finally, implement the `ExtendsMediaAbilities` with the base package trait to be able to use the extension features.
 
 ```php
 
