@@ -39,14 +39,14 @@
 * Refactored the translations, you should update them if you use custom translations.
 * Deprecated the `constraintsLegend` method. Use `constraintsCaption` instead.
 * Deprecated the `dimensionsLegend` method. Use `dimensionsCaption` instead.
-* Deprecated the `mimeTypesLegend`method . Use `getMediaMimeTypesCaption` instead.
-* Deprecated the `mimeTypesValidationConstraints`method. Use `getMediaMimeTypesValidationRules` instead.
-* Deprecated the `mimesValidationConstraints`method. Use `getMediaMimesValidationRules` instead.
-* Deprecated the `dimensionValidationConstraints`method. Use `getMediaDimensionValidationRules` instead.
-* Added a `->getMediaSizeCaption()` method to generate the config max file size constraint caption.
+* Deprecated the `mimeTypesLegend`method . Use `mimeTypesCaption` instead.
+* Deprecated the `mimeTypesValidationConstraints`method. Use `mimeTypesValidationRules` instead.
+* Deprecated the `mimesValidationConstraints`method. Use `mimesValidationRules` instead.
+* Deprecated the `dimensionValidationConstraints`method. Use `dimensionValidationRules` instead.
+* Added a `->sizeCaption()` method to generate the config max file size constraint caption.
 * The max file size caption is now returned by the `->constraintsCaption()` method with the other constraint captions.
-* Added a `->getMediaSizeValidationRule()` method to generate the the config max file size validation rule.
-* The max file size validation rule is now returned by the `->getMediaValidationRules()` method with the other validation rules.
+* Added a `->sizeValidationRule()` method to generate the the config max file size validation rule.
+* The max file size validation rule is now returned by the `->validationRules()` method with the other validation rules.
 
 ## [7.17.3](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.17.2...Okipa:7.17.3)
 
