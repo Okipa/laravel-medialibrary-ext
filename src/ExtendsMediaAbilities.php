@@ -10,8 +10,6 @@ use Symfony\Component\Mime\MimeTypes;
 
 trait ExtendsMediaAbilities
 {
-    //    abstract public function getMediaCollection(string $collectionName = 'default'): ?MediaCollection;
-
     public function getMediaCaption(string $collectionName): string
     {
         if (! $this->getMediaCollection($collectionName)) {
