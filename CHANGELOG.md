@@ -1,5 +1,19 @@
 # Changelog
 
+## [8.0.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.19.2...Okipa:8.0.0)
+
+2020-03-30
+
+* Followed spatie/media-library upgrade to v8.
+* Removed fork link from spatie/laravel-medialibrary repository.
+* Pulled out the extension from the original package. The extension does now live separately.
+* Removed configuration use.
+* Removed deprecated methods.
+* Renamed methods.
+* Removed translation files.
+
+:point_right: [See the upgrade guide](/upgrade-guides/from-v7-to-v8.md)
+
 ## [7.19.2](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.19.1...Okipa:7.19.2)
 
 2020-03-30
@@ -101,7 +115,7 @@
 
 2019-10-15
 
-* Fixed the translations publication and overriding as specified on the Laravel documentation : https://laravel.com/docs/packages#translations.
+* Fixed the translations publication and overriding as specified on the Laravel documentation: https://laravel.com/docs/packages#translations.
 
 ## [7.14.1](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.14.0...Okipa:7.14.1)
 
@@ -113,8 +127,8 @@
 
 2019-09-26
 
-* Added mimes validation generation : https://laravel.com/docs/validation#rule-mimes
-* Updated validation process order : mime types and mimes validations now happens before dimensions validation.
+* Added mimes validation generation: https://laravel.com/docs/validation#rule-mimes
+* Updated validation process order: mime types and mimes validations now happens before dimensions validation.
 * :warning: The `->validationConstraints()` method does now return an array, rather than a string before.
 * :warning: Removed the `CollectionNotFound` exception in order to follow the base package behaviour.
 * :warning: Removed the `ConversionsNotFound` exception in order to follow the base package behaviour.

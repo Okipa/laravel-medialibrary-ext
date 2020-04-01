@@ -1,6 +1,6 @@
 {
     "name": "okipa/laravel-medialibrary-ext",
-    "description": "Extra features for https://github.com/spatie/laravel-medialibrary package.",
+    "description": "Extra features for spatie/laravel-medialibrary package.",
     "keywords": [
         "spatie",
         "okipa",
@@ -19,63 +19,44 @@
         {
             "name": "Arthur LORENT",
             "email": "arthur.lorent@gmail.com",
-            "role": "Extension developer"
-        },
-        {
-            "name": "Freek Van der Herten",
-            "email": "freek@spatie.be",
-            "homepage": "https://murze.be",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.2",
-        "ext-fileinfo": "*",
-        "illuminate/bus": "~5.8.35|^6.0|^7.0",
-        "illuminate/console": "~5.8.35|^6.0|^7.0",
-        "illuminate/database": "~5.8.35|^6.0|^7.0",
-        "illuminate/pipeline": "~5.8.35|^6.0|^7.0",
-        "illuminate/support": "~5.8.35|^6.0|^7.0",
-        "league/flysystem": "^1.0.8",
-        "maennchen/zipstream-php": "^1.0",
-        "spatie/image": "^1.4.0",
-        "spatie/pdf-to-image": "^2.0",
-        "spatie/temporary-directory": "^1.1",
-        "symfony/console": "^4.4|^5.0",
-        "symfony/mime": "^4.0||^5.0",
-        "ext-json": "*"
+        "php": "^7.4",
+        "illuminate/support": "^6.18||^7.0",
+        "spatie/laravel-medialibrary": "^8.0",
+        "symfony/mime": "^4.0||^5.0"
     },
     "require-dev": {
-        "ext-pdo_sqlite": "*",
-        "doctrine/dbal": "^2.5.2",
-        "guzzlehttp/guzzle": "^6.3",
-        "league/flysystem-aws-s3-v3": "^1.0.13",
-        "mockery/mockery": "^1.0",
-        "orchestra/testbench": "^3.8|^4.0|^5.0",
-        "phpunit/phpunit": "^8.0",
-        "spatie/phpunit-snapshot-assertions": "^2.0"
-    },
-    "conflict": {
-        "php-ffmpeg/php-ffmpeg": "<0.6.1"
-    },
-    "suggest": {
-        "league/flysystem-aws-s3-v3": "Required to use AWS S3 file storage",
-        "php-ffmpeg/php-ffmpeg": "Required for generating video thumbnails"
+        "nunomaduro/larastan": "^0.4.3||^0.5",
+        "orchestra/testbench": "~3.8.0||^4.0||^5.0",
+        "phpmd/phpmd": "^2.8",
+        "squizlabs/php_codesniffer": "^3.5"
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\MediaLibrary\\": "src"
+            "Okipa\\MediaLibraryExt\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\MediaLibrary\\Tests\\": "tests"
+            "Okipa\\MediaLibraryExt\\Tests\\": "tests"
         }
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/phpcbf",
+            "vendor/bin/phpcs",
+            "vendor/bin/phpmd src text phpmd.xml",
+            "vendor/bin/phpstan analyse",
+            "vendor/bin/phpunit"
+        ]
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\MediaLibrary\\MediaLibraryServiceProvider"
+                "Okipa\\MediaLibraryExt\\MediaLibraryExtServiceProvider"
             ]
         }
     },

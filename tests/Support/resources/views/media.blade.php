@@ -1,1 +1,0 @@
-{{ $media }} {{ $media('thumb')}}
