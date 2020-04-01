@@ -68,7 +68,14 @@ Find the complete documentation of the base package here: https://docs.spatie.be
 
 All captions are translatable.
 
-See how to translate them on the Laravel official documentation : https://laravel.com/docs/localization#using-translation-strings-as-keys.
+See how to translate them on the Laravel official documentation: https://laravel.com/docs/localization#using-translation-strings-as-keys.
+
+Here is the list of the sentences available for translation:
+
+* `Min. width: :width px.`
+* `Min. height: :height px.`
+* `{1}Accepted type: :types.|[2,*]Accepted types: :types.`
+* `Max. file size: :size Mb.`
 
 ## Extra features
 
@@ -94,13 +101,13 @@ Will generate:
     ['mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,jpe,png', 'dimensions:min_width=60,min_height=20', 'max:5000'];
 ```
 
-#### Available methods :
+#### Available methods:
 
-* `->getMediaValidationRules(string $collectionName): array`
-* `->getMediaMimesValidationRules(string $collectionName): string`
-* `->getMediaMimeTypesValidationRules(string $collectionName): string`
-* `->getMediaDimensionValidationRules(string $collectionName): string`
-* `->getMediaSizeValidationRule(): string`
+* `->getMediaValidationRules(string $collectionName): array`: returns all the validation rules for the given collection.
+* `->getMediaMimesValidationRules(string $collectionName): string`: returns only the mimes validation rule for the given collection.
+* `->getMediaMimeTypesValidationRules(string $collectionName): string`: returns only the mime types validation rule for the given collection.
+* `->getMediaDimensionValidationRules(string $collectionName): string`: returns only the dimensions validation rule for the given collection.
+* `->getMediaSizeValidationRule(): string`: returns only the config max file size validation rule.
 
 ### Media caption
 
@@ -120,12 +127,12 @@ Will generate:
     Min. width: 150 px. Min. height: 70 px. Accepted types: jpeg, jpg, jpe, png. Max file size: 5Mb.
 ```
 
-#### Available methods :
+#### Available methods:
 
-* `getMediaCaption(string $collectionName): string`
-* `getMediaDimensionsCaption(string $collectionName): string`
-* `getMediaMimeTypesCaption(string $collectionName): string`
-* `getMediaSizeCaption(): string`
+* `getMediaCaption(string $collectionName): string`: returns a complete caption for the given collection.
+* `getMediaDimensionsCaption(string $collectionName): string`: returns only the dimensions caption for the given collection.
+* `getMediaMimeTypesCaption(string $collectionName): string`: returns only the mime types caption for the given collection.
+* `getMediaSizeCaption(): string`: returns only the config max file size caption only.
 
 ## Testing
 
