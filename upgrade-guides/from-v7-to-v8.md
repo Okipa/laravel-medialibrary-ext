@@ -16,7 +16,7 @@ The `config('media-library.queued_conversions')` extension is not used anymore.
 
 Make sure to remove the line from the config file.
 
-To avoid conversions to be queued, you'll have to follow the [base package documentation](https://docs.spatie.be/laravel-medialibrary/v7/converting-images/defining-conversions/#queuing-conversions).
+To avoid conversions to be queued, you'll have to use the `->nonQueued()` method, as specified in the [base package documentation](https://docs.spatie.be/laravel-medialibrary/v7/converting-images/defining-conversions/#queuing-conversions).
 
 ## Method signature changes
 
