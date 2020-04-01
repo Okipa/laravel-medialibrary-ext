@@ -4,7 +4,7 @@
 
 2020-03-30
 
-* Follows spatie/media-library upgrade to v8.
+* Followed spatie/media-library upgrade to v8.
 * Removed fork link from spatie/laravel-medialibrary repository.
 * Pulled out the extension from the original package. The extension does now live separately.
 * Removed configuration use.
