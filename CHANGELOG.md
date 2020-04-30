@@ -12,7 +12,7 @@
 * Renamed methods.
 * Removed translation files.
 
-:point_right: [See the upgrade guide](/upgrade-guides/from-v7-to-v8.md)
+:point_right: [See the upgrade guide](/docs/upgrade-guides/from-v7-to-v8.md)
 
 ## [7.19.2](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.19.1...Okipa:7.19.2)
 
