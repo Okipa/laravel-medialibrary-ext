@@ -50,7 +50,7 @@ The translations files have been removed and will not be used anymore.
 
 Translations have now to be handled [this way](../../README.md#translations).
 
-See the extension documentation the see [which sentences are available for translation](../README.md#translations).
+See the extension documentation the see [which sentences are available for translation](../../README.md#translations).
 
 ## See all changes
 

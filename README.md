@@ -14,6 +14,10 @@ This package extension provides extra features for the [spatie/laravel-medialibr
 
 This package extension will follow the [base package](https://github.com/spatie/laravel-medialibrary) major versions and compatibility constraints.
 
+## Upgrade guide
+
+* [From V7 to V8](/docs/upgrade-guides/from-v7-to-v8.md)
+
 ## Table of contents
 
 * [Installation](#installation)
