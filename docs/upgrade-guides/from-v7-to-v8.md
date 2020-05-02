@@ -34,9 +34,9 @@ The following methods name have been changed. Make sure to change them in your c
 
 ## Deprecated methods removed
 
-Some deprecated methods have been remove. Make to change them in your code.
+Some deprecated methods have been remove. Make sure to change them in your code.
 
-* Search and replace all `->constraintsLegend(` calls by `->getMediaValidationRules(`.
+* Search and replace all `->constraintsLegend(` calls by `->getMediaCaption(`.
 * Search and replace all `->dimensionsLegend(` calls by `->getMediaDimensionsCaption(`.
 * Search and replace all `->mimeTypesLegend(` calls by `->getMediaMimeTypesCaption(`.
 * Search and replace all `->validationConstraints(` calls by `->getMediaValidationRules(`.
