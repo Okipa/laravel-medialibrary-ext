@@ -30,6 +30,8 @@ class Media extends Model implements Responsable, Htmlable
     const TYPE_OTHER = 'other';
 
     protected $guarded = [];
+    
+    protected $table = 'media';
 
     protected $casts = [
         'manipulations' => 'array',
