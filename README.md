@@ -58,7 +58,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Page extends Model implements HasMedia
 {
     use InteractsWithMedia;
-	use ExtendsMediaAbilities;
+    use ExtendsMediaAbilities;
 
 	// ...
 }

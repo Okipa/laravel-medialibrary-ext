@@ -10,7 +10,9 @@ parameters:
     level: 5
 
     ignoreErrors:
-        - '#Access to an undefined property#'
+        - '#Unsafe usage of new static#'
 
     excludes_analyse:
         - ./*/*/FileToBeExcluded.php
+
+    checkMissingIterableValueType: false
