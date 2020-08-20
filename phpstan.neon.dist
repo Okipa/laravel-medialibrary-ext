@@ -10,7 +10,9 @@ parameters:
     level: 5
 
     ignoreErrors:
-        - '#Access to an undefined property#'
+        #- '#Example of error to ignore#'
 
     excludes_analyse:
         - ./*/*/FileToBeExcluded.php
+
+    checkMissingIterableValueType: true
