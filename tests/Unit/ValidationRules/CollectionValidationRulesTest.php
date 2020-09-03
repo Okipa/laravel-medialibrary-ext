@@ -25,9 +25,9 @@ class CollectionValidationRulesTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_returns_only_size_rule_with_non_existent_conversions()
     {
-        config()->set('media-library.max_file_size', 1000000);
+        config()->set('media-library.max_file_size', (1024 * 1024 * 10));
         $rules = (new InteractsWithMediaModel)->getMediaValidationRules('avatar');
-        $this->assertEquals(['max:1000'], $rules);
+        $this->assertEquals(['max:10240'], $rules);
     }
 
     /** @test */
@@ -79,15 +79,15 @@ class CollectionValidationRulesTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_can_return_only_size_rule()
     {
-        config()->set('media-library.max_file_size', 1000000);
+        config()->set('media-library.max_file_size', (1024 * 1024 * 10));
         $rules = (new InteractsWithMediaModel)->getMediaValidationRules('avatar');
-        $this->assertEquals(['max:1000'], $rules);
+        $this->assertEquals(['max:10240'], $rules);
     }
 
     /** @test */
     public function it_can_return_all_rules()
     {
-        config()->set('media-library.max_file_size', 1000000);
+        config()->set('media-library.max_file_size', (1024 * 1024 * 10));
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
             {
@@ -104,7 +104,7 @@ class CollectionValidationRulesTest extends MediaLibraryExtTestCase
             'mimes:jpeg,jpg,jpe,png',
             'mimetypes:image/jpeg,image/png',
             'dimensions:min_width=60,min_height=20',
-            'max:1000',
+            'max:10240',
         ], $rules);
     }
 }
