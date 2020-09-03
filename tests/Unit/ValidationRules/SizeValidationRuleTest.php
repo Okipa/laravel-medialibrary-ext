@@ -18,8 +18,8 @@ class SizeValidationRuleTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_can_return_size_constraint()
     {
-        config()->set('media-library.max_file_size', 1000000);
+        config()->set('media-library.max_file_size', (1024 * 1024 * 10));
         $captionString = (new InteractsWithMediaModel)->getMediaSizeValidationRule();
-        $this->assertEquals('max:1000', $captionString);
+        $this->assertEquals('max:10240', $captionString);
     }
 }
