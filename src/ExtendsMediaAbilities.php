@@ -134,7 +134,7 @@ trait ExtendsMediaAbilities
 
         return $configMaxFileSize
             ? (string) __('Max. file size: :size Mb.', [
-                'size' => round($configMaxFileSize / 1000000, 1),
+                'size' => round($configMaxFileSize / 1048576, 1), // 1 Mb = 1 048 576 bytes
             ])
             : '';
     }
@@ -203,6 +203,6 @@ trait ExtendsMediaAbilities
     {
         $configMaxFileSize = config('media-library.max_file_size');
 
-        return $configMaxFileSize ? 'max:' . round($configMaxFileSize / 1000) : '';
+        return $configMaxFileSize ? 'max:' . round($configMaxFileSize / 1024) : ''; // 1 kilobyte = 1 024 bytes
     }
 }

@@ -18,10 +18,10 @@ class SizeCaptionTest extends MediaLibraryExtTestCase
     /** @test */
     public function it_returns_max_weight_caption()
     {
-        config()->set('media-library.max_file_size', 1000000);
+        config()->set('media-library.max_file_size', (1024 * 1024 * 10));
         $sizeCaptionString = (new InteractsWithMediaModel)->getMediaSizeCaption();
         $this->assertEquals(__('Max. file size: :size Mb.', [
-            'size' => 1,
+            'size' => 10,
         ]), $sizeCaptionString);
     }
 }
