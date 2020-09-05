@@ -21,8 +21,11 @@ trait ExtendsMediaAbilities
         $mimeTypesCaption = $this->getMediaMimeTypesCaption($collectionName);
         $sizeCaption = $this->getMediaSizeCaption();
 
-        return $dimensionsCaption . ($dimensionsCaption && ($mimeTypesCaption || $sizeCaption) ? ' ' : '')
-            . $mimeTypesCaption . ($mimeTypesCaption && $sizeCaption ? ' ' : '') . $sizeCaption;
+        return $dimensionsCaption
+            . ($dimensionsCaption && ($mimeTypesCaption || $sizeCaption) ? ' ' : '')
+            . $mimeTypesCaption
+            . ($mimeTypesCaption && $sizeCaption ? ' ' : '')
+            . $sizeCaption;
     }
 
     abstract public function getMediaCollection(string $collectionName = 'default'): ?MediaCollection;
@@ -30,20 +33,17 @@ trait ExtendsMediaAbilities
     public function getMediaDimensionsCaption(string $collectionName): string
     {
         $maxDimensions = $this->getMediaMaxDimensions($collectionName);
-        $width = Arr::get($maxDimensions, 'width');
-        $height = Arr::get($maxDimensions, 'height');
-        if ($width && $height) {
-            return (string) __('Min. width: :width px.', ['width' => $width]) . ' '
-                . (string) __('Min. height: :height px.', ['height' => $height]);
+        $width = data_get($maxDimensions, 'width');
+        $height = data_get($maxDimensions, 'height');
+        $caption = '';
+        if ($width) {
+            $caption .= (string) __('Min. width: :width px.', ['width' => $width]);
         }
-        if ($width && ! $height) {
-            return (string) __('Min. width: :width px.', ['width' => $width]);
-        }
-        if (! $width && $height) {
-            return (string) __('Min. height: :height px.', ['height' => $height]);
+        if ($height) {
+            $caption .= ($caption ? ' ' : '') . (string) __('Min. height: :height px.', ['height' => $height]);
         }
 
-        return '';
+        return $caption;
     }
 
     protected function getMediaMaxDimensions(string $collectionName): array
@@ -57,8 +57,8 @@ trait ExtendsMediaAbilities
             /** @var \Spatie\MediaLibrary\Conversions\Conversion $mediaConversion */
             $manipulations = head($mediaConversion->getManipulations()->toArray());
             $sizes[$key] = [
-                'width' => Arr::get($manipulations, 'width'),
-                'height' => Arr::get($manipulations, 'height'),
+                'width' => data_get($manipulations, 'width'),
+                'height' => data_get($manipulations, 'height'),
             ];
         }
 
