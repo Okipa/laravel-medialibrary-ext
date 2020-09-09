@@ -46,7 +46,7 @@ Then, install the extension via composer:
 composer require okipa/laravel-medialibrary-ext
 ```
 
-Finally, implement the `ExtendsMediaAbilities` trait to be able to use the extension features with the base package ones.
+Finally, implement the `ExtendsMediaAbilities` trait to be able to use the extension features in addition of the base package ones.
 
 ```php
 
