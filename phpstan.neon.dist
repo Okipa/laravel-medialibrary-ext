@@ -10,9 +10,9 @@ parameters:
     level: 5
 
     ignoreErrors:
-        #- '#Exemple of error to ignore#'
+        #- '#Example of error to ignore#'
 
     excludes_analyse:
         - ./*/*/FileToBeExcluded.php
 
-    checkMissingIterableValueType: false
+    checkMissingIterableValueType: true

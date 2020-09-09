@@ -1,5 +1,12 @@
 # Changelog
 
+## [8.1.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/8.0.0...Okipa:8.1.0)
+
+2020-09-09
+
+* Added Laravel 8 support.
+* Dropped Laravel 6 support.
+
 ## [8.0.1](https://github.com/Okipa/laravel-medialibrary-ext/compare/8.0.0...Okipa:8.0.1)
 
 2020-09-03

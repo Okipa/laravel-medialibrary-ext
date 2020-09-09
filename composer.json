@@ -6,6 +6,7 @@
         "okipa",
         "laravel-medialibrary",
         "laravel-medialibrary-extension",
+        "extension",
         "media",
         "conversion",
         "images",
@@ -24,13 +25,13 @@
     ],
     "require": {
         "php": "^7.4",
-        "illuminate/support": "^6.18||^7.0",
+        "illuminate/support": "^7.0||^8.0",
         "spatie/laravel-medialibrary": "^8.0",
-        "symfony/mime": "^4.0||^5.0"
+        "symfony/mime": "^5.0"
     },
     "require-dev": {
-        "nunomaduro/larastan": "^0.4.3||^0.6",
-        "orchestra/testbench": "~3.8.0||^4.0||^5.0",
+        "nunomaduro/larastan": "^0.6",
+        "orchestra/testbench": "^5.0||^6.0",
         "phpmd/phpmd": "^2.8",
         "squizlabs/php_codesniffer": "^3.5"
     },
@@ -49,7 +50,7 @@
             "vendor/bin/phpcbf",
             "vendor/bin/phpcs",
             "vendor/bin/phpmd src text phpmd.xml",
-            "vendor/bin/phpstan analyse",
+            "vendor/bin/phpstan analyse --error-format=table --memory-limit=2048M",
             "vendor/bin/phpunit"
         ]
     },
