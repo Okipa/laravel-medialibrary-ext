@@ -1,19 +1,25 @@
 # Changelog
 
-## [8.1.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/8.0.0...Okipa:8.1.0)
+## [9.0.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/8.1.0...9.0.0)
+
+2020-10-30
+
+* Followed spatie/media-library upgrade to v9.
+
+## [8.1.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/8.0.0...8.1.0)
 
 2020-09-09
 
 * Added Laravel 8 support.
 * Dropped Laravel 6 support.
 
-## [8.0.1](https://github.com/Okipa/laravel-medialibrary-ext/compare/8.0.0...Okipa:8.0.1)
+## [8.0.1](https://github.com/Okipa/laravel-medialibrary-ext/compare/8.0.0...8.0.1)
 
 2020-09-03
 
 * Fixed bytes conversions in kilobytes and megabytes.
 
-## [8.0.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.19.2...Okipa:8.0.0)
+## [8.0.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.19.2...8.0.0)
 
 2020-03-30
 
@@ -27,25 +33,25 @@
 
 :point_right: [See the upgrade guide](/docs/upgrade-guides/from-v7-to-v8.md)
 
-## [7.19.2](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.19.1...Okipa:7.19.2)
+## [7.19.2](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.19.1...7.19.2)
 
 2020-03-30
 
 * Implemented https://github.com/spatie/laravel-medialibrary/releases/tag/7.19.3 release.
 
-## [7.19.1](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.19.0...Okipa:7.19.1)
+## [7.19.1](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.19.0...7.19.1)
 
 2020-03-06
 
 * Implemented https://github.com/spatie/laravel-medialibrary/releases/tag/7.19.2 release.
 
-## [7.19.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.18.0...Okipa:7.19.0)
+## [7.19.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.18.0...7.19.0)
 
 2020-03-03
 
 * Implemented https://github.com/spatie/laravel-medialibrary/releases/tag/7.19.0 release.
 
-## [7.18.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.17.3...Okipa:7.18.0)
+## [7.18.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/7.17.3...7.18.0)
 
 2020-03-02
 
