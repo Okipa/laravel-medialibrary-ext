@@ -21,7 +21,7 @@ class CollectionMimesValidationRulesTest extends MediaLibraryExtTestCase
             }
         };
         $rules = $testModel->getMediaMimesValidationRules('avatar');
-        $this->assertEquals('', $rules);
+        self::assertEquals('', $rules);
     }
 
     /** @test */
@@ -32,9 +32,7 @@ class CollectionMimesValidationRulesTest extends MediaLibraryExtTestCase
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
-                    ->acceptsFile(function (File $file) {
-                        return true;
-                    })
+                    ->acceptsFile(fn(File $file) => true)
                     ->acceptsMimeTypes(['image/jpeg', 'image/png', 'application/pdf'])
                     ->registerMediaConversions(function (Media $media = null) {
                         $this->addMediaConversion('admin-panel')
@@ -48,7 +46,7 @@ class CollectionMimesValidationRulesTest extends MediaLibraryExtTestCase
             }
         };
         $rules = $testModel->getMediaMimesValidationRules('avatar');
-        $this->assertEquals('mimes:jpeg,jpg,jpe,png,pdf', $rules);
+        self::assertEquals('mimes:jpeg,jpg,jpe,png,pdf', $rules);
     }
 
     /** @test */
@@ -67,7 +65,7 @@ class CollectionMimesValidationRulesTest extends MediaLibraryExtTestCase
             }
         };
         $rules = $testModel->getMediaMimesValidationRules('avatar');
-        $this->assertEquals('', $rules);
+        self::assertEquals('', $rules);
     }
 
     /** @test */
@@ -78,9 +76,7 @@ class CollectionMimesValidationRulesTest extends MediaLibraryExtTestCase
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
-                    ->acceptsFile(function (File $file) {
-                        return true;
-                    })
+                    ->acceptsFile(fn(File $file) => true)
                     ->acceptsMimeTypes(['audio/wav', 'audio/wave', 'audio/x-wav'])
                     ->registerMediaConversions(function (Media $media = null) {
                         $this->addMediaConversion('admin-panel')
@@ -94,6 +90,6 @@ class CollectionMimesValidationRulesTest extends MediaLibraryExtTestCase
             }
         };
         $rules = $testModel->getMediaMimesValidationRules('avatar');
-        $this->assertEquals('mimes:wav', $rules);
+        self::assertEquals('mimes:wav', $rules);
     }
 }

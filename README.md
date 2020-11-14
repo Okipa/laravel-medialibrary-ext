@@ -1,12 +1,21 @@
-# Extra features for spatie/laravel-medialibrary package
-
-[![Source Code](https://img.shields.io/badge/source-okipa/laravel--medialibrary--ext-blue.svg)](https://github.com/Okipa/laravel-medialibrary-ext)
-[![Latest Version](https://img.shields.io/github/release/okipa/laravel-medialibrary-ext.svg?style=flat-square)](https://github.com/Okipa/laravel-medialibrary-ext/releases)
-[![Total Downloads](https://img.shields.io/packagist/dt/okipa/laravel-medialibrary-ext.svg?style=flat-square)](https://packagist.org/packages/okipa/laravel-medialibrary-ext)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Build status](https://github.com/Okipa/laravel-medialibrary-ext/workflows/CI/badge.svg)](https://github.com/Okipa/laravel-medialibrary-ext/actions)
-[![Coverage Status](https://coveralls.io/repos/github/Okipa/laravel-medialibrary-ext/badge.svg?branch=master)](https://coveralls.io/github/Okipa/laravel-medialibrary-ext?branch=master)
-[![Quality Score](https://img.shields.io/scrutinizer/g/Okipa/laravel-medialibrary-ext.svg?style=flat-square)](https://scrutinizer-ci.com/g/Okipa/laravel-medialibrary-ext/?branch=master)
+![Laravel Medialibrary Extension](/docs/laravel-medialibrary-ext.png)
+<p align="center">
+    <a href="https://github.com/Okipa/laravel-medialibrary-ext/releases" title="Latest Stable Version">
+        <img src="https://img.shields.io/github/release/Okipa/laravel-medialibrary-ext.svg?style=flat-square" alt="Latest Stable Version">
+    </a>
+    <a href="https://packagist.org/packages/Okipa/laravel-medialibrary-ext" title="Total Downloads">
+        <img src="https://img.shields.io/packagist/dt/okipa/laravel-medialibrary-ext.svg?style=flat-square" alt="Total Downloads">
+    </a>
+    <a href="https://github.com/Okipa/laravel-medialibrary-ext/actions" title="Build Status">
+        <img src="https://github.com/Okipa/laravel-medialibrary-ext/workflows/CI/badge.svg" alt="Build Status">
+    </a>
+    <a href="https://coveralls.io/github/Okipa/laravel-medialibrary-ext?branch=master" title="Coverage Status">
+        <img src="https://coveralls.io/repos/github/Okipa/laravel-medialibrary-ext/badge.svg?branch=master" alt="Coverage Status">
+    </a>
+    <a href="https://img.shields.io/badge/License-MIT-blue.svg" title="License: MIT">
+        <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT">
+    </a>
+</p>
 
 This package extension provides extra features for the [spatie/laravel-medialibrary](https://github.com/spatie/laravel-medialibrary) package.
 
@@ -89,7 +98,7 @@ Here is the list of the sentences available for translation:
 Declaring your media validation rules like this:
 
 ```php
-// in your user storing form request for example
+// In your user storing form request for example
 public function rules()
 {
     return [
@@ -102,7 +111,7 @@ public function rules()
 Will generate:
 
 ```php
-    // example
+    // Example
     ['mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,jpe,png', 'dimensions:min_width=60,min_height=20', 'max:5000'];
 ```
 
@@ -119,7 +128,7 @@ Will generate:
 Adding a constraint caption under a file input:
 
 ```html
-<!-- in your HTML form -->
+<!-- In your HTML form -->
 <label for="avatar">Choose a profile picture:</label>
 <input type="file" id="avatar" name="avatar" value="{{ $user->getFirstMedia('avatar')->name }}">
 <small>{{ $user->getMediaCaption('avatar') }}</small>
@@ -128,7 +137,7 @@ Adding a constraint caption under a file input:
 Will generate:
 
 ```html
-    <!-- example -->
+    <!-- Example -->
     Min. width: 150 px. Min. height: 70 px. Accepted types: jpeg, jpg, jpe, png. Max file size: 5Mb.
 ```
 
