@@ -39,7 +39,7 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           extensions: curl, json, mbstring, zip, sqlite, pdo_sqlite
-          coverage: xdebug
+          coverage: pcov
 
       - name: Install dependencies
         run: |
