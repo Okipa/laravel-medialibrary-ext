@@ -1,4 +1,4 @@
-# Upgrade from v7 to v8
+# Upgrade from v8 to v9
 
 First, make sure to follow the [base package upgrade guide](https://github.com/spatie/laravel-medialibrary/blob/master/UPGRADING.md).
 
