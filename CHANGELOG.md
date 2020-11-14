@@ -1,5 +1,14 @@
 # Changelog
 
+## [9.0.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/8.1.0...Okipa:9.0.0)
+
+2020-11-14
+
+* Added PHP 8 support
+* Upgraded spatie/laravel-medialibrary required version to 9.
+* Removed Scrutinizer analysis
+* Updated PHPCS checker and fixer norm to PSR-12
+
 ## [8.1.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/8.0.0...Okipa:8.1.0)
 
 2020-09-09

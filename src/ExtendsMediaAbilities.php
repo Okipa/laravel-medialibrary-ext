@@ -37,10 +37,10 @@ trait ExtendsMediaAbilities
         $height = data_get($maxDimensions, 'height');
         $caption = '';
         if ($width) {
-            $caption .= (string) __('Min. width: :width px.', ['width' => $width]);
+            $caption .= __('Min. width: :width px.', ['width' => $width]);
         }
         if ($height) {
-            $caption .= ($caption ? ' ' : '') . (string) __('Min. height: :height px.', ['height' => $height]);
+            $caption .= ($caption ? ' ' : '') . __('Min. height: :height px.', ['height' => $height]);
         }
 
         return $caption;
@@ -122,7 +122,7 @@ trait ExtendsMediaAbilities
     {
         $extensions = [];
         foreach ($mimeTypes as $mimeType) {
-            $extensions[] = (new MimeTypes)->getExtensions($mimeType);
+            $extensions[] = (new MimeTypes())->getExtensions($mimeType);
         }
 
         return array_unique(Arr::flatten($extensions));
@@ -134,7 +134,8 @@ trait ExtendsMediaAbilities
 
         return $configMaxFileSize
             ? (string) __('Max. file size: :size Mb.', [
-                'size' => round($configMaxFileSize / 1048576, 1), // 1 Mb = 1 048 576 bytes
+                // 1 Mb = 1 048 576 bytes.
+                'size' => round($configMaxFileSize / 1048576, 1),
             ])
             : '';
     }
@@ -203,6 +204,7 @@ trait ExtendsMediaAbilities
     {
         $configMaxFileSize = config('media-library.max_file_size');
 
-        return $configMaxFileSize ? 'max:' . round($configMaxFileSize / 1024) : ''; // 1 kilobyte = 1 024 bytes
+        // 1 kilobyte = 1 024 bytes.
+        return $configMaxFileSize ? 'max:' . round($configMaxFileSize / 1024) : '';
     }
 }

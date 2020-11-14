@@ -11,7 +11,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class CollectionMimeTypesValidationRulesTest extends MediaLibraryExtTestCase
 {
     /** @test */
-    public function it_returns_none_when_it_is_called_with_non_existing_collection()
+    public function it_returns_none_when_it_is_called_with_non_existing_collection(): void
     {
         $testModel = new class extends InteractsWithMediaModel
         {
@@ -21,21 +21,19 @@ class CollectionMimeTypesValidationRulesTest extends MediaLibraryExtTestCase
             }
         };
         $rules = $testModel->getMediaMimeTypesValidationRules('test');
-        $this->assertEquals('', $rules);
+        self::assertEquals('', $rules);
         ;
     }
 
     /** @test */
-    public function it_returns_mime_types_rules_when_declared_in_collection()
+    public function it_returns_mime_types_rules_when_declared_in_collection(): void
     {
         $testModel = new class extends InteractsWithMediaModel
         {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
-                    ->acceptsFile(function (File $file) {
-                        return true;
-                    })
+                    ->acceptsFile(fn(File $file) => true)
                     ->acceptsMimeTypes(['image/jpeg', 'image/png'])
                     ->registerMediaConversions(function (Media $media = null) {
                         $this->addMediaConversion('admin-panel')
@@ -49,11 +47,11 @@ class CollectionMimeTypesValidationRulesTest extends MediaLibraryExtTestCase
             }
         };
         $rules = $testModel->getMediaMimeTypesValidationRules('avatar');
-        $this->assertEquals('mimetypes:image/jpeg,image/png', $rules);
+        self::assertEquals('mimetypes:image/jpeg,image/png', $rules);
     }
 
     /** @test */
-    public function it_returns_no_collection_mime_types_rules_when_none_declared()
+    public function it_returns_no_collection_mime_types_rules_when_none_declared(): void
     {
         $testModel = new class extends InteractsWithMediaModel
         {
@@ -68,6 +66,6 @@ class CollectionMimeTypesValidationRulesTest extends MediaLibraryExtTestCase
             }
         };
         $rules = $testModel->getMediaMimeTypesValidationRules('avatar');
-        $this->assertEquals('', $rules);
+        self::assertEquals('', $rules);
     }
 }

@@ -16,6 +16,7 @@ This package extension will follow the [base package](https://github.com/spatie/
 
 ## Upgrade guide
 
+* [From V8 to V9](/docs/upgrade-guides/from-v8-to-v9.md)
 * [From V7 to V8](/docs/upgrade-guides/from-v7-to-v8.md)
 
 ## Table of contents

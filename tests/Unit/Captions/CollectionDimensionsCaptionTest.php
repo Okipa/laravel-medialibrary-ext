@@ -11,7 +11,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
 {
     /** @test */
-    public function it_returns_none_when_it_is_called_with_non_existing_collection()
+    public function it_returns_none_when_it_is_called_with_non_existing_collection(): void
     {
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
@@ -20,11 +20,11 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
             }
         };
         $dimensionsCaptionString = $testModel->getMediaDimensionsCaption('test');
-        $this->assertEquals('', $dimensionsCaptionString);
+        self::assertEquals('', $dimensionsCaptionString);
     }
 
     /** @test */
-    public function it_returns_none_when_it_is_called_with_non_existent_conversions()
+    public function it_returns_none_when_it_is_called_with_non_existent_conversions(): void
     {
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
@@ -33,11 +33,11 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
             }
         };
         $dimensionsCaptionString = $testModel->getMediaDimensionsCaption('avatar');
-        $this->assertEquals('', $dimensionsCaptionString);
+        self::assertEquals('', $dimensionsCaptionString);
     }
 
     /** @test */
-    public function it_returns_only_width_dimension_legend_when_only_width_is_declared()
+    public function it_returns_only_width_dimension_legend_when_only_width_is_declared(): void
     {
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
@@ -51,11 +51,11 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
             }
         };
         $dimensionsCaptionString = $testModel->getMediaDimensionsCaption('avatar');
-        $this->assertEquals(__('Min. width: :width px.', ['width' => 120]), $dimensionsCaptionString);
+        self::assertEquals(__('Min. width: :width px.', ['width' => 120]), $dimensionsCaptionString);
     }
 
     /** @test */
-    public function it_returns_only_height_dimension_legend_when_only_height_is_declared()
+    public function it_returns_only_height_dimension_legend_when_only_height_is_declared(): void
     {
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
@@ -69,11 +69,11 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
             }
         };
         $dimensionsCaptionString = $testModel->getMediaDimensionsCaption('avatar');
-        $this->assertEquals(__('Min. height: :height px.', ['height' => 30]), $dimensionsCaptionString);
+        self::assertEquals(__('Min. height: :height px.', ['height' => 30]), $dimensionsCaptionString);
     }
 
     /** @test */
-    public function it_returns_no_dimension_legend_when_no_size_is_declared()
+    public function it_returns_no_dimension_legend_when_no_size_is_declared(): void
     {
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
@@ -87,19 +87,17 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
             }
         };
         $dimensionsCaptionString = $testModel->getMediaDimensionsCaption('avatar');
-        $this->assertEquals('', $dimensionsCaptionString);
+        self::assertEquals('', $dimensionsCaptionString);
     }
 
     /** @test */
-    public function it_returns_width_and_height_dimension_legend_when_both_are_declared()
+    public function it_returns_width_and_height_dimension_legend_when_both_are_declared(): void
     {
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
-                    ->acceptsFile(function (File $file) {
-                        return true;
-                    })
+                    ->acceptsFile(fn(File $file) => true)
                     ->acceptsMimeTypes(['image/jpeg', 'image/png'])
                     ->registerMediaConversions(function (Media $media = null) {
                         $this->addMediaConversion('admin-panel')
@@ -113,7 +111,7 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
             }
         };
         $dimensionsCaptionString = $testModel->getMediaDimensionsCaption('avatar');
-        $this->assertEquals(__('Min. width: :width px.', [
+        self::assertEquals(__('Min. width: :width px.', [
                 'width' => 100,
             ]) . ' ' . __('Min. height: :height px.', [
                 'height' => 80,
@@ -121,15 +119,13 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
     }
 
     /** @test */
-    public function it_does_not_returns_dimensions_legend_when_no_image_declared()
+    public function it_does_not_returns_dimensions_legend_when_no_image_declared(): void
     {
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
-                    ->acceptsFile(function (File $file) {
-                        return true;
-                    })
+                    ->acceptsFile(fn(File $file) => true)
                     ->acceptsMimeTypes(['application/pdf'])
                     ->registerMediaConversions(function (Media $media = null) {
                         $this->addMediaConversion('admin-panel')
@@ -143,6 +139,6 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
             }
         };
         $dimensionsCaptionString = $testModel->getMediaDimensionsCaption('avatar');
-        $this->assertEquals('', $dimensionsCaptionString);
+        self::assertEquals('', $dimensionsCaptionString);
     }
 }
