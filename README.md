@@ -98,7 +98,7 @@ Here is the list of the sentences available for translation:
 Declaring your media validation rules like this:
 
 ```php
-// In your user storing form request for example.
+// In your user storing form request for example
 public function rules()
 {
     return [
@@ -128,7 +128,7 @@ Will generate:
 Adding a constraint caption under a file input:
 
 ```html
-<!-- In your HTML form. -->
+<!-- In your HTML form -->
 <label for="avatar">Choose a profile picture:</label>
 <input type="file" id="avatar" name="avatar" value="{{ $user->getFirstMedia('avatar')->name }}">
 <small>{{ $user->getMediaCaption('avatar') }}</small>
