@@ -98,7 +98,7 @@ Here is the list of the sentences available for translation:
 Declaring your media validation rules like this:
 
 ```php
-// in your user storing form request for example
+// In your user storing form request for example.
 public function rules()
 {
     return [
@@ -111,7 +111,7 @@ public function rules()
 Will generate:
 
 ```php
-    // example
+    // Example
     ['mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,jpe,png', 'dimensions:min_width=60,min_height=20', 'max:5000'];
 ```
 
@@ -128,7 +128,7 @@ Will generate:
 Adding a constraint caption under a file input:
 
 ```html
-<!-- in your HTML form -->
+<!-- In your HTML form. -->
 <label for="avatar">Choose a profile picture:</label>
 <input type="file" id="avatar" name="avatar" value="{{ $user->getFirstMedia('avatar')->name }}">
 <small>{{ $user->getMediaCaption('avatar') }}</small>
@@ -137,7 +137,7 @@ Adding a constraint caption under a file input:
 Will generate:
 
 ```html
-    <!-- example -->
+    <!-- Example -->
     Min. width: 150 px. Min. height: 70 px. Accepted types: jpeg, jpg, jpe, png. Max file size: 5Mb.
 ```
 
