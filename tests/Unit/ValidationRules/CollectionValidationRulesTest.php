@@ -73,7 +73,7 @@ class CollectionValidationRulesTest extends MediaLibraryExtTestCase
             }
         };
         $rules = $testModel->getMediaValidationRules('avatar');
-        self::assertEquals(['mimes:jpeg,jpg,jpe,png', 'mimetypes:image/jpeg,image/png'], $rules);
+        self::assertEquals(['mimes:jpg,jpeg,jpe,png', 'mimetypes:image/jpeg,image/png'], $rules);
     }
 
     /** @test */
@@ -101,7 +101,7 @@ class CollectionValidationRulesTest extends MediaLibraryExtTestCase
         };
         $rules = $testModel->getMediaValidationRules('avatar');
         self::assertEquals([
-            'mimes:jpeg,jpg,jpe,png',
+            'mimes:jpg,jpeg,jpe,png',
             'mimetypes:image/jpeg,image/png',
             'dimensions:min_width=60,min_height=20',
             'max:10240',

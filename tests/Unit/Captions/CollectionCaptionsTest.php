@@ -54,7 +54,7 @@ class CollectionCaptionsTest extends MediaLibraryExtTestCase
             . trans_choice(
                 '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
                 2,
-                ['types' => 'jpeg, jpg, jpe, png']
+                ['types' => 'jpg, jpeg, jpe, png']
             ),
             $captionString
         );
@@ -95,7 +95,7 @@ class CollectionCaptionsTest extends MediaLibraryExtTestCase
             '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
             2,
             [
-                    'types' => 'jpeg, jpg, jpe, png',
+                    'types' => 'jpg, jpeg, jpe, png',
                 ]
         ) . ' ' . __('Max. file size: :size Mb.', [
                 'size' => 1,
@@ -126,7 +126,7 @@ class CollectionCaptionsTest extends MediaLibraryExtTestCase
                 '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
                 2,
                 [
-                    'types' => 'jpeg, jpg, jpe, png',
+                    'types' => 'jpg, jpeg, jpe, png',
                 ]
             ) . ' ' . __('Max. file size: :size Mb.', [
                 'size' => 1,

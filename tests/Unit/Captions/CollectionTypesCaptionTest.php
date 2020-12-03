@@ -66,7 +66,7 @@ class CollectionTypesCaptionTest extends MediaLibraryExtTestCase
             trans_choice(
                 '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
                 3,
-                ['types' => 'jpeg, jpg, jpe, png']
+                ['types' => 'jpg, jpeg, jpe, png']
             ),
             $dimensionsCaptionString
         );

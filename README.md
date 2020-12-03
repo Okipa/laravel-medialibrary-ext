@@ -117,7 +117,7 @@ Will generate:
 
 ```php
     // Example
-    ['mimetypes:image/jpeg,image/png', 'mimes:jpeg,jpg,jpe,png', 'dimensions:min_width=60,min_height=20', 'max:5000'];
+    ['mimetypes:image/jpeg,image/png', 'mimes:jpg,jpeg,jpe,png', 'dimensions:min_width=60,min_height=20', 'max:5000'];
 ```
 
 #### Available methods:
@@ -143,7 +143,7 @@ Will generate:
 
 ```html
     <!-- Example -->
-    Min. width: 150 px. Min. height: 70 px. Accepted types: jpeg, jpg, jpe, png. Max file size: 5Mb.
+    Min. width: 150 px. Min. height: 70 px. Accepted types: jpg, jpeg, jpe, png. Max file size: 5Mb.
 ```
 
 #### Available methods:

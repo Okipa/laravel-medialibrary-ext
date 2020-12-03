@@ -46,7 +46,7 @@ class CollectionMimesValidationRulesTest extends MediaLibraryExtTestCase
             }
         };
         $rules = $testModel->getMediaMimesValidationRules('avatar');
-        self::assertEquals('mimes:jpeg,jpg,jpe,png,pdf', $rules);
+        self::assertEquals('mimes:jpg,jpeg,jpe,png,pdf', $rules);
     }
 
     /** @test */
