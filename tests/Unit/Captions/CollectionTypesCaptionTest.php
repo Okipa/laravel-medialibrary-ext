@@ -1,7 +1,8 @@
 <?php
 
-namespace Okipa\MediaLibraryExt\Tests\Unit\Extension\UrlGenerator;
+namespace Okipa\MediaLibraryExt\Tests\Unit\Captions;
 
+use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
 use Okipa\MediaLibraryExt\Tests\MediaLibraryExtTestCase;
 use Okipa\MediaLibraryExt\Tests\Models\InteractsWithMediaModel;
 use Spatie\Image\Manipulations;
@@ -11,20 +12,14 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class CollectionTypesCaptionTest extends MediaLibraryExtTestCase
 {
     /** @test */
-    public function it_returns_none_when_it_is_called_with_non_existing_collection(): void
+    public function it_throws_exception_when_it_is_called_with_non_existing_collection(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
-            public function registerMediaCollections(): void
-            {
-                $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
-            }
-        };
-        $dimensionsCaptionString = $testModel->getMediaMimeTypesCaption('test');
-        self::assertEquals('', $dimensionsCaptionString);
+        $this->expectException(CollectionNotFound::class);
+        (new InteractsWithMediaModel())->getMediaMimeTypesCaption('test');
     }
 
     /** @test */
-    public function it_returns_no_types_legend_when_none_declared(): void
+    public function it_returns_no_types_caption_when_none_declared(): void
     {
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
@@ -42,7 +37,7 @@ class CollectionTypesCaptionTest extends MediaLibraryExtTestCase
     }
 
     /** @test */
-    public function it_returns_types_legend_when_are_declared(): void
+    public function it_returns_types_caption_when_are_declared(): void
     {
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
@@ -86,6 +81,7 @@ class CollectionTypesCaptionTest extends MediaLibraryExtTestCase
                             ->crop(Manipulations::CROP_CENTER, 20, 80);
                     });
             }
+
             public function registerMediaConversions(Media $media = null): void
             {
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 100, 70);

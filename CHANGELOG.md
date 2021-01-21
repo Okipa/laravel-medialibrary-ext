@@ -1,6 +1,12 @@
 # Changelog
 
-## [9.1.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/8.1.0...Okipa:9.0.0)
+## [9.2.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/9.1.0...9.2.0)
+
+2020-11-14
+
+* Added an `Okipa\MediaLibraryExt\Exceptions\CollectionNotFound` exception throw when the given collection is not found in the targeted model.
+
+## [9.1.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/9.0.0...9.1.0)
 
 2020-11-14
 

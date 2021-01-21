@@ -1,7 +1,8 @@
 <?php
 
-namespace Okipa\MediaLibraryExt\Tests\Unit\Extension\UrlGenerator;
+namespace Okipa\MediaLibraryExt\Tests\Unit\Captions;
 
+use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
 use Okipa\MediaLibraryExt\Tests\MediaLibraryExtTestCase;
 use Okipa\MediaLibraryExt\Tests\Models\InteractsWithMediaModel;
 use Spatie\Image\Manipulations;
@@ -10,11 +11,10 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class CollectionCaptionsTest extends MediaLibraryExtTestCase
 {
     /** @test */
-    public function it_returns_none_with_non_existing_collection(): void
+    public function it_throws_exception_when_it_is_called_with_non_existing_collection(): void
     {
-        config()->set('media-library.max_file_size', 1000000);
-        $captionString = (new InteractsWithMediaModel())->getMediaCaption('test');
-        self::assertEquals('', $captionString);
+        $this->expectException(CollectionNotFound::class);
+        (new InteractsWithMediaModel())->getMediaCaption('test');
     }
 
     /** @test */

@@ -5,6 +5,7 @@ namespace Okipa\MediaLibraryExt;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
 use Spatie\MediaLibrary\Conversions\Conversion;
 use Spatie\MediaLibrary\MediaCollections\MediaCollection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -12,11 +13,19 @@ use Symfony\Component\Mime\MimeTypes;
 
 trait ExtendsMediaAbilities
 {
+    abstract public function getMediaCollection(string $collectionName = 'default'): ?MediaCollection;
+
+    abstract public function registerAllMediaConversions(Media $media = null): void;
+
+    /**
+     * @param string $collectionName
+     *
+     * @return string
+     * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
+     */
     public function getMediaCaption(string $collectionName): string
     {
-        if (! $this->getMediaCollection($collectionName)) {
-            return '';
-        }
+        $this->checkIfMediaCollectionExist($collectionName);
         $dimensionsCaption = $this->getMediaDimensionsCaption($collectionName);
         $mimeTypesCaption = $this->getMediaMimeTypesCaption($collectionName);
         $sizeCaption = $this->getMediaSizeCaption();
@@ -28,8 +37,25 @@ trait ExtendsMediaAbilities
             . $sizeCaption;
     }
 
-    abstract public function getMediaCollection(string $collectionName = 'default'): ?MediaCollection;
+    /**
+     * @param string $collectionName
+     *
+     * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
+     */
+    protected function checkIfMediaCollectionExist(string $collectionName): void
+    {
+        $mediaCollection = $this->getMediaCollection($collectionName);
+        if (! $mediaCollection) {
+            throw new CollectionNotFound("The collection {$mediaCollection} as not been found.");
+        }
+    }
 
+    /**
+     * @param string $collectionName
+     *
+     * @return string
+     * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
+     */
     public function getMediaDimensionsCaption(string $collectionName): string
     {
         $maxDimensions = $this->getMediaMaxDimensions($collectionName);
@@ -46,6 +72,12 @@ trait ExtendsMediaAbilities
         return $caption;
     }
 
+    /**
+     * @param string $collectionName
+     *
+     * @return array
+     * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
+     */
     protected function getMediaMaxDimensions(string $collectionName): array
     {
         if (! $this->mediaHasDimensions($collectionName)) {
@@ -65,20 +97,40 @@ trait ExtendsMediaAbilities
         return $this->getMaxWidthAndMaxHeight($sizes);
     }
 
+    /**
+     * @param string $collectionName
+     *
+     * @return bool
+     * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
+     */
     protected function mediaHasDimensions(string $collectionName): bool
     {
-        $mediaCollection = $this->getMediaCollection($collectionName);
-        if (! $mediaCollection) {
-            return false;
-        }
+        $mediaCollection = $this->getMediaCollectionOrFail($collectionName);
         $mediaConversions = $this->getAllMediaConversions($collectionName);
         if ($mediaConversions->isEmpty()) {
             return false;
         }
 
-        return ! count(array_filter($mediaCollection->acceptsMimeTypes, function ($mimeTypes) {
-            return ! Str::startsWith($mimeTypes, 'image');
-        }));
+        return ! count(array_filter(
+            $mediaCollection->acceptsMimeTypes,
+            static fn($mimeTypes) => ! Str::startsWith($mimeTypes, 'image')
+        ));
+    }
+
+    /**
+     * @param string $collectionName
+     *
+     * @return \Spatie\MediaLibrary\MediaCollections\MediaCollection
+     * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
+     */
+    protected function getMediaCollectionOrFail(string $collectionName = 'default'): MediaCollection
+    {
+        $mediaCollection = $this->getMediaCollection($collectionName);
+        if (! $mediaCollection) {
+            throw new CollectionNotFound("The collection {$mediaCollection} as not been found.");
+        }
+
+        return $mediaCollection;
     }
 
     protected function getAllMediaConversions(string $collectionName): Collection
@@ -90,8 +142,6 @@ trait ExtendsMediaAbilities
         }));
     }
 
-    abstract public function registerAllMediaConversions(Media $media = null): void;
-
     protected function getMaxWidthAndMaxHeight(array $sizes): array
     {
         $width = ! empty($sizes) ? max(Arr::pluck($sizes, 'width')) : null;
@@ -100,9 +150,15 @@ trait ExtendsMediaAbilities
         return compact('width', 'height');
     }
 
+    /**
+     * @param string $collectionName
+     *
+     * @return string
+     * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
+     */
     public function getMediaMimeTypesCaption(string $collectionName): string
     {
-        $mediaCollection = $this->getMediaCollection($collectionName);
+        $mediaCollection = $this->getMediaCollectionOrFail($collectionName);
         if (! empty($mediaCollection->acceptsMimeTypes)) {
             $extensions = $this->getExtensionsFromMimeTypes($mediaCollection->acceptsMimeTypes);
             $extensionsString = implode(',', $extensions);
@@ -140,11 +196,15 @@ trait ExtendsMediaAbilities
             : '';
     }
 
+    /**
+     * @param string $collectionName
+     *
+     * @return array
+     * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
+     */
     public function getMediaValidationRules(string $collectionName): array
     {
-        if (! $this->getMediaCollection($collectionName)) {
-            return [];
-        }
+        $this->checkIfMediaCollectionExist($collectionName);
         $mimesConstraints = $this->getMediaMimesValidationRules($collectionName);
         $mimeTypeConstraints = $this->getMediaMimeTypesValidationRules($collectionName);
         $dimensionConstraints = $this->getMediaDimensionValidationRules($collectionName);
@@ -158,9 +218,15 @@ trait ExtendsMediaAbilities
         ]));
     }
 
+    /**
+     * @param string $collectionName
+     *
+     * @return string
+     * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
+     */
     public function getMediaMimesValidationRules(string $collectionName): string
     {
-        $mediaCollection = $this->getMediaCollection($collectionName);
+        $mediaCollection = $this->getMediaCollectionOrFail($collectionName);
         $validationString = '';
         if (! empty($mediaCollection->acceptsMimeTypes)) {
             $acceptedExtensions = $this->getExtensionsFromMimeTypes($mediaCollection->acceptsMimeTypes);
@@ -172,13 +238,19 @@ trait ExtendsMediaAbilities
         return $validationString;
     }
 
+    /**
+     * @param string $collectionName
+     *
+     * @return string
+     * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
+     */
     public function getMediaMimeTypesValidationRules(string $collectionName): string
     {
+        $mediaCollection = $this->getMediaCollectionOrFail($collectionName);
         $mediaConversions = $this->getAllMediaConversions($collectionName);
         if ($mediaConversions->isEmpty()) {
             return '';
         }
-        $mediaCollection = $this->getMediaCollection($collectionName);
         $validationString = '';
         if (! empty($mediaCollection->acceptsMimeTypes)) {
             $validationString .= 'mimetypes:' . implode(',', $mediaCollection->acceptsMimeTypes);
@@ -187,6 +259,12 @@ trait ExtendsMediaAbilities
         return $validationString;
     }
 
+    /**
+     * @param string $collectionName
+     *
+     * @return string
+     * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
+     */
     public function getMediaDimensionValidationRules(string $collectionName): string
     {
         $maxDimensions = $this->getMediaMaxDimensions($collectionName);

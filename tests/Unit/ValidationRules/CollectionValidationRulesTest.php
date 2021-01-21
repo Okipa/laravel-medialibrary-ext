@@ -1,7 +1,8 @@
 <?php
 
-namespace Okipa\MediaLibraryExt\Tests\Unit\Extension\UrlGenerator;
+namespace Okipa\MediaLibraryExt\Tests\Unit\ValidationRules;
 
+use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
 use Okipa\MediaLibraryExt\Tests\MediaLibraryExtTestCase;
 use Okipa\MediaLibraryExt\Tests\Models\InteractsWithMediaModel;
 use Spatie\Image\Manipulations;
@@ -10,16 +11,10 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class CollectionValidationRulesTest extends MediaLibraryExtTestCase
 {
     /** @test */
-    public function it_returns_no_rule_when_non_existing_collection(): void
+    public function it_throws_exception_when_it_is_called_with_non_existing_collection(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
-            public function registerMediaCollections(): void
-            {
-                $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
-            }
-        };
-        $rules = $testModel->getMediaValidationRules('avatar');
-        self::assertEquals([], $rules);
+        $this->expectException(CollectionNotFound::class);
+        (new InteractsWithMediaModel())->getMediaValidationRules('test');
     }
 
     /** @test */
