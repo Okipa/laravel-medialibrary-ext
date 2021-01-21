@@ -155,7 +155,7 @@ Will generate:
 
 ###Exceptions
 
-In order to avoid careless mistakes an exception will be thrown when the specified collection is not found in the 
+In order to avoid careless mistakes an `Okipa\MediaLibraryExt\Exceptions\CollectionNotFound` exception will be thrown when the specified collection is not found in the 
 targeted model. 
 
 ## Testing
