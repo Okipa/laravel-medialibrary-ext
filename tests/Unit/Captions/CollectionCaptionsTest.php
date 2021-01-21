@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\MediaLibraryExt\Tests\Unit\Extension\UrlGenerator;
+namespace Okipa\MediaLibraryExt\Tests\Unit\Captions;
 
 use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
 use Okipa\MediaLibraryExt\Tests\MediaLibraryExtTestCase;
@@ -14,7 +14,7 @@ class CollectionCaptionsTest extends MediaLibraryExtTestCase
     public function it_throws_exception_when_it_is_called_with_non_existing_collection(): void
     {
         $this->expectException(CollectionNotFound::class);
-        $captionString = (new InteractsWithMediaModel())->getMediaCaption('test');
+        (new InteractsWithMediaModel())->getMediaCaption('test');
     }
 
     /** @test */

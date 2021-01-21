@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\MediaLibraryExt\Tests\Unit\Extension\UrlGenerator;
+namespace Okipa\MediaLibraryExt\Tests\Unit\ValidationRules;
 
 use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
 use Okipa\MediaLibraryExt\Tests\MediaLibraryExtTestCase;
@@ -14,13 +14,7 @@ class CollectionValidationRulesTest extends MediaLibraryExtTestCase
     public function it_throws_exception_when_it_is_called_with_non_existing_collection(): void
     {
         $this->expectException(CollectionNotFound::class);
-        $testModel = new class extends InteractsWithMediaModel {
-            public function registerMediaCollections(): void
-            {
-                $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
-            }
-        };
-        $rules = $testModel->getMediaValidationRules('avatar');
+        (new InteractsWithMediaModel())->getMediaValidationRules('test');
     }
 
     /** @test */

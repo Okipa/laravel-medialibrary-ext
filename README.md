@@ -38,7 +38,7 @@ This package extension will follow the [base package](https://github.com/spatie/
 * [Installation](#installation)
 * [Documentation](#documentation)
 * [Translations](#translations)
-* [Extra features](#extra-features)
+* [Extension features](#extension-features)
   * [Validation rules](#media-validation-rules)
   * [Media caption](#media-caption)
 * [Testing](#testing)
@@ -96,7 +96,7 @@ Here is the list of the sentences available for translation:
 * `{1}Accepted type: :types.|[2,*]Accepted types: :types.`
 * `Max. file size: :size Mb.`
 
-## Extra features
+## Extension features
 
 ### Media validation rules
 
@@ -120,13 +120,13 @@ Will generate:
     ['mimetypes:image/jpeg,image/png', 'mimes:jpg,jpeg,jpe,png', 'dimensions:min_width=60,min_height=20', 'max:5000'];
 ```
 
-#### Available methods:
+#### Available public methods:
 
 * `->getMediaValidationRules(string $collectionName): array`: returns all the validation rules for the given collection.
-* `->getMediaMimesValidationRules(string $collectionName): string`: returns only the mimes validation rule for the given collection.
-* `->getMediaMimeTypesValidationRules(string $collectionName): string`: returns only the mime types validation rule for the given collection.
-* `->getMediaDimensionValidationRules(string $collectionName): string`: returns only the dimensions validation rule for the given collection.
-* `->getMediaSizeValidationRule(): string`: returns only the config max file size validation rule.
+* `->getMediaMimesValidationRules(string $collectionName): string`: returns only the mimes validation rules for the given collection.
+* `->getMediaMimeTypesValidationRules(string $collectionName): string`: returns only the mime types validation rules for the given collection.
+* `->getMediaDimensionValidationRules(string $collectionName): string`: returns only the dimension validation rules for the given collection.
+* `->getMediaSizeValidationRule(): string`: returns only the max file size validation rule set from the base package `media-library.max_file_size` configuration value.
 
 ### Media caption
 
@@ -146,17 +146,16 @@ Will generate:
     Min. width: 150 px. Min. height: 70 px. Accepted types: jpg, jpeg, jpe, png. Max file size: 5Mb.
 ```
 
-#### Available methods:
+#### Available public methods:
 
 * `getMediaCaption(string $collectionName): string`: returns a complete caption for the given collection.
 * `getMediaDimensionsCaption(string $collectionName): string`: returns only the dimensions caption for the given collection.
 * `getMediaMimeTypesCaption(string $collectionName): string`: returns only the mime types caption for the given collection.
 * `getMediaSizeCaption(): string`: returns only the config max file size caption only.
 
-###Exceptions
+### Exceptions
 
-In order to avoid careless mistakes an `Okipa\MediaLibraryExt\Exceptions\CollectionNotFound` exception will be thrown when the specified collection is not found in the 
-targeted model. 
+In order to avoid careless mistakes when using public methods that are requiring a `string $collectionName` argument provided by this extension, an `Okipa\MediaLibraryExt\Exceptions\CollectionNotFound` exception will be thrown when the given collection name is not found in the targeted model. 
 
 ## Testing
 

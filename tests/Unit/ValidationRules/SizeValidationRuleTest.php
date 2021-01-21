@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\MediaLibraryExt\Tests\Unit\Extension\UrlGenerator;
+namespace Okipa\MediaLibraryExt\Tests\Unit\ValidationRules;
 
 use Okipa\MediaLibraryExt\Tests\MediaLibraryExtTestCase;
 use Okipa\MediaLibraryExt\Tests\Models\InteractsWithMediaModel;

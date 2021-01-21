@@ -7,7 +7,7 @@ use Spatie\MediaLibrary\MediaLibraryServiceProvider;
 
 class MediaLibraryExtTestCase extends TestCase
 {
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [MediaLibraryServiceProvider::class];
     }

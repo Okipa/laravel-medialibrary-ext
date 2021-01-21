@@ -1,6 +1,6 @@
 <?php
 
-namespace Okipa\MediaLibraryExt\Tests\Unit\Extension\UrlGenerator;
+namespace Okipa\MediaLibraryExt\Tests\Unit\Captions;
 
 use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
 use Okipa\MediaLibraryExt\Tests\MediaLibraryExtTestCase;
@@ -15,13 +15,7 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
     public function it_throws_exception_when_it_is_called_with_non_existing_collection(): void
     {
         $this->expectException(CollectionNotFound::class);
-        $testModel = new class extends InteractsWithMediaModel {
-            public function registerMediaCollections(): void
-            {
-                $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 60, 20);
-            }
-        };
-        $dimensionsCaptionString = $testModel->getMediaDimensionsCaption('test');
+        (new InteractsWithMediaModel())->getMediaDimensionsCaption('test');
     }
 
     /** @test */
@@ -38,7 +32,7 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
     }
 
     /** @test */
-    public function it_returns_only_width_dimension_legend_when_only_width_is_declared(): void
+    public function it_returns_only_width_dimension_caption_when_only_width_is_declared(): void
     {
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
@@ -56,7 +50,7 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
     }
 
     /** @test */
-    public function it_returns_only_height_dimension_legend_when_only_height_is_declared(): void
+    public function it_returns_only_height_dimension_caption_when_only_height_is_declared(): void
     {
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
@@ -74,7 +68,7 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
     }
 
     /** @test */
-    public function it_returns_no_dimension_legend_when_no_size_is_declared(): void
+    public function it_returns_no_dimension_caption_when_no_size_is_declared(): void
     {
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
@@ -92,7 +86,7 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
     }
 
     /** @test */
-    public function it_returns_width_and_height_dimension_legend_when_both_are_declared(): void
+    public function it_returns_width_and_height_dimension_caption_when_both_are_declared(): void
     {
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
@@ -120,7 +114,7 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
     }
 
     /** @test */
-    public function it_does_not_returns_dimensions_legend_when_no_image_declared(): void
+    public function it_does_not_returns_dimensions_caption_when_no_image_declared(): void
     {
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
