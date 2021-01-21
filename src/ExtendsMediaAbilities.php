@@ -5,6 +5,7 @@ namespace Okipa\MediaLibraryExt;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
 use Spatie\MediaLibrary\Conversions\Conversion;
 use Spatie\MediaLibrary\MediaCollections\MediaCollection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -12,9 +13,24 @@ use Symfony\Component\Mime\MimeTypes;
 
 trait ExtendsMediaAbilities
 {
+
+    protected function checkIfMediaCollectionExist($mediaCollection): void
+    {
+        if (! $mediaCollection) {
+            throw new CollectionNotFound("The collection {$mediaCollection} as not been found.");
+        }
+    }
+
+    public function getMediaCollectionOrFail(string $collectionName = 'default'): ?MediaCollection
+    {
+        $mediaCollection = $this->getMediaCollection($collectionName);
+        $this->checkIfMediaCollectionExist($mediaCollection);
+        return $mediaCollection;
+    }
+
     public function getMediaCaption(string $collectionName): string
     {
-        if (! $this->getMediaCollection($collectionName)) {
+        if (! $this->getMediaCollectionOrFail($collectionName)) {
             return '';
         }
         $dimensionsCaption = $this->getMediaDimensionsCaption($collectionName);
@@ -27,8 +43,6 @@ trait ExtendsMediaAbilities
             . ($mimeTypesCaption && $sizeCaption ? ' ' : '')
             . $sizeCaption;
     }
-
-    abstract public function getMediaCollection(string $collectionName = 'default'): ?MediaCollection;
 
     public function getMediaDimensionsCaption(string $collectionName): string
     {
@@ -67,7 +81,7 @@ trait ExtendsMediaAbilities
 
     protected function mediaHasDimensions(string $collectionName): bool
     {
-        $mediaCollection = $this->getMediaCollection($collectionName);
+        $mediaCollection = $this->getMediaCollectionOrFail($collectionName);
         if (! $mediaCollection) {
             return false;
         }
@@ -102,7 +116,7 @@ trait ExtendsMediaAbilities
 
     public function getMediaMimeTypesCaption(string $collectionName): string
     {
-        $mediaCollection = $this->getMediaCollection($collectionName);
+        $mediaCollection = $this->getMediaCollectionOrFail($collectionName);
         if (! empty($mediaCollection->acceptsMimeTypes)) {
             $extensions = $this->getExtensionsFromMimeTypes($mediaCollection->acceptsMimeTypes);
             $extensionsString = implode(',', $extensions);
@@ -142,7 +156,7 @@ trait ExtendsMediaAbilities
 
     public function getMediaValidationRules(string $collectionName): array
     {
-        if (! $this->getMediaCollection($collectionName)) {
+        if (! $this->getMediaCollectionOrFail($collectionName)) {
             return [];
         }
         $mimesConstraints = $this->getMediaMimesValidationRules($collectionName);
@@ -160,7 +174,7 @@ trait ExtendsMediaAbilities
 
     public function getMediaMimesValidationRules(string $collectionName): string
     {
-        $mediaCollection = $this->getMediaCollection($collectionName);
+        $mediaCollection = $this->getMediaCollectionOrFail($collectionName);
         $validationString = '';
         if (! empty($mediaCollection->acceptsMimeTypes)) {
             $acceptedExtensions = $this->getExtensionsFromMimeTypes($mediaCollection->acceptsMimeTypes);
@@ -178,7 +192,7 @@ trait ExtendsMediaAbilities
         if ($mediaConversions->isEmpty()) {
             return '';
         }
-        $mediaCollection = $this->getMediaCollection($collectionName);
+        $mediaCollection = $this->getMediaCollectionOrFail($collectionName);
         $validationString = '';
         if (! empty($mediaCollection->acceptsMimeTypes)) {
             $validationString .= 'mimetypes:' . implode(',', $mediaCollection->acceptsMimeTypes);

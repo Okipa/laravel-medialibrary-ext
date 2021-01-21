@@ -2,6 +2,7 @@
 
 namespace Okipa\MediaLibraryExt\Tests\Unit\Extension\UrlGenerator;
 
+use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
 use Okipa\MediaLibraryExt\Tests\MediaLibraryExtTestCase;
 use Okipa\MediaLibraryExt\Tests\Models\InteractsWithMediaModel;
 use Spatie\Image\Manipulations;
@@ -10,8 +11,9 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class CollectionValidationRulesTest extends MediaLibraryExtTestCase
 {
     /** @test */
-    public function it_returns_no_rule_when_non_existing_collection(): void
+    public function it_throws_exception_when_it_is_called_with_non_existing_collection(): void
     {
+        $this->expectException(CollectionNotFound::class);
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
             {
@@ -19,7 +21,6 @@ class CollectionValidationRulesTest extends MediaLibraryExtTestCase
             }
         };
         $rules = $testModel->getMediaValidationRules('avatar');
-        self::assertEquals([], $rules);
     }
 
     /** @test */

@@ -153,6 +153,11 @@ Will generate:
 * `getMediaMimeTypesCaption(string $collectionName): string`: returns only the mime types caption for the given collection.
 * `getMediaSizeCaption(): string`: returns only the config max file size caption only.
 
+###Exceptions
+
+In order to avoid careless mistakes an exception will be thrown when the specified collection is not found in the 
+targeted model. 
+
 ## Testing
 
 ``` bash

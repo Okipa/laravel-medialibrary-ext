@@ -2,6 +2,7 @@
 
 namespace Okipa\MediaLibraryExt\Tests\Unit\Extension\UrlGenerator;
 
+use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
 use Okipa\MediaLibraryExt\Tests\MediaLibraryExtTestCase;
 use Okipa\MediaLibraryExt\Tests\Models\InteractsWithMediaModel;
 use Spatie\Image\Manipulations;
@@ -11,8 +12,9 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
 {
     /** @test */
-    public function it_returns_none_when_it_is_called_with_non_existing_collection(): void
+    public function it_throws_exception_when_it_is_called_with_non_existing_collection(): void
     {
+        $this->expectException(CollectionNotFound::class);
         $testModel = new class extends InteractsWithMediaModel {
             public function registerMediaCollections(): void
             {
@@ -20,7 +22,6 @@ class CollectionDimensionsCaptionTest extends MediaLibraryExtTestCase
             }
         };
         $dimensionsCaptionString = $testModel->getMediaDimensionsCaption('test');
-        self::assertEquals('', $dimensionsCaptionString);
     }
 
     /** @test */
