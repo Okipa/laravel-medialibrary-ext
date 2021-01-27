@@ -12,7 +12,7 @@ parameters:
     ignoreErrors:
         #- '#Example of error to ignore#'
 
-    excludes_analyse:
+    excludePaths:
         - ./*/*/FileToBeExcluded.php
 
     checkMissingIterableValueType: true
