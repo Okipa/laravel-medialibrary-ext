@@ -31,7 +31,7 @@
     },
     "require-dev": {
         "brianium/paratest": "^6.4",
-        "nunomaduro/collision": "^5.10|^6.0",
+        "nunomaduro/collision": "^6.0",
         "nunomaduro/larastan": "^1.0",
         "orchestra/testbench": "^7.0",
         "phpmd/phpmd": "^2.11",
