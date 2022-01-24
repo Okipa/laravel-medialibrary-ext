@@ -2,10 +2,10 @@
 
 namespace Okipa\MediaLibraryExt\Tests;
 
-use Orchestra\Testbench\TestCase;
+use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\MediaLibrary\MediaLibraryServiceProvider;
 
-class MediaLibraryExtTestCase extends TestCase
+class TestCase extends Orchestra
 {
     /** @SuppressWarnings(PHPMD.UnusedFormalParameter) */
     protected function getPackageProviders($app): array
