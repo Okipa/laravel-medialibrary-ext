@@ -10,7 +10,7 @@ No extension changes have been made. If you carefully followed the base package 
 
 ## See all changes
 
-See all change with the [comparison tool](https://github.com/Okipa/laravel-medialibrary-ext/compare/8.1.0...9.0.0).
+See all change with the [comparison tool](https://github.com/Okipa/laravel-medialibrary-ext/compare/9.2.0...10.0.0).
 
 ## Undocumented changes
 

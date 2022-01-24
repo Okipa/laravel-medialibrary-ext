@@ -30,6 +30,7 @@ This package extension will follow the [base package](https://github.com/spatie/
 
 ## Upgrade guide
 
+* [From V9 to V10](/docs/upgrade-guides/from-v9-to-v10.md)
 * [From V8 to V9](/docs/upgrade-guides/from-v8-to-v9.md)
 * [From V7 to V8](/docs/upgrade-guides/from-v7-to-v8.md)
 
@@ -169,7 +170,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information about what has changed
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ## Security
 

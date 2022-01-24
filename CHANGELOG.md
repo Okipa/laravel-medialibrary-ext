@@ -1,5 +1,13 @@
 # Changelog
 
+## [10.0.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/9.2.0...10.0.0)
+
+2021-01-24
+
+* Upgraded `spatie/laravel-medialibrary` required version to 10
+* Upgraded Laravel required version to 9
+* Upgrade PHP required versions to 8.0 and 8.1
+
 ## [9.2.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/9.1.0...9.2.0)
 
 2020-11-14
@@ -18,7 +26,7 @@
 
 2020-10-30
 
-* Upgraded spatie/laravel-medialibrary required version to 9
+* Upgraded `spatie/laravel-medialibrary` required version to 9
 
 ## [8.1.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/8.0.0...8.1.0)
 
@@ -38,7 +46,7 @@
 2020-03-30
 
 * Followed spatie/media-library upgrade to v8
-* Removed fork link from spatie/laravel-medialibrary repository
+* Removed fork link from `spatie/laravel-medialibrary` repository
 * Pulled out the extension from the original package. The extension does now live separately
 * Removed configuration use
 * Removed deprecated methods

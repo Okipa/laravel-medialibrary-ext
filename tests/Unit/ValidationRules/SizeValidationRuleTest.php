@@ -2,10 +2,10 @@
 
 namespace Okipa\MediaLibraryExt\Tests\Unit\ValidationRules;
 
-use Okipa\MediaLibraryExt\Tests\MediaLibraryExtTestCase;
+use Okipa\MediaLibraryExt\Tests\TestCase;
 use Okipa\MediaLibraryExt\Tests\Models\InteractsWithMediaModel;
 
-class SizeValidationRuleTest extends MediaLibraryExtTestCase
+class SizeValidationRuleTest extends TestCase
 {
     /** @test */
     public function it_return_none_when_it_is_not_defined(): void
