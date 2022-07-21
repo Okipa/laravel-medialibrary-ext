@@ -4,11 +4,6 @@
     <!-- Included directories -->
     <file>./src</file>
     <file>./tests</file>
-    <!-- Excluded patterns -->
-    <exclude-pattern>*/*.js</exclude-pattern>
-    <exclude-pattern>*/*.css</exclude-pattern>
-    <exclude-pattern>*/*.xml</exclude-pattern>
-    <exclude-pattern>*/*.blade.php</exclude-pattern>
     <!-- Configuration -->
     <arg name="colors"/>
     <arg value="p"/>
