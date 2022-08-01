@@ -35,7 +35,7 @@
         "nunomaduro/larastan": "^1.0",
         "orchestra/testbench": "^7.0",
         "phpmd/phpmd": "^2.11",
-        "squizlabs/php_codesniffer": "^3.6"
+        "laravel/pint": "^1.1"
     },
     "autoload": {
         "psr-4": {
@@ -48,11 +48,11 @@
         }
     },
     "scripts": {
-        "phpcs": ["vendor/bin/phpcbf", "vendor/bin/phpcs"],
-        "phpmd": "vendor/bin/phpmd src,tests text phpmd.xml",
+        "pint": ["vendor/bin/pint"],
+        "phpmd": "vendor/bin/phpmd config,src,tests text phpmd.xml",
         "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G",
         "phpunit" : "vendor/bin/testbench package:test --parallel --no-coverage",
-        "test": ["@phpcs", "@phpmd", "@phpstan", "@phpunit"]
+        "test": ["@pint", "@phpcs", "@phpmd", "@phpunit"]
     },
     "extra": {
         "laravel": {

@@ -1,5 +1,11 @@
 # Changelog
 
+## [10.0.1](https://github.com/Okipa/laravel-medialibrary-ext/compare/10.0.0...10.0.1)
+
+2022-08-01
+
+* Replaced `phpcs/phpcbf` by `laravel/pint`
+
 ## [10.0.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/9.2.0...10.0.0)
 
 2021-01-24
