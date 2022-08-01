@@ -3,8 +3,8 @@
 namespace Okipa\MediaLibraryExt\Tests\Unit\ValidationRules;
 
 use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
-use Okipa\MediaLibraryExt\Tests\TestCase;
 use Okipa\MediaLibraryExt\Tests\Models\InteractsWithMediaModel;
+use Okipa\MediaLibraryExt\Tests\TestCase;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -37,7 +37,8 @@ class CollectionValidationRulesTest extends TestCase
     public function it_can_return_only_dimension_rules(): void
     {
         config()->set('media-library.max_file_size', null);
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar');
@@ -56,7 +57,8 @@ class CollectionValidationRulesTest extends TestCase
     public function it_can_return_only_mime_types_and_mimes_rules(): void
     {
         config()->set('media-library.max_file_size', null);
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')->acceptsMimeTypes(['image/jpeg', 'image/png']);
@@ -83,7 +85,8 @@ class CollectionValidationRulesTest extends TestCase
     public function it_can_return_all_rules(): void
     {
         config()->set('media-library.max_file_size', (1024 * 1024 * 10));
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')->acceptsMimeTypes(['image/jpeg', 'image/png']);

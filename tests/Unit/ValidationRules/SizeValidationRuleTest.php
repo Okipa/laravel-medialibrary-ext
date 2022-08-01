@@ -2,8 +2,8 @@
 
 namespace Okipa\MediaLibraryExt\Tests\Unit\ValidationRules;
 
-use Okipa\MediaLibraryExt\Tests\TestCase;
 use Okipa\MediaLibraryExt\Tests\Models\InteractsWithMediaModel;
+use Okipa\MediaLibraryExt\Tests\TestCase;
 
 class SizeValidationRuleTest extends TestCase
 {

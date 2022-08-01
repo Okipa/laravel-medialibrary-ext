@@ -3,8 +3,8 @@
 namespace Okipa\MediaLibraryExt\Tests\Unit\Captions;
 
 use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
-use Okipa\MediaLibraryExt\Tests\TestCase;
 use Okipa\MediaLibraryExt\Tests\Models\InteractsWithMediaModel;
+use Okipa\MediaLibraryExt\Tests\TestCase;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\File;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -21,7 +21,8 @@ class CollectionTypesCaptionTest extends TestCase
     /** @test */
     public function it_returns_no_types_caption_when_none_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar');
@@ -39,11 +40,12 @@ class CollectionTypesCaptionTest extends TestCase
     /** @test */
     public function it_returns_types_caption_when_are_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
-                    ->acceptsFile(fn(File $file) => true)
+                    ->acceptsFile(fn (File $file) => true)
                     ->acceptsMimeTypes(['image/jpeg', 'image/png'])
                     ->registerMediaConversions(function (Media $media = null) {
                         $this->addMediaConversion('admin-panel')
@@ -70,11 +72,12 @@ class CollectionTypesCaptionTest extends TestCase
     /** @test */
     public function it_removes_duplicated_types(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
-                    ->acceptsFile(fn(File $file) => true)
+                    ->acceptsFile(fn (File $file) => true)
                     ->acceptsMimeTypes(['audio/wav', 'audio/wave', 'audio/x-wav'])
                     ->registerMediaConversions(function (Media $media = null) {
                         $this->addMediaConversion('admin-panel')
