@@ -22,9 +22,8 @@ class CollectionCaptionsTest extends TestCase
     {
         config()->set('media-library.max_file_size', 1000000);
         $captionString = (new InteractsWithMediaModel())->getMediaCaption('avatar');
-        self::assertEquals(__('Max. file size: :size Mb.', [
-            'size' => 1,
-        ]), $captionString);
+        $sizeCaption = __('Max. file size: :size Mb.', ['size' => 1]);
+        self::assertEquals($sizeCaption, $captionString);
     }
 
     /** @test */
@@ -48,17 +47,15 @@ class CollectionCaptionsTest extends TestCase
                 $this->addMediaConversion('thumb')->crop(Manipulations::CROP_CENTER, 40, 40);
             }
         };
-        $captionString = $testModel->getMediaCaption('avatar');
-        self::assertEquals(
-            __('Min. width: :width px.', ['width' => 150]) . ' '
-            . __('Min. height: :height px.', ['height' => 120]) . ' '
-            . trans_choice(
-                '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
-                2,
-                ['types' => 'jpg, jpeg, jpe, png']
-            ),
-            $captionString
+        $widthCaption = __('Min. width: :width px.', ['width' => 150]);
+        $heightCaption = __('Min. height: :height px.', ['height' => 120]);
+        $typesCaption = trans_choice(
+            '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
+            2,
+            ['types' => 'jpg, jpeg, jpe, png']
         );
+        $captionString = $testModel->getMediaCaption('avatar');
+        self::assertEquals($widthCaption . ' ' . $heightCaption . ' ' . $typesCaption, $captionString);
     }
 
     /** @test */
@@ -72,14 +69,11 @@ class CollectionCaptionsTest extends TestCase
                 $this->addMediaConversion('card')->crop(Manipulations::CROP_CENTER, 100, 70);
             }
         };
+        $widthCaption = __('Min. width: :width px.', ['width' => 100]);
+        $heightCaption = __('Min. height: :height px.', ['height' => 70]);
         $captionString = $testModel->getMediaCaption('avatar');
-        self::assertEquals(__('Min. width: :width px.', [
-            'width' => 100,
-        ]) . ' ' . __('Min. height: :height px.', [
-            'height' => 70,
-        ]) . ' ' . __('Max. file size: :size Mb.', [
-            'size' => 1,
-        ]), $captionString);
+        $sizeCaption = __('Max. file size: :size Mb.', ['size' => 1]);
+        self::assertEquals($widthCaption . ' ' . $heightCaption . ' ' . $sizeCaption, $captionString);
     }
 
     /** @test */
@@ -93,16 +87,14 @@ class CollectionCaptionsTest extends TestCase
                 $this->addMediaCollection('avatar')->acceptsMimeTypes(['image/jpeg', 'image/png']);
             }
         };
-        $captionString = $testModel->getMediaCaption('avatar');
-        self::assertEquals(trans_choice(
+        $typesCaption = trans_choice(
             '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
             2,
-            [
-                'types' => 'jpg, jpeg, jpe, png',
-            ]
-        ) . ' ' . __('Max. file size: :size Mb.', [
-            'size' => 1,
-        ]), $captionString);
+            ['types' => 'jpg, jpeg, jpe, png']
+        );
+        $sizeCaption = __('Max. file size: :size Mb.', ['size' => 1]);
+        $captionString = $testModel->getMediaCaption('avatar');
+        self::assertEquals($typesCaption . ' ' . $sizeCaption, $captionString);
     }
 
     /** @test */
@@ -121,19 +113,18 @@ class CollectionCaptionsTest extends TestCase
                 $this->addMediaConversion('card')->crop(Manipulations::CROP_CENTER, 100, 70);
             }
         };
+        $widthCaption = __('Min. width: :width px.', ['width' => 100]);
+        $heightCaption = __('Min. height: :height px.', ['height' => 70]);
+        $typesCaption = trans_choice(
+            '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
+            2,
+            ['types' => 'jpg, jpeg, jpe, png']
+        );
+        $sizeCaption = __('Max. file size: :size Mb.', ['size' => 1]);
         $captionString = $testModel->getMediaCaption('avatar');
-        self::assertEquals(__('Min. width: :width px.', [
-            'width' => 100,
-        ]) . ' ' . __('Min. height: :height px.', [
-            'height' => 70,
-        ]) . ' ' . trans_choice(
-                '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
-                2,
-                [
-                    'types' => 'jpg, jpeg, jpe, png',
-                ]
-            ) . ' ' . __('Max. file size: :size Mb.', [
-                'size' => 1,
-            ]), $captionString);
+        self::assertEquals(
+            $widthCaption . ' ' . $heightCaption . ' ' . $typesCaption . ' ' . $sizeCaption,
+            $captionString
+        );
     }
 }
