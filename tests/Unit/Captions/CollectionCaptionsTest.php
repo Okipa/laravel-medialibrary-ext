@@ -3,8 +3,8 @@
 namespace Okipa\MediaLibraryExt\Tests\Unit\Captions;
 
 use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
-use Okipa\MediaLibraryExt\Tests\TestCase;
 use Okipa\MediaLibraryExt\Tests\Models\InteractsWithMediaModel;
+use Okipa\MediaLibraryExt\Tests\TestCase;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -31,7 +31,8 @@ class CollectionCaptionsTest extends TestCase
     public function it_can_returns_dimensions_and_types_captions(): void
     {
         config()->set('media-library.max_file_size', null);
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
@@ -64,7 +65,8 @@ class CollectionCaptionsTest extends TestCase
     public function it_can_returns_dimensions_and_size_captions(): void
     {
         config()->set('media-library.max_file_size', 1000000);
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaConversions(Media $media = null): void
             {
                 $this->addMediaConversion('card')->crop(Manipulations::CROP_CENTER, 100, 70);
@@ -72,19 +74,20 @@ class CollectionCaptionsTest extends TestCase
         };
         $captionString = $testModel->getMediaCaption('avatar');
         self::assertEquals(__('Min. width: :width px.', [
-                'width' => 100,
-            ]) . ' ' . __('Min. height: :height px.', [
-                'height' => 70,
-            ]) . ' ' . __('Max. file size: :size Mb.', [
-                'size' => 1,
-            ]), $captionString);
+            'width' => 100,
+        ]) . ' ' . __('Min. height: :height px.', [
+            'height' => 70,
+        ]) . ' ' . __('Max. file size: :size Mb.', [
+            'size' => 1,
+        ]), $captionString);
     }
 
     /** @test */
     public function it_can_returns_types_and_size_captions(): void
     {
         config()->set('media-library.max_file_size', 1000000);
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')->acceptsMimeTypes(['image/jpeg', 'image/png']);
@@ -95,18 +98,19 @@ class CollectionCaptionsTest extends TestCase
             '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
             2,
             [
-                    'types' => 'jpg, jpeg, jpe, png',
-                ]
+                'types' => 'jpg, jpeg, jpe, png',
+            ]
         ) . ' ' . __('Max. file size: :size Mb.', [
-                'size' => 1,
-            ]), $captionString);
+            'size' => 1,
+        ]), $captionString);
     }
 
     /** @test */
     public function it_can_return_all_captions(): void
     {
         config()->set('media-library.max_file_size', 1000000);
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')->acceptsMimeTypes(['image/jpeg', 'image/png']);
@@ -119,10 +123,10 @@ class CollectionCaptionsTest extends TestCase
         };
         $captionString = $testModel->getMediaCaption('avatar');
         self::assertEquals(__('Min. width: :width px.', [
-                'width' => 100,
-            ]) . ' ' . __('Min. height: :height px.', [
-                'height' => 70,
-            ]) . ' ' . trans_choice(
+            'width' => 100,
+        ]) . ' ' . __('Min. height: :height px.', [
+            'height' => 70,
+        ]) . ' ' . trans_choice(
                 '{1}Accepted type: :types.|[2,*]Accepted types: :types.',
                 2,
                 [

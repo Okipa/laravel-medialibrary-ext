@@ -3,8 +3,8 @@
 namespace Okipa\MediaLibraryExt\Tests\Unit\ValidationRules;
 
 use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
-use Okipa\MediaLibraryExt\Tests\TestCase;
 use Okipa\MediaLibraryExt\Tests\Models\InteractsWithMediaModel;
+use Okipa\MediaLibraryExt\Tests\TestCase;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\File;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -21,11 +21,12 @@ class CollectionMimesValidationRulesTest extends TestCase
     /** @test */
     public function it_returns_mimes_rules_when_declared_in_collection(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
-                    ->acceptsFile(fn(File $file) => true)
+                    ->acceptsFile(fn (File $file) => true)
                     ->acceptsMimeTypes(['image/jpeg', 'image/png', 'application/pdf'])
                     ->registerMediaConversions(function (Media $media = null) {
                         $this->addMediaConversion('admin-panel')
@@ -45,7 +46,8 @@ class CollectionMimesValidationRulesTest extends TestCase
     /** @test */
     public function it_returns_no_collection_mimes_rules_when_none_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar');
@@ -63,11 +65,12 @@ class CollectionMimesValidationRulesTest extends TestCase
     /** @test */
     public function it_removes_duplicated_mimes(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
-                    ->acceptsFile(fn(File $file) => true)
+                    ->acceptsFile(fn (File $file) => true)
                     ->acceptsMimeTypes(['audio/wav', 'audio/wave', 'audio/x-wav'])
                     ->registerMediaConversions(function (Media $media = null) {
                         $this->addMediaConversion('admin-panel')

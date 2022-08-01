@@ -3,8 +3,8 @@
 namespace Okipa\MediaLibraryExt\Tests\Unit\Captions;
 
 use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
-use Okipa\MediaLibraryExt\Tests\TestCase;
 use Okipa\MediaLibraryExt\Tests\Models\InteractsWithMediaModel;
+use Okipa\MediaLibraryExt\Tests\TestCase;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\File;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -21,7 +21,8 @@ class CollectionDimensionsCaptionTest extends TestCase
     /** @test */
     public function it_returns_none_when_it_is_called_with_non_existent_conversions(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')->acceptsMimeTypes(['image/jpeg', 'image/png']);
@@ -34,7 +35,8 @@ class CollectionDimensionsCaptionTest extends TestCase
     /** @test */
     public function it_returns_only_width_dimension_caption_when_only_width_is_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')->acceptsMimeTypes(['image/jpeg', 'image/png']);
@@ -52,7 +54,8 @@ class CollectionDimensionsCaptionTest extends TestCase
     /** @test */
     public function it_returns_only_height_dimension_caption_when_only_height_is_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')->acceptsMimeTypes(['image/jpeg', 'image/png']);
@@ -70,7 +73,8 @@ class CollectionDimensionsCaptionTest extends TestCase
     /** @test */
     public function it_returns_no_dimension_caption_when_no_size_is_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')->acceptsMimeTypes(['image/jpeg', 'image/png']);
@@ -88,11 +92,12 @@ class CollectionDimensionsCaptionTest extends TestCase
     /** @test */
     public function it_returns_width_and_height_dimension_caption_when_both_are_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
-                    ->acceptsFile(fn(File $file) => true)
+                    ->acceptsFile(fn (File $file) => true)
                     ->acceptsMimeTypes(['image/jpeg', 'image/png'])
                     ->registerMediaConversions(function (Media $media = null) {
                         $this->addMediaConversion('admin-panel')
@@ -107,20 +112,21 @@ class CollectionDimensionsCaptionTest extends TestCase
         };
         $dimensionsCaptionString = $testModel->getMediaDimensionsCaption('avatar');
         self::assertEquals(__('Min. width: :width px.', [
-                'width' => 100,
-            ]) . ' ' . __('Min. height: :height px.', [
-                'height' => 80,
-            ]), $dimensionsCaptionString);
+            'width' => 100,
+        ]) . ' ' . __('Min. height: :height px.', [
+            'height' => 80,
+        ]), $dimensionsCaptionString);
     }
 
     /** @test */
     public function it_does_not_returns_dimensions_caption_when_no_image_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
-                    ->acceptsFile(fn(File $file) => true)
+                    ->acceptsFile(fn (File $file) => true)
                     ->acceptsMimeTypes(['application/pdf'])
                     ->registerMediaConversions(function (Media $media = null) {
                         $this->addMediaConversion('admin-panel')

@@ -19,8 +19,8 @@ trait ExtendsMediaAbilities
 
     /**
      * @param string $collectionName
-     *
      * @return string
+     *
      * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
      */
     public function getMediaCaption(string $collectionName): string
@@ -52,8 +52,8 @@ trait ExtendsMediaAbilities
 
     /**
      * @param string $collectionName
-     *
      * @return string
+     *
      * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
      */
     public function getMediaDimensionsCaption(string $collectionName): string
@@ -74,8 +74,8 @@ trait ExtendsMediaAbilities
 
     /**
      * @param string $collectionName
-     *
      * @return array
+     *
      * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
      */
     protected function getMediaMaxDimensions(string $collectionName): array
@@ -99,8 +99,8 @@ trait ExtendsMediaAbilities
 
     /**
      * @param string $collectionName
-     *
      * @return bool
+     *
      * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
      */
     protected function mediaHasDimensions(string $collectionName): bool
@@ -113,14 +113,14 @@ trait ExtendsMediaAbilities
 
         return ! count(array_filter(
             $mediaCollection->acceptsMimeTypes,
-            static fn($mimeTypes) => ! Str::startsWith($mimeTypes, 'image')
+            static fn ($mimeTypes) => ! Str::startsWith($mimeTypes, 'image')
         ));
     }
 
     /**
      * @param string $collectionName
-     *
      * @return \Spatie\MediaLibrary\MediaCollections\MediaCollection
+     *
      * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
      */
     protected function getMediaCollectionOrFail(string $collectionName = 'default'): MediaCollection
@@ -152,8 +152,8 @@ trait ExtendsMediaAbilities
 
     /**
      * @param string $collectionName
-     *
      * @return string
+     *
      * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
      */
     public function getMediaMimeTypesCaption(string $collectionName): string
@@ -198,8 +198,8 @@ trait ExtendsMediaAbilities
 
     /**
      * @param string $collectionName
-     *
      * @return array
+     *
      * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
      */
     public function getMediaValidationRules(string $collectionName): array
@@ -220,8 +220,8 @@ trait ExtendsMediaAbilities
 
     /**
      * @param string $collectionName
-     *
      * @return string
+     *
      * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
      */
     public function getMediaMimesValidationRules(string $collectionName): string
@@ -240,8 +240,8 @@ trait ExtendsMediaAbilities
 
     /**
      * @param string $collectionName
-     *
      * @return string
+     *
      * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
      */
     public function getMediaMimeTypesValidationRules(string $collectionName): string
@@ -261,8 +261,8 @@ trait ExtendsMediaAbilities
 
     /**
      * @param string $collectionName
-     *
      * @return string
+     *
      * @throws \Okipa\MediaLibraryExt\Exceptions\CollectionNotFound
      */
     public function getMediaDimensionValidationRules(string $collectionName): string

@@ -3,8 +3,8 @@
 namespace Okipa\MediaLibraryExt\Tests\Unit\ValidationRules;
 
 use Okipa\MediaLibraryExt\Exceptions\CollectionNotFound;
-use Okipa\MediaLibraryExt\Tests\TestCase;
 use Okipa\MediaLibraryExt\Tests\Models\InteractsWithMediaModel;
+use Okipa\MediaLibraryExt\Tests\TestCase;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\MediaCollections\File;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -21,7 +21,8 @@ class CollectionDimensionValidationRulesTest extends TestCase
     /** @test */
     public function it_returns_none_when_it_is_called_with_non_existent_conversions(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')->acceptsMimeTypes(['image/jpeg', 'image/png']);
@@ -34,7 +35,8 @@ class CollectionDimensionValidationRulesTest extends TestCase
     /** @test */
     public function it_returns_global_conversion_dimension_rules_when_no_collection_conversions_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar');
@@ -52,7 +54,8 @@ class CollectionDimensionValidationRulesTest extends TestCase
     /** @test */
     public function it_returns_only_width_dimension_rule_when_only_width_is_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')->acceptsMimeTypes(['image/jpeg', 'image/png']);
@@ -70,7 +73,8 @@ class CollectionDimensionValidationRulesTest extends TestCase
     /** @test */
     public function it_returns_only_height_dimension_rule_when_only_height_is_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')->acceptsMimeTypes(['image/jpeg', 'image/png']);
@@ -88,7 +92,8 @@ class CollectionDimensionValidationRulesTest extends TestCase
     /** @test */
     public function it_returns_no_dimension_rule_when_no_size_is_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')->acceptsMimeTypes(['image/jpeg', 'image/png']);
@@ -106,7 +111,8 @@ class CollectionDimensionValidationRulesTest extends TestCase
     /** @test */
     public function it_returns_collection_dimension_rules_when_no_global_conversions_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
@@ -131,11 +137,12 @@ class CollectionDimensionValidationRulesTest extends TestCase
     /** @test */
     public function it_returns_global_and_collection_dimension_rules_when_both_are_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
-                    ->acceptsFile(fn(File $file) => true)
+                    ->acceptsFile(fn (File $file) => true)
                     ->acceptsMimeTypes(['image/jpeg', 'image/png'])
                     ->registerMediaConversions(function (Media $media = null) {
                         $this->addMediaConversion('admin-panel')
@@ -155,11 +162,12 @@ class CollectionDimensionValidationRulesTest extends TestCase
     /** @test */
     public function it_does_not_returns_dimension_rules_when_no_image_declared(): void
     {
-        $testModel = new class extends InteractsWithMediaModel {
+        $testModel = new class extends InteractsWithMediaModel
+        {
             public function registerMediaCollections(): void
             {
                 $this->addMediaCollection('avatar')
-                    ->acceptsFile(fn(File $file) => true)
+                    ->acceptsFile(fn (File $file) => true)
                     ->acceptsMimeTypes(['application/pdf'])
                     ->registerMediaConversions(function (Media $media = null) {
                         $this->addMediaConversion('admin-panel')
