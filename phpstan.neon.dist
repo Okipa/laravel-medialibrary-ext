@@ -4,13 +4,13 @@ parameters:
         - src
         - tests
 
-    # The level 8 is the highest level
+    # Level 9 is the highest level
     level: 5
 
-    ignoreErrors:
-        #- '#Example of error to ignore#'
-
-    excludePaths:
-        - ./*/*/FileToBeExcluded.php
-
-    checkMissingIterableValueType: true
+#    ignoreErrors:
+#        - '#PHPDoc tag @var#'
+#
+#    excludePaths:
+#        - ./*/*/FileToBeExcluded.php
+#
+#    checkMissingIterableValueType: false
