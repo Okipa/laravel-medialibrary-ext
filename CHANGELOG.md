@@ -1,5 +1,12 @@
 # Changelog
 
+## [10.1.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/10.0.2...10.1.0)
+
+2022-12-16
+
+* Added PHP 8.2 support
+* Dropped PHP 8.0 support
+
 ## [10.0.2](https://github.com/Okipa/laravel-medialibrary-ext/compare/10.0.1...10.0.2)
 
 2022-10-27
