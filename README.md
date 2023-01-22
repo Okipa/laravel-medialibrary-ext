@@ -26,7 +26,21 @@ Found this package helpful? Please consider supporting my work!
 
 ## Compatibility
 
-This package extension will follow the [base package](https://github.com/spatie/laravel-medialibrary) major versions and compatibility constraints.
+This package extension will follow the [base package](https://github.com/spatie/laravel-medialibrary) major versions but may be a bit stricter about compatibility constraints.
+
+| Laravel                                              | Original package | PHP                | Package |
+|------------------------------------------------------|------------------|--------------------|---------|
+| ^9.0 &#124; ^10.0                                    | ^10.0            | 8.1.* &#124; 8.2.* | ^10.2   |
+| ^9.0                                                 | ^10.0            | ^8.1 &#124; ^8.2   | ^10.1   |
+| ^9.0                                                 | ^10.0            | ^8.0 &#124; ^8.1   | ^10.0   |
+| ^7.0 &#124; ^8.0                                     | ^9.0             | ^7.4 &#124; ^8.0   | ^9.1    |
+| ^7.0 &#124; ^8.0                                     | ^9.0             | ^7.4               | ^9.0    |
+| ^7.0 &#124; ^8.0                                     | ^8.0             | ^7.4               | ^8.1    |
+| ^6.0 &#124; ^7.0                                     | ^8.0             | ^7.4               | ^8.0    |
+| ^6.0 &#124; ^7.0                                     | X                | ^7.4               | ^8.0    |
+| ^5.8 &#124; ^6.0 &#124; ^7.0                         | X                | ^7.2               | ^7.18   |
+| ^5.5 &#124; ^5.6 &#124; ^5.7 &#124; ^5.8 &#124; ^6.0 | X                | ^7.2               | ^7.12   |
+| ^5.5 &#124; ^5.6 &#124; ^5.7 &#124; ^5.8             | X                | ^7.2               | ^7.11   |
 
 ## Upgrade guide
 
