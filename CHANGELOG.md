@@ -1,5 +1,13 @@
 # Changelog
 
+## [10.2.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/10.1.0...10.2.0)
+
+2023-01-21
+
+* Locked PHP versions to 8.1 and 8.2
+* Added Laravel 10 support
+* Dropped Laravel 8 support
+
 ## [10.1.0](https://github.com/Okipa/laravel-medialibrary-ext/compare/10.0.2...10.1.0)
 
 2022-12-16
